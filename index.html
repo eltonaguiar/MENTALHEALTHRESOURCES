@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mental Health Resources - Support & Recovery</title>
-        <link rel="stylesheet" href="styles.css">
+    <meta name="theme-color" content="#3b82f6">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Emergency Banner -->
@@ -28,11 +30,13 @@
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="Global_Resources.html">🌍 Global Resources</a></li>
-                <li><a href="Research_Science.html">📊 Research & Science</a></li>
+                <li><a href="Research_Science.html">🧪 Research & Science</a></li>
                 <li><a href="Sources_References.html">📚 Sources & References</a></li>
                 <li><a href="Bibliotherapy.html">📖 Books & Reading</a></li>
+                <li><a href="Assessments.html">📋 Assessments</a></li>
+                <li><a href="Crisis_Support.html">💬 Crisis Support</a></li>
                 <li><a href="Global_Resources.html#games">🎮 Games & Tools</a></li>
-                <li><a href="Global_Resources.html#countries">🌐 Local Resources</a></li>
+                <li><a href="Global_Resources.html#countries">🏳️‍🌈 Local Resources</a></li>
                 <li><a href="#resources">Guides</a></li>
                 <li><a href="#multimedia">Videos & Tools</a></li>
                 <li><a href="#emergency">Emergency</a></li>
@@ -51,6 +55,106 @@
                 <a href="#multimedia" class="cta-button secondary">Watch & Learn</a>
                 <a href="#resources" class="cta-button tertiary">Read Guides</a>
                 <a href="#emergency" class="cta-button emergency">Get Help Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assistant & Search Section -->
+    <section class="assistant-section" id="assistant">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <h2>🤖 ChatGPT Codex Assistant</h2>
+                    <p class="section-subtitle">Safety-aware guidance that routes you to the right help fast</p>
+                </div>
+                <div class="lang-toggle">
+                    <label for="lang-select">Language</label>
+                    <select id="lang-select">
+                        <option value="en" selected>English</option>
+                        <option value="fr">Français</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="assistant-grid">
+                <div class="assistant-card">
+                    <div class="assistant-header">
+                        <div>
+                            <p class="badge crisis-badge">Crisis aware</p>
+                            <h3>Ask for support</h3>
+                            <p class="assistant-tip">Keep it short; mention symptoms, location (province), and urgency.</p>
+                        </div>
+                        <div class="assistant-controls">
+                            <button class="pill-button" id="assistant-reset">Reset</button>
+                            <button class="pill-button ghost" id="assistant-sample">Try an example</button>
+                        </div>
+                    </div>
+                    <div class="assistant-chat" id="assistant-chat" aria-live="polite"></div>
+                    <div class="assistant-input">
+                        <input id="assistant-input" type="text" placeholder="E.g., having panic at night in BC, need text support" aria-label="Ask the assistant">
+                        <button id="assistant-send" class="cta-button secondary">Send</button>
+                    </div>
+                    <div class="assistant-footnote" id="assistant-footnote">
+                        Safety first: mentions of self-harm or harm to others trigger immediate crisis guidance.
+                    </div>
+                </div>
+
+                <div class="assistant-card" id="search">
+                    <h3>🔎 Contextual Search</h3>
+                    <p class="assistant-tip">Filter by topic, province, language, and cost. Crisis options always stay on top.</p>
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="filter-topic">Topic</label>
+                            <select id="filter-topic">
+                                <option value="">Any</option>
+                                <option value="panic">Panic & anxiety</option>
+                                <option value="depression">Depression & mood</option>
+                                <option value="youth">Youth</option>
+                                <option value="indigenous">Indigenous</option>
+                                <option value="lgbtq">LGBTQ+</option>
+                                <option value="apps">Apps & tools</option>
+                                <option value="guides">Guides & PDFs</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="filter-province">Province/Territory</label>
+                            <select id="filter-province">
+                                <option value="">Any</option>
+                                <option value="BC">BC</option>
+                                <option value="AB">AB</option>
+                                <option value="SK">SK</option>
+                                <option value="MB">MB</option>
+                                <option value="ON">ON</option>
+                                <option value="QC">QC</option>
+                                <option value="NB">NB</option>
+                                <option value="NS">NS</option>
+                                <option value="PEI">PEI</option>
+                                <option value="NL">NL</option>
+                                <option value="YT">YT</option>
+                                <option value="NT">NT</option>
+                                <option value="NU">NU</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="filter-language">Language</label>
+                            <select id="filter-language">
+                                <option value="">Any</option>
+                                <option value="en">English</option>
+                                <option value="fr">Français</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="filter-cost">Cost</label>
+                            <select id="filter-cost">
+                                <option value="">Any</option>
+                                <option value="free">Free</option>
+                                <option value="paid">Paid/Hybrid</option>
+                            </select>
+                        </div>
+                        <button id="filter-reset" class="pill-button ghost">Reset filters</button>
+                    </div>
+                    <div class="search-results" id="search-results"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -212,6 +316,35 @@
                         <li><a href="https://www.calm.com/" target="_blank" rel="noopener">→ Calm (Free content available)</a></li>
                         <li><a href="https://moodtracker.org/" target="_blank" rel="noopener">→ Mood Tracker Tools</a></li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assessments Section -->
+    <section class="assessments" id="assessments">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <h2>🧪 Self-Assessments (On-Device)</h2>
+                    <p class="section-subtitle">PHQ-9 and GAD-7 scores stay on your device. High scores prompt crisis options.</p>
+                </div>
+                <button class="pill-button ghost" id="reset-assessments">Clear results</button>
+            </div>
+
+            <div class="assessment-grid">
+                <div class="assessment-card" id="phq9-card">
+                    <h3>PHQ-9 (Depression)</h3>
+                    <form id="phq9-form" class="assessment-form"></form>
+                    <button type="button" id="phq9-submit" class="cta-button secondary">Score PHQ-9</button>
+                    <div class="assessment-result" id="phq9-result"></div>
+                </div>
+
+                <div class="assessment-card" id="gad7-card">
+                    <h3>GAD-7 (Anxiety)</h3>
+                    <form id="gad7-form" class="assessment-form"></form>
+                    <button type="button" id="gad7-submit" class="cta-button secondary">Score GAD-7</button>
+                    <div class="assessment-result" id="gad7-result"></div>
                 </div>
             </div>
         </div>
