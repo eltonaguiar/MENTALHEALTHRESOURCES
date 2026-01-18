@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books & Bibliotherapy - Mental Health Resources</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ===== Bibliotherapy Page Specific Styles ===== */
+        .bibliotherapy-header {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bibliotherapy-header::before {
+            content: '📚';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.1;
+            top: -50px;
+            right: -50px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .bibliotherapy-header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .bibliotherapy-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .bibliotherapy-header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .book-category {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #10b981;
+            transition: all 0.3s ease;
+        }
+
+        .book-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .book-category h2 {
+            color: #1f2937;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .book-category .category-description {
+            color: #6b7280;
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .book-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #d1fae5;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #10b981, #059669);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .book-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .book-card:hover {
+            transform: translateX(8px);
+            border-color: #10b981;
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+        }
+
+        .book-title {
+            color: #1f2937;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .book-author {
+            color: #10b981;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .book-description {
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            margin-right: 10px;
+        }
+
+        .quick-links {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 2px solid #667eea;
+        }
+
+        .quick-links h3 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .quick-link-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .quick-link-card:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .quick-link-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: block;
+        }
+
+        .quick-link-card a:hover {
+            color: #764ba2;
+        }
+
+        .library-resources {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 15px;
+            padding: 35px;
+            margin-bottom: 40px;
+            border: 2px solid #f59e0b;
+        }
+
+        .library-resources h3 {
+            color: #92400e;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .library-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #f59e0b;
+            transition: all 0.3s ease;
+        }
+
+        .library-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.2);
+        }
+
+        .library-card h4 {
+            color: #1f2937;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .library-card p {
+            color: #6b7280;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .library-card a {
+            color: #f59e0b;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            padding: 8px 16px;
+            background: #fef3c7;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .library-card a:hover {
+            background: #fde68a;
+            transform: scale(1.05);
+        }
+
+        .back-to-home {
+            display: inline-block;
+            margin: 20px;
+            padding: 12px 24px;
+            background: #f9fafb;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #10b981;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #d1fae5;
+        }
+
+        .back-to-home:hover {
+            background: #10b981;
+            color: white;
+            border-color: #10b981;
+        }
+
+        @media (max-width: 768px) {
+            .bibliotherapy-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        <div class="emergency-content">
+            <h2>🚨 In Crisis? Get Help Now</h2>
+            <div class="emergency-links">
+                <a href="tel:18334564566" class="emergency-btn primary">☎️ Call 1-833-456-4566</a>
+                <a href="sms:741741" class="emergency-btn secondary">💬 Text HOME to 741741</a>
+                <a href="tel:911" class="emergency-btn tertiary">🆘 Emergency: 911</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>🌟 Mental Health Canada</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Global_Resources.html">🌍 Global Resources</a></li>
+                <li><a href="Research_Science.html">📊 Research & Science</a></li>
+                <li><a href="Sources_References.html">📚 Sources & References</a></li>
+                <li><a href="index.html#bibliotherapy">📖 Books & Reading</a></li>
+                <li><a href="Global_Resources.html#games">🎮 Games & Tools</a></li>
+                <li><a href="Global_Resources.html#countries">🌐 Local Resources</a></li>
+                <li><a href="index.html#resources">Guides</a></li>
+                <li><a href="index.html#multimedia">Videos & Tools</a></li>
+                <li><a href="index.html#emergency">Emergency</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="bibliotherapy-header">
+        <div class="bibliotherapy-header-content">
+            <h1>📚 Books & Bibliotherapy</h1>
+            <p>Reading can provide perspective, reduce stress, and help you feel less alone. Explore our curated collection of books for mental health recovery, healing, and wellness.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <a href="index.html" class="back-to-home">← Back to Home</a>
+
+        <!-- Quick Navigation Links -->
+        <div class="quick-links">
+            <h3>🔍 Quick Navigation</h3>
+            <div class="quick-links-grid">
+                <div class="quick-link-card">
+                    <a href="#uplifting-fiction">📖 Uplifting Fiction</a>
+                </div>
+                <div class="quick-link-card">
+                    <a href="#graphic-novels">🎨 Graphic Novels</a>
+                </div>
+                <div class="quick-link-card">
+                    <a href="#self-help">💪 Self-Help Books</a>
+                </div>
+                <div class="quick-link-card">
+                    <a href="#stress-books">🧠 Stress & Physical Health</a>
+                </div>
+                <div class="quick-link-card">
+                    <a href="#comfort-books">💙 Comfort Books</a>
+                </div>
+                <div class="quick-link-card">
+                    <a href="#free-ebooks">📱 Free E-Books</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Uplifting & Hopeful Fiction -->
+        <div class="book-category" id="uplifting-fiction">
+            <h2><span class="category-icon">📖</span>Uplifting & Hopeful Fiction</h2>
+            <p class="category-description">Heartwarming stories that offer hope, connection, and gentle escape during difficult times.</p>
+            <div class="books-grid">
+                <div class="book-card">
+                    <div class="book-title">The House in the Cerulean Sea</div>
+                    <div class="book-author">by TJ Klune</div>
+                    <div class="book-description">Cozy, heartwarming fantasy about found family and self-acceptance. A gentle escape into a world of kindness and belonging.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Remarkably Bright</div>
+                    <div class="book-author">by Sophie Kinsella</div>
+                    <div class="book-description">Humorous, feel-good romance with depth. Light-hearted yet meaningful, perfect for lifting your spirits.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Eleanor Oliphant Is Completely Fine</div>
+                    <div class="book-author">by Gail Honeyman</div>
+                    <div class="book-description">Touching story of isolation and human connection. Validating for those who feel alone, with a message of hope.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">The Thursday Murder Club</div>
+                    <div class="book-author">by Richard Osman</div>
+                    <div class="book-description">Witty, uplifting mystery with lovable characters. Light-hearted and engaging, perfect for distraction and comfort.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Jade City</div>
+                    <div class="book-author">by Fonda Lee</div>
+                    <div class="book-description">Epic fantasy with strong family bonds and resilience themes. Powerful story of strength and perseverance.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Circe</div>
+                    <div class="book-author">by Madeline Miller</div>
+                    <div class="book-description">Empowering mythological reimagining of female resilience. Beautiful prose that inspires strength and self-discovery.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Graphic Novels & Comics -->
+        <div class="book-category" id="graphic-novels">
+            <h2><span class="category-icon">🎨</span>Graphic Novels & Comics</h2>
+            <p class="category-description">Accessible and visual stories that are easier to engage with when concentration is low. Perfect for difficult days.</p>
+            <div class="books-grid">
+                <div class="book-card">
+                    <div class="book-title">Heartstopper Series</div>
+                    <div class="book-author">by Alice Oseman</div>
+                    <div class="book-description">Sweet, affirming LGBTQ+ romance. Beautifully illustrated, gentle, and full of hope and acceptance.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Fun Home</div>
+                    <div class="book-author">by Alison Bechdel</div>
+                    <div class="book-description">Poignant memoir about family, identity, and acceptance. Deeply moving and validating for those exploring identity.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Smile</div>
+                    <div class="book-author">by Raina Telgemeier</div>
+                    <div class="book-description">Young adult story about overcoming challenges. Relatable and inspiring, perfect for difficult moments.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">New Kid</div>
+                    <div class="book-author">by Jerry Craft</div>
+                    <div class="book-description">Engaging, humorous coming-of-age story. Light-hearted yet meaningful, great for mood lifting.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Self-Help & Mental Health Books -->
+        <div class="book-category" id="self-help">
+            <h2><span class="category-icon">💪</span>Self-Help & Mental Health Books</h2>
+            <p class="category-description">Evidence-based guides and practical tools for understanding and managing mental health challenges.</p>
+            <div class="books-grid">
+                <div class="book-card">
+                    <div class="book-title">Feeling Good: The New Mood Therapy</div>
+                    <div class="book-author">by David D. Burns</div>
+                    <div class="book-description">Practical CBT techniques for depression. Evidence-based tools you can use immediately to improve your mood.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">The Body Keeps the Score</div>
+                    <div class="book-author">by Bessel van der Kolk</div>
+                    <div class="book-description">Understanding trauma and healing. Validating and educational, helps you understand your body's responses.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Man's Search for Meaning</div>
+                    <div class="book-author">by Viktor Frankl</div>
+                    <div class="book-description">Hopeful perspective on finding purpose. Inspiring and profound, offers a framework for meaning in difficult times.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">The Noonday Demon</div>
+                    <div class="book-author">by Andrew Solomon</div>
+                    <div class="book-description">Honest exploration of depression and survival. Validating, comprehensive, and ultimately hopeful.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Books on Stress & Physical Manifestation -->
+        <div class="book-category" id="stress-books">
+            <h2><span class="category-icon">🧠</span>Books on Stress & Physical Manifestation</h2>
+            <p class="category-description">Understanding how stress creates physical symptoms can be validating and empowering. These books explain the mind-body connection.</p>
+            <div class="books-grid">
+                <div class="book-card">
+                    <div class="book-title">The Body Keeps the Score</div>
+                    <div class="book-author">by Bessel van der Kolk</div>
+                    <div class="book-description">How trauma gets stored in the body; explains physical symptoms from emotional pain. Essential reading for understanding psychosomatic health.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">When the Body Says No</div>
+                    <div class="book-author">by Gabor Maté</div>
+                    <div class="book-description">How emotional stress triggers illness; chronic disease linked to repressed emotions. Eye-opening and validating.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Taming the Nervous System</div>
+                    <div class="book-author">by Laurel Parnell</div>
+                    <div class="book-description">Practical techniques to calm physical stress responses. Actionable tools for managing your body's stress reactions.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">The Mind-Body Prescription</div>
+                    <div class="book-author">by John E. Sarno</div>
+                    <div class="book-description">How the mind creates physical pain (TMS - Tension Myositis Syndrome). Revolutionary perspective on pain.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Why Zebras Don't Get Ulcers</div>
+                    <div class="book-author">by Robert Sapolsky</div>
+                    <div class="book-description">How chronic stress causes physical disease; fascinating science explained accessibly. Educational and engaging.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">The Stress Cure</div>
+                    <div class="book-author">by Rangan Chatterjee</div>
+                    <div class="book-description">Practical ways to reduce stress-related physical symptoms. Actionable strategies for better health.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Emotional Agility</div>
+                    <div class="book-author">by Susan David</div>
+                    <div class="book-description">Managing emotions to reduce stress-related illness. Powerful framework for emotional wellness.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">What Happened to You?</div>
+                    <div class="book-author">by Bruce D. Perry & Oprah Winfrey</div>
+                    <div class="book-description">Understanding trauma's physical and emotional impact. Compassionate and accessible approach to healing.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">The Upward Spiral</div>
+                    <div class="book-author">by Alex Korb</div>
+                    <div class="book-description">Neuroscience of how small habits change your nervous system. Science-backed strategies for improvement.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comforting & Light Books -->
+        <div class="book-category" id="comfort-books">
+            <h2><span class="category-icon">💙</span>Comforting & Light Books for Pain/Stress</h2>
+            <p class="category-description">Gentle, soothing reads perfect for difficult days when you need comfort, humor, or a gentle escape.</p>
+            <div class="books-grid">
+                <div class="book-card">
+                    <div class="book-title">The Boy, the Mole, the Fox and the Horse</div>
+                    <div class="book-author">by Charlie Mackesy</div>
+                    <div class="book-description">Gentle, visual comfort. Beautiful illustrations with simple, profound wisdom. Perfect for rough days.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Furiously Happy</div>
+                    <div class="book-author">by Jenny Lawson</div>
+                    <div class="book-description">Humor and honesty about pain and mental health. Laugh-out-loud funny while being deeply validating.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Broken (in the Best Possible Way)</div>
+                    <div class="book-author">by Jenny Lawson</div>
+                    <div class="book-description">Humorous, validating chronic pain stories. More laughter and understanding from Jenny Lawson.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Hyperbole and a Half</div>
+                    <div class="book-author">by Allie Brosh</div>
+                    <div class="book-description">Illustrated humor on depression and anxiety. Hilarious and deeply relatable, especially "Depression Part Two."</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">The Comfort Book</div>
+                    <div class="book-author">by Matt Haig</div>
+                    <div class="book-description">Short, soothing reflections. Perfect for reading in small doses when you need comfort and perspective.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Everything is OK</div>
+                    <div class="book-author">by Debbie Tung</div>
+                    <div class="book-description">Graphic encouragement for rough days. Simple, beautiful, and reassuring.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Good Omens</div>
+                    <div class="book-author">by Neil Gaiman & Terry Pratchett</div>
+                    <div class="book-description">Light, witty escape. Clever, funny, and completely absorbing. Perfect for distraction.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Legends & Lattes</div>
+                    <div class="book-author">by Travis Baldree</div>
+                    <div class="book-description">Cozy fantasy, low stakes. Gentle, warm, and completely stress-free. Pure comfort reading.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Free E-Books & Library Resources -->
+        <div class="library-resources" id="free-ebooks">
+            <h3>📱 Free E-Books & Library Resources</h3>
+            
+            <div class="library-card">
+                <h4>📚 Project Gutenberg</h4>
+                <p>Access thousands of free classic books in the public domain. Perfect for comfort reading with titles like <em>Winnie-the-Pooh</em>, <em>Anne of Green Gables</em>, and <em>Little Women</em>.</p>
+                <a href="https://www.gutenberg.org/" target="_blank" rel="noopener">Visit Project Gutenberg →</a>
+            </div>
+
+            <div class="library-card">
+                <h4>📖 Open Library</h4>
+                <p>Internet Archive's lending library. Borrow mental health books, psychology texts, and self-help classics for free. Just sign up for a free library card.</p>
+                <a href="https://openlibrary.org/" target="_blank" rel="noopener">Visit Open Library →</a>
+            </div>
+
+            <div class="library-card">
+                <h4>📱 Library Apps: Libby & OverDrive</h4>
+                <p>Access your local library's digital collection for free e-books and audiobooks. Available on all devices. Connect with your library card for instant access to thousands of titles.</p>
+                <p style="margin-top: 10px; color: #92400e; font-weight: 600;">💡 Tip: Many libraries offer free digital cards online!</p>
+            </div>
+
+            <div class="library-card">
+                <h4>🎧 Hoopla</h4>
+                <p>Another free library app offering e-books, audiobooks, comics, and more. Check if your local library participates - it's completely free with a library card.</p>
+            </div>
+
+            <div class="library-card">
+                <h4>📚 Light, Easy Reads (When Concentration is Low)</h4>
+                <p>When you're struggling with focus, these gentle classics are perfect:</p>
+                <ul style="color: #6b7280; margin-top: 10px; margin-left: 20px;">
+                    <li><strong>"Winnie-the-Pooh"</strong> by A.A. Milne - Nostalgic, comforting, gentle wisdom</li>
+                    <li><strong>"The Guernsey Literary and Potato Peel Pie Society"</strong> by Mary Ann Shaffer - Charming, community-focused</li>
+                    <li><strong>"Howl's Moving Castle"</strong> by Diana Wynne Jones - Whimsical, escapist magic</li>
+                    <li><strong>"Pride and Prejudice"</strong> by Jane Austen - Classic with witty dialogue and satisfying endings</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer style="margin-top: 60px;">
+            <div class="container">
+                <p>&copy; 2026 Mental Health Resources Canada. All information is provided for educational and support purposes.</p>
+                <p>If you are in crisis, please contact emergency services or a crisis helpline immediately.</p>
+                <p class="last-updated">Last updated: January 18, 2026</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
