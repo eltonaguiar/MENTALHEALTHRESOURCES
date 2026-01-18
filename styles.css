@@ -1,3 +1,7 @@
+body {
+  background: hotpink !important;
+}
+
 /* ===== Global Styles ===== */
 :root {
     --primary-color: #3b82f6;
