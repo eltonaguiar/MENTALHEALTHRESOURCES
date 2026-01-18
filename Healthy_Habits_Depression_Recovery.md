@@ -26,6 +26,25 @@ Bibliotherapy uses literature to promote emotional well-being and healing. Readi
 - **"Man's Search for Meaning" by Viktor Frankl** - Hopeful perspective on finding purpose
 - **"The Noonday Demon" by Andrew Solomon** - Honest exploration of depression and survival
 
+#### Books on Stress & Physical Manifestation (Psychosomatic Health)
+Understanding how stress creates physical symptoms can be validating and empowering.
+
+- **"The Body Keeps the Score" by Bessel van der Kolk** - How trauma gets stored in the body; explains physical symptoms from emotional pain
+- **"When the Body Says No" by Gabor Maté** - How emotional stress triggers illness; chronic disease linked to repressed emotions
+- **"Taming the Nervous System" by Laurel Parnell** - Practical techniques to calm physical stress responses
+- **"The Mind-Body Prescription" by John E. Sarno** - How the mind creates physical pain (TMS - Tension Myositis Syndrome)
+- **"Thinking, Fast and Slow" by Daniel Kahneman** - Understanding the mind-body connection and automatic stress responses
+- **"Why Zebras Don't Get Ulcers" by Robert Sapolsky** - How chronic stress causes physical disease; fascinating science explained accessibly
+- **"The Stress Cure" by Rangan Chatterjee** - Practical ways to reduce stress-related physical symptoms
+- **"Emotional Agility" by Susan David** - Managing emotions to reduce stress-related illness
+- **"What Happened to You?" by Bruce D. Perry & Oprah Winfrey** - Understanding trauma's physical and emotional impact
+- **"I Hear You" by Mike Robbins** - Emotional validation and its physical healing effects
+- **"Permission to Feel" by Marc Brackett** - Emotional intelligence to manage stress before it becomes physical
+- **"The Upward Spiral" by Alex Korb** - Neuroscience of how small habits change your nervous system
+- **"Mind Over Medicine" by Lissa Rankin** - Scientific evidence of mind's power to heal the body
+- **"How to Do Nothing" by Jenny Odell** - Resisting stress culture; guilt-free rest as medicine
+- **"The Anxiety & Phobia Workbook" by Edmund Bourne** - Physical symptoms of anxiety; practical exercises to reduce them
+
 #### Light, Easy Reads (When Concentration is Low)
 - **"Winnie-the-Pooh" by A.A. Milne** - Nostalgic, comforting, gentle wisdom
 - **"The Guernsey Literary and Potato Peel Pie Society" by Mary Ann Shaffer** - Charming, community-focused
