@@ -595,10 +595,11 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="Global_Resources.html">🌍 Global Resources</a></li>
+                <li><a href="Research_Science.html">📊 Research & Science</a></li>
                 <li><a href="#games">Games & Tools</a></li>
                 <li><a href="#resources">Local Resources</a></li>
                 <li><a href="#online">Online Resources</a></li>
-                <li><a href="#demographics">Demographics</a></li>
             </ul>
         </div>
     </nav>
@@ -722,6 +723,81 @@
                             <span class="benefit-tag">Quick</span>
                         </div>
                         <button class="play-button" onclick="startGrounding()">Begin Technique</button>
+                    </div>
+                </div>
+
+                <!-- Game 7: Quick Coherence Technique (Research-Based) -->
+                <div class="game-card">
+                    <div class="game-thumbnail">❤️</div>
+                    <div class="game-info">
+                        <h3>Quick Coherence (QCT)</h3>
+                        <p class="game-description">Heart-focused breathing technique backed by neuroscience research to improve Heart Rate Variability.</p>
+                        <div class="game-benefits">
+                            <span class="benefit-tag">HRV Improvement</span>
+                            <span class="benefit-tag">Stress Relief</span>
+                            <span class="benefit-tag">3 mins</span>
+                        </div>
+                        <button class="play-button" onclick="startQCT()">Start QCT</button>
+                    </div>
+                </div>
+
+                <!-- Game 8: Cyclical Sighing (Research-Based) -->
+                <div class="game-card">
+                    <div class="game-thumbnail">💨</div>
+                    <div class="game-info">
+                        <h3>Cyclical Sighing</h3>
+                        <p class="game-description">Double inhale + extended exhale pattern clinically proven for rapid stress reduction.</p>
+                        <div class="game-benefits">
+                            <span class="benefit-tag">Rapid Relief</span>
+                            <span class="benefit-tag">Physiological Reset</span>
+                            <span class="benefit-tag">2 mins</span>
+                        </div>
+                        <button class="play-button" onclick="startCyclicalSighing()">Begin Sighing</button>
+                    </div>
+                </div>
+
+                <!-- Game 9: Vagus Nerve Reset (Research-Based) -->
+                <div class="game-card">
+                    <div class="game-thumbnail">🧬</div>
+                    <div class="game-info">
+                        <h3>Vagus Nerve Reset</h3>
+                        <p class="game-description">Polyvagal theory-based exercises to activate your parasympathetic nervous system.</p>
+                        <div class="game-benefits">
+                            <span class="benefit-tag">Nervous System</span>
+                            <span class="benefit-tag">Safety State</span>
+                            <span class="benefit-tag">5 mins</span>
+                        </div>
+                        <button class="play-button" onclick="startVagusNerveReset()">Begin Reset</button>
+                    </div>
+                </div>
+
+                <!-- Game 10: Identity Builder (Research-Based) -->
+                <div class="game-card">
+                    <div class="game-thumbnail">👤</div>
+                    <div class="game-info">
+                        <h3>Identity Builder</h3>
+                        <p class="game-description">Atomic Habits-based tool to rewire your identity and create resilient neural pathways.</p>
+                        <div class="game-benefits">
+                            <span class="benefit-tag">Long-term</span>
+                            <span class="benefit-tag">Neural Change</span>
+                            <span class="benefit-tag">Personal</span>
+                        </div>
+                        <button class="play-button" onclick="startIdentityBuilder()">Build Identity</button>
+                    </div>
+                </div>
+
+                <!-- Game 11: Social Connection Tracker (Research-Based) -->
+                <div class="game-card">
+                    <div class="game-thumbnail">🤝</div>
+                    <div class="game-info">
+                        <h3>5-3-1 Social Fitness</h3>
+                        <p class="game-description">Track your social health using the research-backed 5-3-1 framework for meaningful connections.</p>
+                        <div class="game-benefits">
+                            <span class="benefit-tag">Community</span>
+                            <span class="benefit-tag">Longevity</span>
+                            <span class="benefit-tag">Weekly</span>
+                        </div>
+                        <button class="play-button" onclick="startSocialFitness()">Track Connections</button>
                     </div>
                 </div>
             </div>
@@ -1439,6 +1515,250 @@
                 </div>
             `;
             openGameModal('🌱 5-4-3-2-1 Grounding Technique', content);
+        }
+
+        function startQCT() {
+            const content = `
+                <div style="text-align: center;">
+                    <p style="color: #6b7280; margin-bottom: 20px;">Quick Coherence Technique - Heart-Focused Breathing</p>
+                    <p style="color: #6b7280; margin-bottom: 30px; font-size: 0.95rem;">
+                        This research-backed technique improves Heart Rate Variability (HRV) and restores cognitive clarity.
+                    </p>
+                    <div style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); padding: 30px; border-radius: 15px; margin: 30px 0;">
+                        <div style="font-size: 3rem; margin-bottom: 20px;">❤️</div>
+                        <div style="font-size: 1.3rem; color: #dc2626; font-weight: bold; margin-bottom: 10px;">Focus on your heart</div>
+                        <div id="qctTimer" style="font-size: 2rem; color: #dc2626; font-weight: bold; margin-bottom: 20px;">3:00</div>
+                        <p style="color: #991b1b; font-style: italic; margin: 15px 0;">Breathe slowly: 5 seconds in, 5 seconds out</p>
+                        <p style="color: #991b1b; font-weight: 600;">Recall a positive emotion: gratitude, appreciation, care</p>
+                    </div>
+                    <button onclick="closeGameModal()" style="
+                        padding: 12px 30px;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    ">Complete QCT</button>
+                </div>
+            `;
+            openGameModal('❤️ Quick Coherence Technique', content);
+
+            let timeLeft = 180;
+            setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    let mins = Math.floor(timeLeft / 60);
+                    let secs = timeLeft % 60;
+                    const timer = document.getElementById('qctTimer');
+                    if (timer) {
+                        timer.textContent = mins + ':' + (secs < 10 ? '0' : '') + secs;
+                    }
+                }
+            }, 1000);
+        }
+
+        function startCyclicalSighing() {
+            const content = `
+                <div style="text-align: center;">
+                    <p style="color: #6b7280; margin-bottom: 20px;">Cyclical Sighing - Clinical Stress Reduction</p>
+                    <p style="color: #6b7280; margin-bottom: 30px; font-size: 0.95rem;">
+                        Double inhale + extended exhale pattern clinically proven for rapid physiological arousal reduction.
+                    </p>
+                    <div style="background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); padding: 30px; border-radius: 15px; margin: 30px 0;">
+                        <div style="font-size: 3rem; margin-bottom: 20px;">💨</div>
+                        <div id="sighing-instruction" style="font-size: 1.5rem; color: #15803d; font-weight: bold; margin-bottom: 20px;">INHALE (first)</div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                            <div style="background: white; padding: 15px; border-radius: 10px;">
+                                <div style="font-size: 0.9rem; color: #6b7280;">Pattern</div>
+                                <div style="font-size: 1.3rem; font-weight: bold; color: #667eea;">2x Inhale</div>
+                            </div>
+                            <div style="background: white; padding: 15px; border-radius: 10px;">
+                                <div style="font-size: 0.9rem; color: #6b7280;">Then Hold</div>
+                                <div style="font-size: 1.3rem; font-weight: bold; color: #667eea;">Brief</div>
+                            </div>
+                            <div style="background: white; padding: 15px; border-radius: 10px;">
+                                <div style="font-size: 0.9rem; color: #6b7280;">Long Exhale</div>
+                                <div style="font-size: 1.3rem; font-weight: bold; color: #667eea;">Slowly</div>
+                            </div>
+                        </div>
+                        <p style="color: #15803d; font-weight: 600;">Repeat 5 cycles for rapid relief</p>
+                    </div>
+                    <button onclick="closeGameModal()" style="
+                        padding: 12px 30px;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    ">Done</button>
+                </div>
+            `;
+            openGameModal('💨 Cyclical Sighing', content);
+        }
+
+        function startVagusNerveReset() {
+            const content = `
+                <div style="text-align: center;">
+                    <p style="color: #6b7280; margin-bottom: 20px;">Vagus Nerve Reset - Polyvagal Theory</p>
+                    <p style="color: #6b7280; margin-bottom: 30px; font-size: 0.95rem;">
+                        Activate your parasympathetic nervous system for the "Safe & Social" ventral vagal state.
+                    </p>
+                    <div style="background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); padding: 30px; border-radius: 15px; margin: 30px 0; text-align: left;">
+                        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #7c3aed;">
+                            <strong style="color: #7c3aed; font-size: 1.05rem;">✓ Humming/Singing</strong>
+                            <p style="color: #6b7280; margin-top: 8px; font-size: 0.95rem;">Vibrates vagus nerve. Hum for 30 seconds.</p>
+                        </div>
+                        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #7c3aed;">
+                            <strong style="color: #7c3aed; font-size: 1.05rem;">✓ Cold Water Immersion</strong>
+                            <p style="color: #6b7280; margin-top: 8px; font-size: 0.95rem;">Splash cold water on face or drink ice water to activate dive reflex.</p>
+                        </div>
+                        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #7c3aed;">
+                            <strong style="color: #7c3aed; font-size: 1.05rem;">✓ Deep Laughing</strong>
+                            <p style="color: #6b7280; margin-top: 8px; font-size: 0.95rem;">Genuine laughter stimulates the vagus nerve and shifts nervous system state.</p>
+                        </div>
+                        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #7c3aed;">
+                            <strong style="color: #7c3aed; font-size: 1.05rem;">✓ Gargling</strong>
+                            <p style="color: #6b7280; margin-top: 8px; font-size: 0.95rem;">Gargle for 30 seconds to tone the vagus nerve.</p>
+                        </div>
+                        <div style="padding-bottom: 0; border-bottom: none;">
+                            <strong style="color: #7c3aed; font-size: 1.05rem;">✓ Slow Extended Exhale</strong>
+                            <p style="color: #6b7280; margin-top: 8px; font-size: 0.95rem;">Extended exhalation activates parasympathetic response.</p>
+                        </div>
+                    </div>
+                    <p style="color: #6b7280; font-style: italic; margin: 20px 0;">Result: Shift from Fight/Flight to Calm & Connected</p>
+                    <button onclick="closeGameModal()" style="
+                        padding: 12px 30px;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    ">Begin Reset</button>
+                </div>
+            `;
+            openGameModal('🧬 Vagus Nerve Reset', content);
+        }
+
+        function startIdentityBuilder() {
+            const content = `
+                <div>
+                    <p style="color: #6b7280; margin-bottom: 20px; text-align: center;">
+                        <strong>Identity-Based Habit Builder</strong><br>
+                        <span style="font-size: 0.95rem;">Rewire your neural pathways through identity statements</span>
+                    </p>
+                    <div style="background: #f0f4ff; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                        <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 10px;">What identity do you want to embody?</p>
+                        <input type="text" placeholder="e.g., 'I am someone who manages stress well'" style="
+                            width: 100%;
+                            padding: 12px;
+                            border: 2px solid #667eea;
+                            border-radius: 8px;
+                            font-size: 1rem;
+                            margin-bottom: 15px;
+                        " id="identityInput">
+                        <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 10px;">What 1% improvement will reinforce this identity today?</p>
+                        <input type="text" placeholder="e.g., 'Take 3 deep breaths before meetings'" style="
+                            width: 100%;
+                            padding: 12px;
+                            border: 2px solid #667eea;
+                            border-radius: 8px;
+                            font-size: 1rem;
+                            margin-bottom: 15px;
+                        " id="habitInput">
+                    </div>
+                    <div style="background: #f9fafb; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                        <p style="color: #1f2937; font-weight: 600; margin-bottom: 10px;">💡 Identity Architecture Tip:</p>
+                        <p style="color: #6b7280; font-size: 0.95rem;">
+                            Behavior follows identity. By focusing on 1% improvements that align with your desired identity, 
+                            you reprogram your neural pathways without triggering threat response.
+                        </p>
+                    </div>
+                    <button onclick="saveIdentity()" style="
+                        width: 100%;
+                        padding: 12px;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    ">Save Identity & Habit</button>
+                </div>
+            `;
+            openGameModal('👤 Identity Builder', content);
+        }
+
+        function saveIdentity() {
+            const identity = document.getElementById('identityInput')?.value;
+            const habit = document.getElementById('habitInput')?.value;
+            if (identity && habit) {
+                alert(`✨ Identity Saved!\n\nYour Identity: "${identity}"\nDaily Habit: "${habit}"\n\nRepeat this daily to reprogram your neural pathways.`);
+                closeGameModal();
+            } else {
+                alert('Please fill in both fields');
+            }
+        }
+
+        function startSocialFitness() {
+            const content = `
+                <div style="text-align: center;">
+                    <p style="color: #6b7280; margin-bottom: 25px;">
+                        <strong>5-3-1 Social Fitness Tracker</strong><br>
+                        <span style="font-size: 0.95rem;">Research shows social connection is as vital to health as exercise and sleep</span>
+                    </p>
+                    <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 25px; border-radius: 15px; margin: 30px 0; text-align: left;">
+                        <div style="margin-bottom: 20px; padding: 15px; background: white; border-radius: 10px;">
+                            <input type="checkbox" id="socialCheck5" style="margin-right: 10px;"> 
+                            <label for="socialCheck5" style="cursor: pointer; color: #1f2937; font-weight: 600;">
+                                ✓ 5 Different People This Week
+                            </label>
+                            <p style="color: #6b7280; margin-top: 8px; font-size: 0.9rem; margin-left: 24px;">
+                                Diverse social networks predict higher well-being
+                            </p>
+                        </div>
+                        <div style="margin-bottom: 20px; padding: 15px; background: white; border-radius: 10px;">
+                            <input type="checkbox" id="socialCheck3" style="margin-right: 10px;"> 
+                            <label for="socialCheck3" style="cursor: pointer; color: #1f2937; font-weight: 600;">
+                                ✓ 3 Close Relationships (Daily/Monthly Depth)
+                            </label>
+                            <p style="color: #6b7280; margin-top: 8px; font-size: 0.9rem; margin-left: 24px;">
+                                Texts, calls, or deep conversations with close friends
+                            </p>
+                        </div>
+                        <div style="padding: 15px; background: white; border-radius: 10px;">
+                            <input type="checkbox" id="socialCheck1" style="margin-right: 10px;"> 
+                            <label for="socialCheck1" style="cursor: pointer; color: #1f2937; font-weight: 600;">
+                                ✓ 1 Hour Quality Interaction Daily
+                            </label>
+                            <p style="color: #6b7280; margin-top: 8px; font-size: 0.9rem; margin-left: 24px;">
+                                Can be micro-connections (10 min each) throughout the day
+                            </p>
+                        </div>
+                    </div>
+                    <p style="color: #6b7280; font-style: italic; margin: 20px 0; font-size: 0.95rem;">
+                        🎯 Social isolation increases mortality risk more than smoking. Cultivate your social fitness!
+                    </p>
+                    <button onclick="alert('✨ Social Fitness Goals Logged!\\n\\nTrack your progress weekly. Remember: connection is medicine.'); closeGameModal();" style="
+                        width: 100%;
+                        padding: 12px;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    ">Log My Goals</button>
+                </div>
+            `;
+            openGameModal('🤝 5-3-1 Social Fitness', content);
         }
 
         // Initialize on page load
