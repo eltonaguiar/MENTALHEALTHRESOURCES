@@ -4,6 +4,7 @@
 - [Landing Page](index.html)
 - [Canada Mental Health Resources](Canada_Mental_Health_Resources.md)
 - [Panic Attack Self-Help Guide](Panic_Attack_Self_Help_Guide.md)
+- [Free Multimedia Resources](Free_Multimedia_Resources.md)
 
 ## Bibliotherapy: Reading for Mental Health
 
@@ -396,3 +397,11 @@ Understanding how stress creates physical symptoms can be validating and empower
 *Remember: You don't need to do everything at once. Start with one small thing. Consistency and self-compassion are more important than perfection.*
 
 *Last updated: January 2026*
+
+---
+
+## More Resources
+- [Canada Mental Health Resources](Canada_Mental_Health_Resources.md)
+- [Panic Attack Self-Help Guide](Panic_Attack_Self_Help_Guide.md)
+- [Free Multimedia Resources](Free_Multimedia_Resources.md)
+- [Landing Page](index.html)

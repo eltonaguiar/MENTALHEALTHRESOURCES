@@ -1,15 +1,21 @@
 /* ===== Global Styles ===== */
 :root {
-    --primary-color: #2c5aa0;
-    --secondary-color: #f59e0b;
-    --danger-color: #dc2626;
+    --primary-color: #3b82f6;
+    --primary-dark: #2563eb;
+    --secondary-color: #10b981;
+    --accent-color: #f59e0b;
+    --danger-color: #ef4444;
+    --danger-dark: #dc2626;
     --success-color: #10b981;
     --text-dark: #1f2937;
     --text-light: #6b7280;
     --bg-light: #f9fafb;
     --bg-white: #ffffff;
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --border-color: #e5e7eb;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -37,13 +43,14 @@ body {
 
 /* ===== Emergency Banner ===== */
 .emergency-banner {
-    background: linear-gradient(135deg, var(--danger-color), #b91c1c);
+    background: linear-gradient(135deg, var(--danger-color), var(--danger-dark));
     color: white;
     padding: 20px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-lg);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.2);
 }
 
 .emergency-content {
@@ -173,41 +180,96 @@ body {
 
 /* ===== Hero Section ===== */
 .hero {
-    background: linear-gradient(135deg, var(--primary-color), #1e40af);
+    background: var(--bg-gradient);
     color: white;
-    padding: 100px 20px;
+    padding: 120px 20px;
     text-align: center;
     margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,144C960,149,1056,139,1152,128C1248,117,1344,107,1392,101.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+    background-size: cover;
+    opacity: 0.3;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 20px;
-    font-weight: bold;
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .hero-content p {
-    font-size: 1.3rem;
-    margin-bottom: 30px;
-    opacity: 0.9;
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+    opacity: 0.95;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .cta-button {
     display: inline-block;
-    background-color: var(--secondary-color);
-    color: white;
-    padding: 15px 40px;
-    border-radius: 8px;
+    padding: 16px 40px;
+    border-radius: 50px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1.1rem;
-    transition: all 0.3s ease;
+    transition: var(--transition);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
-.cta-button:hover {
-    background-color: #d97706;
+.cta-button.primary {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+.cta-button.primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button.secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.cta-button.secondary:hover {
+    background-color: #059669;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button.emergency {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.cta-button.emergency:hover {
+    background-color: var(--danger-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {
@@ -253,17 +315,37 @@ body {
 
 .resource-card {
     background-color: var(--bg-white);
-    padding: 30px;
-    border-radius: 12px;
+    padding: 35px;
+    border-radius: 20px;
     box-shadow: var(--shadow);
-    transition: all 0.3s ease;
+    transition: var(--transition);
     display: flex;
     flex-direction: column;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.resource-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.resource-card:hover::before {
+    transform: scaleX(1);
 }
 
 .resource-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
 }
 
 .card-icon {
@@ -319,6 +401,116 @@ body {
     text-decoration: underline;
 }
 
+/* ===== Multimedia Section ===== */
+.multimedia-section {
+    padding: 80px 20px;
+    background: linear-gradient(to bottom, #f0f9ff, #f9fafb);
+}
+
+.multimedia-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.multimedia-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.multimedia-category {
+    background-color: var(--bg-white);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.multimedia-category:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.multimedia-category h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.video-item {
+    margin-bottom: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.video-item iframe {
+    border-radius: 12px;
+}
+
+.video-item p {
+    margin-top: 10px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.video-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.video-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    padding: 8px 12px;
+    border-radius: 8px;
+    background-color: rgba(59, 130, 246, 0.05);
+}
+
+.video-links a:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+    transform: translateX(5px);
+}
+
+.resource-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.resource-links li {
+    padding: 0;
+}
+
+.resource-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    display: block;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background-color: rgba(59, 130, 246, 0.05);
+    border-left: 4px solid var(--primary-color);
+}
+
+.resource-links a:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* ===== Emergency Section ===== */
 .emergency-section {
     padding: 80px 20px;
@@ -340,16 +532,18 @@ body {
 }
 
 .emergency-card {
-    background-color: #fef2f2;
-    border-left: 4px solid var(--danger-color);
-    padding: 25px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #fef2f2, #ffffff);
+    border-left: 5px solid var(--danger-color);
+    padding: 28px;
+    border-radius: 16px;
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.1);
 }
 
 .emergency-card:hover {
-    transform: translateX(5px);
+    transform: translateX(8px);
     box-shadow: var(--shadow);
+    background: linear-gradient(135deg, #fee2e2, #ffffff);
 }
 
 .emergency-card h3 {
@@ -496,7 +690,8 @@ footer p {
     .resources h2,
     .emergency-section h2,
     .features h2,
-    .message h2 {
+    .message h2,
+    .multimedia-section h2 {
         font-size: 2rem;
     }
 
@@ -516,8 +711,41 @@ footer p {
 
     .resource-grid,
     .emergency-grid,
-    .features-grid {
+    .features-grid,
+    .multimedia-grid {
         grid-template-columns: 1fr;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .hero {
+        padding: 80px 20px;
+    }
+
+    .cta-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cta-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
 

@@ -4,6 +4,7 @@
 - [Landing Page](index.html)
 - [Canada Mental Health Resources](Canada_Mental_Health_Resources.md)
 - [Healthy Habits & Depression Recovery](Healthy_Habits_Depression_Recovery.md)
+- [Free Multimedia Resources](Free_Multimedia_Resources.md)
 
 ## What is a Panic Attack?
 
@@ -204,4 +205,5 @@ Consider professional support if:
 ## More Resources
 - [Canada Mental Health Resources](Canada_Mental_Health_Resources.md)
 - [Healthy Habits & Depression Recovery](Healthy_Habits_Depression_Recovery.md)
+- [Free Multimedia Resources](Free_Multimedia_Resources.md)
 - [Landing Page](index.html)
