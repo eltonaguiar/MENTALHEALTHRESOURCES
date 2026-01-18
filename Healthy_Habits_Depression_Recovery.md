@@ -1,19 +1,11 @@
 # Healthy Habits, Mental Health Practices & Depression Recovery Activities
 
-# Healthy Habits, Mental Health Practices & Depression Recovery Activities
-
 ## Quick Navigation
 - [Landing Page](index.html)
 - [Canada Mental Health Resources](Canada_Mental_Health_Resources.md)
 - [Panic Attack Self-Help Guide](Panic_Attack_Self_Help_Guide.md)
 
 ## Bibliotherapy: Reading for Mental Health
----
-
-## More Resources
-- [Canada Mental Health Resources](Canada_Mental_Health_Resources.md)
-- [Panic Attack Self-Help Guide](Panic_Attack_Self_Help_Guide.md)
-- [Landing Page](index.html)
 
 Bibliotherapy uses literature to promote emotional well-being and healing. Reading can provide perspective, reduce stress, and help you feel less alone during depression.
 
@@ -57,6 +49,40 @@ Understanding how stress creates physical symptoms can be validating and empower
 - **"Mind Over Medicine" by Lissa Rankin** - Scientific evidence of mind's power to heal the body
 - **"How to Do Nothing" by Jenny Odell** - Resisting stress culture; guilt-free rest as medicine
 - **"The Anxiety & Phobia Workbook" by Edmund Bourne** - Physical symptoms of anxiety; practical exercises to reduce them
+
+#### Comforting & Light Books for Pain/Stress
+- **"The Boy, the Mole, the Fox and the Horse" by Charlie Mackesy** - Gentle, visual comfort
+- **"Furiously Happy" by Jenny Lawson** - Humor and honesty about pain and mental health
+- **"Broken (in the Best Possible Way" by Jenny Lawson)** - Humorous, validating chronic pain stories
+- **"Hyperbole and a Half" by Allie Brosh** - Illustrated humor on depression and anxiety
+- **"The Comfort Book" by Matt Haig** - Short, soothing reflections
+- **"Everything is OK" by Debbie Tung** - Graphic encouragement for rough days
+- **"Good Omens" by Neil Gaiman & Terry Pratchett** - Light, witty escape
+- **"Legends & Lattes" by Travis Baldree** - Cozy fantasy, low stakes
+
+---
+
+## Media & Literature (Videos, E-Books, Watch Lists)
+
+### Educational & Skills (YouTube)
+- **Therapy in a Nutshell** – Practical skills for anxiety, depression, trauma
+- **The School of Life** – Psychology and emotional intelligence explainer videos
+- **Kati Morton** – Licensed therapist; coping skills, Q&A format
+- **Dr. Tracey Marks** – Psychiatrist; evidence-based explanations
+- **Crash Course Psychology** – Structured, educational series
+- **Anxiety Canada** – Evidence-based anxiety management playlists
+
+### Comfort, Calm, and Mood Boost (YouTube)
+- **Bob Ross / The Joy of Painting** – Calming, predictable, comforting
+- **Lofi Girl** – Steady, soothing background music
+- **Animal rescue & rehab channels** – Quick hits of hope and relief
+- **Studio Ghibli music & ambience** – Gentle, nostalgic calm
+- **Bald & Bankrupt** – Low-stakes travel kindness and humor
+
+### Free & Low-Cost E-Books
+- **Public domain comforts**: *Winnie-the-Pooh*, *Anne of Green Gables*, *Little Women* via Project Gutenberg
+- **Library apps**: Libby/OverDrive, Hoopla for free e-books and audiobooks
+- **Light comics/graphic novels**: Often available digitally via libraries; great for low energy days
 
 #### Light, Easy Reads (When Concentration is Low)
 - **"Winnie-the-Pooh" by A.A. Milne** - Nostalgic, comforting, gentle wisdom
@@ -268,6 +294,39 @@ Understanding how stress creates physical symptoms can be validating and empower
 - **Massage**: Self-massage or professional
 - **Aromatherapy**: Lavender, chamomile promote relaxation
 - **Time boundaries**: Set limits on work and news consumption
+
+---
+
+## Distress Tolerance & Chronic Pain Coping (High-Intensity Stress)
+
+### Fast-Acting DBT TIPP Skills
+- **Temperature**: Cold pack/ice water on face for 20-30 seconds to trigger dive reflex
+- **Intense Exercise (brief)**: 1-2 minutes of fast stair steps/jumping jacks to burn stress chemicals
+- **Paced Breathing**: 4-6 breaths/minute; exhale longer than inhale
+- **Paired Muscle Relaxation**: Tense-release with a slow exhale
+
+### Grounding During Extreme Pain or Panic
+- **5-4-3-2-1 sensory scan**: Add a tactile object (smooth stone/ice) for stronger effect
+- **Object focus**: Describe one object in detail for 60 seconds
+- **Temperature shift**: Alternate warm compress and cool air on face/hands
+
+### Chronic Pain Soothers
+- **Pacing**: Alternate activity/rest in 20-40 minute blocks to prevent flare spikes
+- **Gentle movement**: Walking, light stretching, yin/restorative yoga to reduce guarding
+- **Heat for muscle tension**: Heating pad/hot shower 15-20 minutes; avoid burns
+- **Sleep support**: Wind-down + consistent bedtime to reduce pain sensitivity
+- **Anti-inflammatory basics**: Hydration, balanced meals, steady blood sugar, limit caffeine late
+
+### Crisis Plan for “Torturous Pain”
+1) **Safety first**: If pain is new/severe or includes red flags (fever, chest pain, paralysis, confusion), seek emergency care/911.
+2) **Stabilize**: Use TIPP (cold + paced breathing), then grounding.
+3) **Soothe**: Heat/ice, gentle stretch, slow music, dim lights.
+4) **Support**: Call a trusted person or crisis line for emotional support.
+5) **Follow-up**: Book/attend medical and mental health appointments; note triggers and reliefs.
+
+### When to Seek Medical Help
+- New severe pain, neurological symptoms, fever, chest pain, difficulty breathing, confusion, or sudden weakness
+- Suicidal thoughts because of pain or distress — contact crisis line or emergency services
 
 ---
 
