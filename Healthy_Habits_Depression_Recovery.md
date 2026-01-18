@@ -1,6 +1,19 @@
 # Healthy Habits, Mental Health Practices & Depression Recovery Activities
 
+# Healthy Habits, Mental Health Practices & Depression Recovery Activities
+
+## Quick Navigation
+- [Landing Page](index.html)
+- [Canada Mental Health Resources](Canada_Mental_Health_Resources.md)
+- [Panic Attack Self-Help Guide](Panic_Attack_Self_Help_Guide.md)
+
 ## Bibliotherapy: Reading for Mental Health
+---
+
+## More Resources
+- [Canada Mental Health Resources](Canada_Mental_Health_Resources.md)
+- [Panic Attack Self-Help Guide](Panic_Attack_Self_Help_Guide.md)
+- [Landing Page](index.html)
 
 Bibliotherapy uses literature to promote emotional well-being and healing. Reading can provide perspective, reduce stress, and help you feel less alone during depression.
 

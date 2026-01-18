@@ -1,5 +1,10 @@
 # Self-Guided Panic Attack Recovery & Coping Strategies
 
+## Quick Navigation
+- [Landing Page](index.html)
+- [Canada Mental Health Resources](Canada_Mental_Health_Resources.md)
+- [Healthy Habits & Depression Recovery](Healthy_Habits_Depression_Recovery.md)
+
 ## What is a Panic Attack?
 
 A panic attack is a sudden episode of intense fear or discomfort that peaks within minutes. It includes physical symptoms (racing heart, shortness of breath, sweating) and psychological symptoms (fear of losing control or dying). While terrifying, panic attacks are not dangerous and always pass.
@@ -193,3 +198,10 @@ Consider professional support if:
 *Remember: If you're experiencing a medical emergency or having thoughts of self-harm, call 911 or your local emergency number immediately.*
 
 *Last updated: January 2026*
+
+---
+
+## More Resources
+- [Canada Mental Health Resources](Canada_Mental_Health_Resources.md)
+- [Healthy Habits & Depression Recovery](Healthy_Habits_Depression_Recovery.md)
+- [Landing Page](index.html)

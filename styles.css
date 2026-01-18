@@ -300,6 +300,25 @@ body {
     transform: scale(1.05);
 }
 
+.card-links {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.card-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.card-links a:hover {
+    text-decoration: underline;
+}
+
 /* ===== Emergency Section ===== */
 .emergency-section {
     padding: 80px 20px;

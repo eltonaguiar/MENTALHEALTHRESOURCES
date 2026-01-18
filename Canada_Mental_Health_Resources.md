@@ -1,5 +1,12 @@
 # Mental Health Resources for Canada
 
+# Mental Health Resources for Canada
+
+## Quick Navigation
+- [Landing Page](index.html)
+- [Panic Attack Self-Help Guide](Panic_Attack_Self_Help_Guide.md)
+- [Healthy Habits & Depression Recovery](Healthy_Habits_Depression_Recovery.md)
+
 ## Crisis & Immediate Support
 
 ### National Crisis Helplines
@@ -93,3 +100,9 @@
 **Note**: If you're in crisis or having thoughts of suicide, please contact a crisis line immediately. You don't have to face this alone.
 
 *Last updated: January 2026*
+
+## More Resources
+- [Panic Attack Self-Help Guide](Panic_Attack_Self_Help_Guide.md)
+- [Healthy Habits & Depression Recovery](Healthy_Habits_Depression_Recovery.md)
+- [Landing Page](index.html)
+
