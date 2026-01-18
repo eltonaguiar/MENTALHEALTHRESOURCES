@@ -1,6 +1,7 @@
 # Mental Health Resources for Canada
 
 A comprehensive, free resource platform providing mental health support, crisis resources, and evidence-based recovery strategies for Canadians.
+https://eltonaguiar.github.io/MENTALHEALTHRESOURCES/
 
 ## 🌟 Features
 
