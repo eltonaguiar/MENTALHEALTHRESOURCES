@@ -103,6 +103,7 @@ console.log('Emergency hotlines are accessible via the red banner at the top');
         { title: 'Healthy Habits & Depression Recovery', topic: ['depression'], province: ['ALL'], language: ['en'], cost: 'free', type: 'guide', url: 'Healthy_Habits_Depression_Recovery.md' },
         { title: 'Canada Mental Health Directory', topic: ['guides','depression','panic'], province: ['ALL'], language: ['en'], cost: 'free', type: 'guide', url: 'Canada_Mental_Health_Resources.md' },
         { title: 'Free Multimedia Library', topic: ['guides','apps','depression','panic'], province: ['ALL'], language: ['en'], cost: 'free', type: 'guide', url: 'Free_Multimedia_Resources.md' },
+        { title: 'Bibliotherapy & Books', topic: ['guides','depression'], province: ['ALL'], language: ['en'], cost: 'free', type: 'guide', url: 'Bibliotherapy.html' },
         { title: 'Anxiety Canada MindShift CBT', topic: ['apps','panic','anxiety'], province: ['ALL'], language: ['en'], cost: 'free', type: 'app', url: 'https://www.mindshift.app/' },
         { title: 'Insight Timer', topic: ['apps','meditation'], province: ['ALL'], language: ['en'], cost: 'free', type: 'app', url: 'https://insighttimer.com/' },
         { title: 'BC Crisis Centre', topic: ['crisis'], province: ['BC'], language: ['en'], cost: 'free', type: 'hotline', url: 'https://crisiscentre.bc.ca/', note: 'Call 1-800-784-2433' },
@@ -218,8 +219,16 @@ console.log('Emergency hotlines are accessible via the red banner at the top');
                 </div>
                 ${r.note ? `<p class=\"assistant-tip\">${r.note}</p>` : ''}
                 <a href=\"${r.url}\" class=\"card-link\" target=\"_blank\" rel=\"noopener\">Open</a>
+                <button class=\"pill-button\" data-save=\"${encodeURIComponent(r.title)}\" data-url=\"${encodeURIComponent(r.url)}\">Save</button>
             `;
             container.appendChild(card);
+        });
+        container.querySelectorAll('[data-save]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const title = decodeURIComponent(btn.getAttribute('data-save'));
+                const url = decodeURIComponent(btn.getAttribute('data-url'));
+                saveResource(title, url);
+            });
         });
     }
 
@@ -312,6 +321,123 @@ console.log('Emergency hotlines are accessible via the red banner at the top');
         }
     }
 
+    // Plan builder, saved resources, mood, CBT, accessibility
+    function savePlan() {
+        const data = {
+            crisis: document.getElementById('plan-crisis').value,
+            grounding: document.getElementById('plan-grounding').value,
+            habits: document.getElementById('plan-habits').value,
+            notes: document.getElementById('plan-notes').value
+        };
+        localStorage.setItem('planData', JSON.stringify(data));
+    }
+
+    function loadPlan() {
+        try {
+            const data = JSON.parse(localStorage.getItem('planData') || '{}');
+            if (data.crisis) document.getElementById('plan-crisis').value = data.crisis;
+            if (data.grounding) document.getElementById('plan-grounding').value = data.grounding;
+            if (data.habits) document.getElementById('plan-habits').value = data.habits;
+            if (data.notes) document.getElementById('plan-notes').value = data.notes;
+        } catch(e) {}
+    }
+
+    function renderSaved() {
+        const container = document.getElementById('saved-resources');
+        if (!container) return;
+        const saved = JSON.parse(localStorage.getItem('savedResources') || '[]');
+        container.innerHTML = '';
+        if (saved.length === 0) {
+            container.innerHTML = '<p class=\"assistant-tip\">Nothing saved yet.</p>';
+            return;
+        }
+        saved.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'saved-item';
+            div.innerHTML = `<strong>${item.title}</strong><br><a class=\"card-link\" href=\"${item.url}\" target=\"_blank\">Open</a>`;
+            container.appendChild(div);
+        });
+    }
+
+    function saveResource(title, url) {
+        const saved = JSON.parse(localStorage.getItem('savedResources') || '[]');
+        if (!saved.find(s => s.title === title)) {
+            saved.push({ title, url });
+            localStorage.setItem('savedResources', JSON.stringify(saved));
+            renderSaved();
+        }
+    }
+
+    function saveMood() {
+        const mood = Number(document.getElementById('mood-score').value || 0);
+        const notes = document.getElementById('mood-notes').value || '';
+        const entry = { mood, notes, at: new Date().toISOString() };
+        const log = JSON.parse(localStorage.getItem('moodLog') || '[]');
+        log.unshift(entry);
+        localStorage.setItem('moodLog', JSON.stringify(log.slice(0, 20)));
+        renderMood();
+    }
+
+    function renderMood() {
+        const log = JSON.parse(localStorage.getItem('moodLog') || '[]');
+        const container = document.getElementById('mood-log');
+        if (!container) return;
+        container.innerHTML = '';
+        log.forEach(entry => {
+            const div = document.createElement('div');
+            div.className = 'mood-item';
+            const date = new Date(entry.at).toLocaleString();
+            div.innerHTML = `<strong>${date}</strong> — Mood ${entry.mood}/5<br>${entry.notes || ''}`;
+            container.appendChild(div);
+        });
+    }
+
+    function saveCBT() {
+        const entry = {
+            situation: document.getElementById('cbt-situation').value,
+            thought: document.getElementById('cbt-thought').value,
+            evidence: document.getElementById('cbt-evidence').value,
+            reframe: document.getElementById('cbt-reframe').value,
+            at: new Date().toISOString()
+        };
+        const log = JSON.parse(localStorage.getItem('cbtLog') || '[]');
+        log.unshift(entry);
+        localStorage.setItem('cbtLog', JSON.stringify(log.slice(0, 20)));
+        renderCBT();
+    }
+
+    function renderCBT() {
+        const log = JSON.parse(localStorage.getItem('cbtLog') || '[]');
+        const container = document.getElementById('cbt-log');
+        if (!container) return;
+        container.innerHTML = '';
+        log.forEach(entry => {
+            const div = document.createElement('div');
+            div.className = 'cbt-item';
+            const date = new Date(entry.at).toLocaleString();
+            div.innerHTML = `<strong>${date}</strong><br><em>Situation:</em> ${entry.situation}<br><em>Thought:</em> ${entry.thought}<br><em>Evidence:</em> ${entry.evidence}<br><em>Reframe:</em> ${entry.reframe}`;
+            container.appendChild(div);
+        });
+    }
+
+    function applyPrefs() {
+        const contrast = localStorage.getItem('pref-contrast') === '1';
+        const motion = localStorage.getItem('pref-motion') === '1';
+        const font = localStorage.getItem('pref-font') === '1';
+        document.body.classList.toggle('pref-contrast', contrast);
+        document.body.classList.toggle('pref-motion', motion);
+        document.body.classList.toggle('pref-font', font);
+        const map = {
+            'pref-contrast': contrast,
+            'pref-motion': motion,
+            'pref-font': font
+        };
+        Object.keys(map).forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.checked = map[id];
+        });
+    }
+
     function attachEvents() {
         const send = document.getElementById('assistant-send');
         if (send) send.addEventListener('click', handleAssistantSend);
@@ -394,6 +520,34 @@ console.log('Emergency hotlines are accessible via the red banner at the top');
                 if (tip) tip.textContent = translate('assistantHint');
             });
         }
+        const planSave = document.getElementById('plan-save');
+        if (planSave) planSave.addEventListener('click', savePlan);
+        const planClear = document.getElementById('plan-clear');
+        if (planClear) planClear.addEventListener('click', () => {
+            ['plan-crisis','plan-grounding','plan-habits','plan-notes'].forEach(id => {
+                const el = document.getElementById(id); if (el) el.value = '';
+            });
+            savePlan();
+        });
+        const planPrint = document.getElementById('plan-print');
+        if (planPrint) planPrint.addEventListener('click', () => window.print());
+        const moodSave = document.getElementById('mood-save');
+        if (moodSave) moodSave.addEventListener('click', saveMood);
+        const moodClear = document.getElementById('mood-clear');
+        if (moodClear) moodClear.addEventListener('click', () => {
+            localStorage.removeItem('moodLog');
+            renderMood();
+        });
+        const cbtSave = document.getElementById('cbt-save');
+        if (cbtSave) cbtSave.addEventListener('click', saveCBT);
+        const accessPrefs = ['pref-contrast','pref-motion','pref-font'];
+        accessPrefs.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener('change', () => {
+                localStorage.setItem(id, el.checked ? '1' : '0');
+                applyPrefs();
+            });
+        });
     }
 
     function init() {
@@ -401,6 +555,11 @@ console.log('Emergency hotlines are accessible via the red banner at the top');
         renderSearch({ topic: '', province: '', language: '', cost: '' });
         addMessage('assistant', 'Hi, how can I help? Crisis support is always available: 9-8-8.');
         registerServiceWorker();
+        loadPlan();
+        renderSaved();
+        renderMood();
+        renderCBT();
+        applyPrefs();
     }
 
     document.addEventListener('DOMContentLoaded', () => {

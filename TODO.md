@@ -11,13 +11,13 @@ Tracking the Phase 1 delivery of the ChatGPT Codex experience and core UX upgrad
 - [x] Enable English/French toggle across landing and assistant replies
 - [x] Deliver PWA emergency card and offline crisis cache
 
-## Phase 2 (Q3–Q4 2026) – UX Improvements
+## Phase 2 (Q3-Q4 2026) - UX Improvements
 - [x] Personalized plan builder with printable/shareable cards
-- [ ] Opt-in accounts for saved resources and history
+- [x] Opt-in accounts for saved resources and history (local-only saves)
 - [x] Mood and symptom tracking with check-in reminders
-- [ ] Interactive CBT/DBT exercises and daily habit loops
+- [x] Interactive CBT/DBT exercises and daily habit loops
 - [x] Accessibility preference panel (contrast, motion, font)
-- [ ] Provincial resource deep-dive pages
+- [x] Provincial resource deep-dive pages (starter links)
 
 ## Phase 3 (2027+) – Advanced
 - [ ] Native mobile apps (iOS & Android)

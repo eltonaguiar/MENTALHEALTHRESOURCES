@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBT/DBT Exercises - Therapeutic Skills</title>
+    <meta name="theme-color" content="#3b82f6">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .emergency-banner {
+            background: #dc2626;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .emergency-content h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .emergency-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .emergency-btn {
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .emergency-btn.primary {
+            background: white;
+            color: #dc2626;
+        }
+
+        .emergency-btn.primary:hover {
+            transform: scale(1.05);
+        }
+
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo h1 {
+            color: #667eea;
+            font-size: 1.3rem;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e5e7eb;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            margin-bottom: -2px;
+        }
+
+        .tab-btn.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-btn:hover {
+            color: #667eea;
+        }
+
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .exercise-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .exercise-card.active {
+            border-color: white;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .exercise-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .exercise-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .exercise-duration {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .exercise-detail {
+            background: #f9fafb;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .exercise-detail.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .exercise-detail h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .exercise-detail p {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .exercise-detail strong {
+            color: #333;
+        }
+
+        .steps {
+            background: white;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .step {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .step-description {
+            color: #666;
+            margin-left: 40px;
+        }
+
+        .worksheet {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #e5e7eb;
+        }
+
+        .worksheet-field {
+            margin-bottom: 20px;
+        }
+
+        .worksheet-field label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        textarea, input[type="text"], select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        textarea {
+            min-height: 100px;
+        }
+
+        textarea:focus, input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #e5e7eb;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #d1d5db;
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .progress-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            background: rgba(255,255,255,0.3);
+            height: 25px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            background: #10b981;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: width 0.3s;
+        }
+
+        .tip-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+
+        .tip-box strong {
+            color: #92400e;
+        }
+
+        .tip-box p {
+            color: #78350f;
+            margin: 0;
+        }
+
+        .evidence-box {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+
+        .evidence-box strong {
+            color: #1e40af;
+        }
+
+        .evidence-box p {
+            color: #1e3a8a;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .results-display {
+            background: white;
+            border: 2px solid #d1d5db;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: none;
+        }
+
+        .results-display.show {
+            display: block;
+        }
+
+        .category-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .duration-badge {
+            display: inline-block;
+            background: #764ba2;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .completed-message {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: none;
+        }
+
+        .completed-message.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .nav-menu {
+                gap: 8px;
+                font-size: 0.9rem;
+            }
+
+            .tabs {
+                gap: 5px;
+            }
+
+            .tab-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+
+            .exercise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .emergency-links {
+                flex-direction: column;
+            }
+
+            .emergency-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        <div class="emergency-content">
+            <h2>🚨 In Crisis? Get Help Now</h2>
+            <div class="emergency-links">
+                <a href="tel:18334564566" class="emergency-btn primary">☎️ Call 1-833-456-4566</a>
+                <a href="sms:741741" class="emergency-btn primary">💬 Text HOME to 741741</a>
+                <a href="tel:911" class="emergency-btn primary">🆘 Emergency: 911</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>🌟 Mental Health Canada</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="Global_Resources.html">🌍 Resources</a></li>
+                <li><a href="Assessments.html">📋 Assess</a></li>
+                <li><a href="Crisis_Support.html">💬 Crisis</a></li>
+                <li><a href="Plan_Builder.html">📋 Plan</a></li>
+                <li><a href="Mood_Tracker.html">📊 Track</a></li>
+                <li><a href="Accessibility.html">♿ Access</a></li>
+                <li><a href="Research_Science.html">🧪 Science</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>🧠 CBT/DBT Therapeutic Exercises</h1>
+        <p class="subtitle">Proven-effective skills to manage anxiety, depression, and emotional regulation</p>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
+            <button class="tab-btn" onclick="switchTab('cbt')">CBT Exercises</button>
+            <button class="tab-btn" onclick="switchTab('dbt')">DBT Skills</button>
+            <button class="tab-btn" onclick="switchTab('progress')">My Progress</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="overview" class="exercise-detail active">
+            <h3>About CBT & DBT</h3>
+            <p><strong>Cognitive Behavioral Therapy (CBT)</strong> helps you identify and change unhelpful thought patterns and behaviors that maintain depression and anxiety.</p>
+            <p><strong>Dialectical Behavior Therapy (DBT)</strong> combines CBT with mindfulness and acceptance strategies, originally developed for emotion regulation and crisis management.</p>
+            
+            <div class="evidence-box">
+                <strong>📊 Evidence:</strong>
+                <p>CBT and DBT are among the most researched and effective psychological interventions, with 60-80% remission rates for depression and anxiety in clinical trials.</p>
+            </div>
+
+            <h3 style="margin-top: 30px;">How to Use These Exercises</h3>
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <div>
+                        <div class="step-title">Choose an Exercise</div>
+                        <div class="step-description">Select from 8 proven therapeutic techniques based on what you're working on.</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <div>
+                        <div class="step-title">Complete the Worksheet</div>
+                        <div class="step-description">Follow the guided steps and fill in your responses honestly and thoroughly.</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <div>
+                        <div class="step-title">Reflect on Insights</div>
+                        <div class="step-description">Notice what you learned and how you can apply it to your life.</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <div>
+                        <div class="step-title">Track Progress</div>
+                        <div class="step-description">Record completion and revisit exercises regularly for maximum benefit.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="evidence-box">
+                <strong>💡 Tip:</strong>
+                <p>For best results, practice these exercises 2-3 times per week. Consistency matters more than perfection.</p>
+            </div>
+        </div>
+
+        <!-- CBT Tab -->
+        <div id="cbt" class="exercise-detail">
+            <h3>Cognitive Behavioral Therapy Exercises</h3>
+            
+            <div class="exercise-grid">
+                <div class="exercise-card active" onclick="loadExercise('thought-record')">
+                    <div class="exercise-icon">💭</div>
+                    <div class="exercise-title">Thought Record</div>
+                    <div class="exercise-duration">⏱️ 15 minutes</div>
+                </div>
+                <div class="exercise-card" onclick="loadExercise('behavioral-activation')">
+                    <div class="exercise-icon">🎯</div>
+                    <div class="exercise-title">Behavioral Activation</div>
+                    <div class="exercise-duration">⏱️ 20 minutes</div>
+                </div>
+                <div class="exercise-card" onclick="loadExercise('thought-challenging')">
+                    <div class="exercise-icon">⚖️</div>
+                    <div class="exercise-title">Thought Challenging</div>
+                    <div class="exercise-duration">⏱️ 15 minutes</div>
+                </div>
+                <div class="exercise-card" onclick="loadExercise('exposure-hierarchy')">
+                    <div class="exercise-icon">📈</div>
+                    <div class="exercise-title">Exposure Hierarchy</div>
+                    <div class="exercise-duration">⏱️ 25 minutes</div>
+                </div>
+            </div>
+
+            <!-- Thought Record -->
+            <div id="thought-record-exercise" class="exercise-detail">
+                <h3>💭 Thought Record</h3>
+                <p>Capture and analyze automatic negative thoughts that trigger anxiety or low mood.</p>
+                
+                <div class="evidence-box">
+                    <strong>Why it works:</strong>
+                    <p>Automatic thoughts drive emotions and behaviors. By writing them down, you create space to examine them objectively and develop more balanced perspectives.</p>
+                </div>
+
+                <div class="worksheet">
+                    <div class="worksheet-field">
+                        <label>📍 Situation (What happened?)</label>
+                        <textarea id="thought-situation" placeholder="Describe the event, person, or context..."></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>❤️ Emotion (What did you feel?)</label>
+                        <input type="text" id="thought-emotion" placeholder="e.g., Anxious, sad, embarrassed">
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>☁️ Automatic Thought (What went through your mind?)</label>
+                        <textarea id="thought-content" placeholder="What did you tell yourself? (Usually negative/worry)"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>0-100 Belief Strength (%)</label>
+                        <input type="range" id="thought-belief" min="0" max="100" value="50" oninput="updateThoughtBelief()">
+                        <div id="thought-belief-display" style="margin-top: 5px; font-weight: bold; color: #667eea;">50%</div>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>🔍 Evidence For This Thought</label>
+                        <textarea id="thought-evidence-for" placeholder="What facts support this thought?"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>⚠️ Evidence Against This Thought</label>
+                        <textarea id="thought-evidence-against" placeholder="What facts contradict this thought?"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>🌟 More Balanced Thought</label>
+                        <textarea id="thought-balanced" placeholder="What's a more realistic, compassionate way to view this?"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>Now Rate Your Belief (0-100%)</label>
+                        <input type="range" id="thought-belief-after" min="0" max="100" value="50" oninput="updateThoughtBeliefAfter()">
+                        <div id="thought-belief-after-display" style="margin-top: 5px; font-weight: bold; color: #10b981;">50%</div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="completeExercise('thought-record')">✓ Complete Exercise</button>
+                        <button class="btn-secondary" onclick="clearForm('thought')">Clear</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Behavioral Activation -->
+            <div id="behavioral-activation-exercise" class="exercise-detail">
+                <h3>🎯 Behavioral Activation</h3>
+                <p>Combat depression and avoidance by scheduling meaningful activities, even when motivation is low.</p>
+                
+                <div class="evidence-box">
+                    <strong>Why it works:</strong>
+                    <p>Depression tells us to withdraw and avoid. Behavioral activation breaks this cycle by scheduling activities that create a sense of accomplishment and pleasure.</p>
+                </div>
+
+                <div class="worksheet">
+                    <div class="worksheet-field">
+                        <label>📋 What behaviors have you been avoiding?</label>
+                        <textarea id="ba-avoided" placeholder="E.g., exercise, seeing friends, household tasks, hobbies..."></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>🎯 Which activity would have the most impact on your mood?</label>
+                        <input type="text" id="ba-priority" placeholder="Pick one to start with">
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>📅 When will you do this? (Specific day/time)</label>
+                        <input type="text" id="ba-schedule" placeholder="E.g., Tuesday at 6pm">
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>⏰ How long will it take?</label>
+                        <input type="text" id="ba-duration" placeholder="E.g., 30 minutes">
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>💡 What might get in your way? (Barriers)</label>
+                        <textarea id="ba-barriers" placeholder="What obstacles might prevent this? How can you overcome them?"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>⭐ Rate importance (1-10)</label>
+                        <input type="range" id="ba-importance" min="1" max="10" value="5" oninput="updateImportance()">
+                        <div id="ba-importance-display" style="margin-top: 5px; font-weight: bold; color: #667eea;">5/10</div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="completeExercise('behavioral-activation')">✓ Commit to This Activity</button>
+                        <button class="btn-secondary" onclick="clearForm('ba')">Clear</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thought Challenging -->
+            <div id="thought-challenging-exercise" class="exercise-detail">
+                <h3>⚖️ Thought Challenging</h3>
+                <p>Use logical questions to examine and challenge unhelpful thought patterns.</p>
+                
+                <div class="evidence-box">
+                    <strong>Why it works:</strong>
+                    <p>Anxiety and depression thrive on unquestioned catastrophic thoughts. Challenging them with evidence-based reasoning weakens their power.</p>
+                </div>
+
+                <div class="worksheet">
+                    <div class="worksheet-field">
+                        <label>☁️ Unhelpful Thought</label>
+                        <textarea id="tc-thought" placeholder="What worry or negative prediction are you having?"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>❓ Is this thought 100% certain? What's the actual probability (0-100%)?</label>
+                        <input type="range" id="tc-probability" min="0" max="100" value="50" oninput="updateProbability()">
+                        <div id="tc-probability-display" style="margin-top: 5px; font-weight: bold; color: #667eea;">50%</div>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>🤔 What's the WORST that could happen?</label>
+                        <textarea id="tc-worst" placeholder="Be specific"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>💪 If that happened, how would you cope?</label>
+                        <textarea id="tc-cope" placeholder="What resources or skills would you use?"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>✨ What's the BEST likely outcome?</label>
+                        <textarea id="tc-best" placeholder="What's more realistically likely to happen?"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>🌍 What would you tell a good friend in this situation?</label>
+                        <textarea id="tc-friend" placeholder="Advice you'd give to someone else..."></textarea>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="completeExercise('thought-challenging')">✓ Complete Exercise</button>
+                        <button class="btn-secondary" onclick="clearForm('tc')">Clear</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exposure Hierarchy -->
+            <div id="exposure-hierarchy-exercise" class="exercise-detail">
+                <h3>📈 Exposure Hierarchy</h3>
+                <p>Gradually face feared situations to reduce anxiety through repeated, safe exposure.</p>
+                
+                <div class="evidence-box">
+                    <strong>Why it works:</strong>
+                    <p>Avoidance strengthens anxiety. Facing fears in a gradual, controlled way (exposure) teaches your brain that the feared situation is actually safe.</p>
+                </div>
+
+                <div class="worksheet">
+                    <div class="worksheet-field">
+                        <label>😰 What situation triggers your anxiety?</label>
+                        <input type="text" id="eh-fear" placeholder="E.g., public speaking, driving on highways, social gatherings">
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>📊 Current anxiety level (0-100%)</label>
+                        <input type="range" id="eh-anxiety" min="0" max="100" value="50" oninput="updateAnxiety()">
+                        <div id="eh-anxiety-display" style="margin-top: 5px; font-weight: bold; color: #667eea;">50%</div>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>🎯 Smallest first step (easiest exposure)</label>
+                        <input type="text" id="eh-step1" placeholder="E.g., watch 1 minute of video about situation">
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>📍 Step 2 (moderate exposure)</label>
+                        <input type="text" id="eh-step2" placeholder="E.g., talk about it with a safe person">
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>🚀 Step 3 (more challenging)</label>
+                        <input type="text" id="eh-step3" placeholder="E.g., simulate the feared situation">
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>🏆 Final step (full exposure)</label>
+                        <input type="text" id="eh-step4" placeholder="E.g., do the feared activity in real life">
+                    </div>
+
+                    <div class="tip-box">
+                        <strong>💡 Important:</strong>
+                        <p>Stay in each step until anxiety naturally decreases (20-30 min usually). Never escape! Your brain learns safety through staying.</p>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="completeExercise('exposure-hierarchy')">✓ Complete Exercise</button>
+                        <button class="btn-secondary" onclick="clearForm('eh')">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DBT Tab -->
+        <div id="dbt" class="exercise-detail">
+            <h3>Dialectical Behavior Therapy Skills</h3>
+            
+            <div class="exercise-grid">
+                <div class="exercise-card" onclick="loadExercise('distress-tolerance')">
+                    <div class="exercise-icon">🆘</div>
+                    <div class="exercise-title">Distress Tolerance</div>
+                    <div class="exercise-duration">⏱️ 10 minutes</div>
+                </div>
+                <div class="exercise-card" onclick="loadExercise('emotion-regulation')">
+                    <div class="exercise-icon">🎚️</div>
+                    <div class="exercise-title">Emotion Regulation</div>
+                    <div class="exercise-duration">⏱️ 15 minutes</div>
+                </div>
+                <div class="exercise-card" onclick="loadExercise('mindfulness')">
+                    <div class="exercise-icon">🧘</div>
+                    <div class="exercise-title">Mindfulness</div>
+                    <div class="exercise-duration">⏱️ 10 minutes</div>
+                </div>
+                <div class="exercise-card" onclick="loadExercise('interpersonal')">
+                    <div class="exercise-icon">🤝</div>
+                    <div class="exercise-title">Interpersonal Effectiveness</div>
+                    <div class="exercise-duration">⏱️ 20 minutes</div>
+                </div>
+            </div>
+
+            <!-- Distress Tolerance -->
+            <div id="distress-tolerance-exercise" class="exercise-detail">
+                <h3>🆘 Distress Tolerance - Crisis Survival</h3>
+                <p>Learn skills to survive and get through crises without making things worse.</p>
+                
+                <div class="evidence-box">
+                    <strong>When to use:</strong>
+                    <p>Use these skills during acute crisis or unbearable emotional pain when you need to survive the moment without engaging in harmful behaviors.</p>
+                </div>
+
+                <div class="worksheet">
+                    <h4 style="color: #667eea; margin: 20px 0 15px 0;">TIPP Skills (quick crisis survival):</h4>
+                    
+                    <div class="worksheet-field">
+                        <label>🧊 T = Temperature (dive response)</label>
+                        <textarea id="dt-temperature" placeholder="When in crisis, splash cold water on face or hold ice. Triggers calming response. Check: ✓ (yes/no/will try)"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>🏃 I = Intense Exercise</label>
+                        <textarea id="dt-exercise" placeholder="Do vigorous exercise for 20 minutes. Burns stress hormones and releases endorphins. Check: ✓"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>🧘 P = Paced Breathing</label>
+                        <textarea id="dt-breathing" placeholder="Breathe in for 5, hold for 5, out for 5. Slows nervous system. Check: ✓"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>📦 P = Paired Muscle Relaxation</label>
+                        <textarea id="dt-relaxation" placeholder="Tense and release each muscle group. Reduces physical tension. Check: ✓"></textarea>
+                    </div>
+
+                    <h4 style="color: #667eea; margin: 20px 0 15px 0;">DISTRESS Observing (accepting reality temporarily):</h4>
+
+                    <div class="worksheet-field">
+                        <label>🎬 D = Distracting (activities, people, sensations, thoughts)</label>
+                        <textarea id="dt-distract" placeholder="What activities could distract you right now?"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>💆 I = Intense sensations (ice, extreme temperature, strong tastes)</label>
+                        <textarea id="dt-sensations" placeholder="What intense sensations are safe and available to you?"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>🧠 S = Self-Soothing (comfort objects, safe spaces, routines)</label>
+                        <textarea id="dt-soothe" placeholder="What comforts you? (e.g., soft blanket, favorite song, safe person's voice)"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>💪 T = Thinking (meaningful thoughts, values, reasons to survive)</label>
+                        <textarea id="dt-thinking" placeholder="What thoughts/values help you survive the moment?"></textarea>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="completeExercise('distress-tolerance')">✓ Complete Exercise</button>
+                        <button class="btn-secondary" onclick="clearForm('dt')">Clear</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emotion Regulation -->
+            <div id="emotion-regulation-exercise" class="exercise-detail">
+                <h3>🎚️ Emotion Regulation - Check the Facts</h3>
+                <p>Examine whether your emotional reaction matches the actual facts of the situation.</p>
+                
+                <div class="evidence-box">
+                    <strong>Why it works:</strong>
+                    <p>Emotions provide information but aren't always accurate. By checking facts, you can decide whether to trust your emotional reaction or adjust it.</p>
+                </div>
+
+                <div class="worksheet">
+                    <div class="worksheet-field">
+                        <label>❤️ What emotion are you experiencing?</label>
+                        <input type="text" id="er-emotion" placeholder="E.g., anger, sadness, shame, fear">
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>📊 Current intensity (0-100%)</label>
+                        <input type="range" id="er-intensity" min="0" max="100" value="50" oninput="updateERIntensity()">
+                        <div id="er-intensity-display" style="margin-top: 5px; font-weight: bold; color: #667eea;">50%</div>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>📍 What triggered this emotion?</label>
+                        <textarea id="er-trigger" placeholder="What event or thought caused this?"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>🔍 What FACTS support this emotion?</label>
+                        <textarea id="er-facts-support" placeholder="Objective evidence that this emotion is appropriate..."></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>⚠️ What FACTS contradict this emotion?</label>
+                        <textarea id="er-facts-against" placeholder="Objective evidence that this emotion might be too intense..."></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>🎯 What would be a more fitting emotion/response?</label>
+                        <textarea id="er-adjusted" placeholder="Based on the facts, what's a more appropriate emotion?"></textarea>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="completeExercise('emotion-regulation')">✓ Complete Exercise</button>
+                        <button class="btn-secondary" onclick="clearForm('er')">Clear</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mindfulness -->
+            <div id="mindfulness-exercise" class="exercise-detail">
+                <h3>🧘 Mindfulness - Observe the Moment</h3>
+                <p>Practice present-moment awareness without judgment to reduce suffering.</p>
+                
+                <div class="evidence-box">
+                    <strong>Why it works:</strong>
+                    <p>Suffering increases when we fight reality or dwell on past/future. Mindfulness teaches acceptance of what is, reducing the secondary suffering layer.</p>
+                </div>
+
+                <div class="worksheet">
+                    <div class="worksheet-field">
+                        <label>⏱️ How long will you practice? (minutes)</label>
+                        <input type="number" id="m-duration" min="1" max="60" value="10" placeholder="10">
+                    </div>
+
+                    <div class="tip-box">
+                        <strong>📌 Guided Practice:</strong>
+                        <p>Find a comfortable position. Set a timer. Follow these steps:</p>
+                    </div>
+
+                    <div class="steps">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            <div>
+                                <div class="step-title">Settle (2 min)</div>
+                                <div class="step-description">Close eyes. Notice breath without changing it. Feel your body in the chair/floor.</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <div>
+                                <div class="step-title">Observe Thoughts (5 min)</div>
+                                <div class="step-description">Notice thoughts like clouds passing. Don't grab them. Don't push them away. Just observe.</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <div>
+                                <div class="step-title">Observe Sensations (3+ min)</div>
+                                <div class="step-description">Scan body for sensations. Tension? Tingling? Warmth? Notice without judgment.</div>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">4</span>
+                            <div>
+                                <div class="step-title">Return to Breath</div>
+                                <div class="step-description">Gently guide attention back to breathing. Each time mind wanders, gently return it.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>📝 After your practice, what did you notice?</label>
+                        <textarea id="m-observations" placeholder="What thoughts, sensations, or changes did you observe?"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>😌 How do you feel now? (0-100 relaxation)</label>
+                        <input type="range" id="m-relaxation" min="0" max="100" value="50" oninput="updateMRelaxation()">
+                        <div id="m-relaxation-display" style="margin-top: 5px; font-weight: bold; color: #667eea;">50%</div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="completeExercise('mindfulness')">✓ Complete Exercise</button>
+                        <button class="btn-secondary" onclick="clearForm('m')">Clear</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interpersonal Effectiveness -->
+            <div id="interpersonal-exercise" class="exercise-detail">
+                <h3>🤝 Interpersonal Effectiveness - DEAR MAN</h3>
+                <p>Navigate difficult conversations and advocate for your needs assertively and respectfully.</p>
+                
+                <div class="evidence-box">
+                    <strong>DEAR MAN Acronym:</strong>
+                    <p><strong>D</strong>escribe, <strong>E</strong>xpress, <strong>A</strong>ssert, <strong>R</strong>einforce, <strong>M</strong>indful, <strong>A</strong>ppear confident, <strong>N</strong>egotiate</p>
+                </div>
+
+                <div class="worksheet">
+                    <div class="worksheet-field">
+                        <label>👤 Who do you need to talk to?</label>
+                        <input type="text" id="ie-person" placeholder="Name or relationship">
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>🎯 What do you want/need?</label>
+                        <textarea id="ie-objective" placeholder="Be specific. What's your concrete goal?"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>📍 D - DESCRIBE (What's the situation?)</label>
+                        <textarea id="ie-describe" placeholder="Objectively describe the situation without blame..."></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>💬 E - EXPRESS (Your feelings/needs)</label>
+                        <textarea id="ie-express" placeholder="I feel... because... I need..."></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>✊ A - ASSERT (Clearly state what you want)</label>
+                        <textarea id="ie-assert" placeholder="I'd like... / Can you...?"></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>🎁 R - REINFORCE (What's the benefit to them?)</label>
+                        <textarea id="ie-reinforce" placeholder="If you do this, it will help me by... and could benefit you by..."></textarea>
+                    </div>
+
+                    <div class="worksheet-field">
+                        <label>🧠 M/A/N - MINDFUL/APPEAR/NEGOTIATE</label>
+                        <textarea id="ie-man" placeholder="Stay focused on goal. Look confident. Be willing to compromise."></textarea>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="completeExercise('interpersonal')">✓ Complete Exercise</button>
+                        <button class="btn-secondary" onclick="clearForm('ie')">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Tab -->
+        <div id="progress" class="exercise-detail">
+            <h3>📊 Your Progress</h3>
+            
+            <div class="progress-section">
+                <h4>Exercises Completed This Week</h4>
+                <div id="progress-count" style="font-size: 1.8rem; margin: 15px 0;">0</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-bar-fill" style="width: 0%;">0%</div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <h4>Total Exercises Completed (All Time)</h4>
+                <div id="total-count" style="font-size: 1.8rem; margin: 15px 0;">0</div>
+            </div>
+
+            <h3 style="margin-top: 30px;">📈 Completion History</h3>
+            <div id="completion-history" style="background: white; padding: 20px; border-radius: 8px; color: #333;">
+                <p style="color: #999;">No exercises completed yet. Start with one today!</p>
+            </div>
+
+            <div class="button-group" style="margin-top: 20px;">
+                <button class="btn-secondary" onclick="clearAllProgress()">Reset Progress</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize localStorage
+        if (!localStorage.getItem('cbt-dbt-exercises')) {
+            localStorage.setItem('cbt-dbt-exercises', JSON.stringify({
+                completed: [],
+                totalCompleted: 0,
+                lastUpdate: new Date().toLocaleDateString()
+            }));
+        }
+
+        function switchTab(tabName) {
+            // Hide all details
+            document.querySelectorAll('.exercise-detail').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            // Remove active from all tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function loadExercise(exerciseName) {
+            // Hide all exercise cards and details
+            document.querySelectorAll('.exercise-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            document.querySelectorAll('.exercise-detail').forEach(detail => {
+                if (detail.id !== 'overview' && detail.id !== 'cbt' && detail.id !== 'dbt' && detail.id !== 'progress') {
+                    detail.classList.remove('active');
+                }
+            });
+
+            // Show selected exercise
+            if (document.querySelector(`.exercise-card[onclick="loadExercise('${exerciseName}')"]`)) {
+                document.querySelector(`.exercise-card[onclick="loadExercise('${exerciseName}')"]`).classList.add('active');
+            }
+
+            const exerciseElement = document.getElementById(exerciseName + '-exercise');
+            if (exerciseElement) {
+                exerciseElement.classList.add('active');
+                exerciseElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function updateThoughtBelief() {
+            document.getElementById('thought-belief-display').textContent = document.getElementById('thought-belief').value + '%';
+        }
+
+        function updateThoughtBeliefAfter() {
+            document.getElementById('thought-belief-after-display').textContent = document.getElementById('thought-belief-after').value + '%';
+        }
+
+        function updateImportance() {
+            document.getElementById('ba-importance-display').textContent = document.getElementById('ba-importance').value + '/10';
+        }
+
+        function updateProbability() {
+            document.getElementById('tc-probability-display').textContent = document.getElementById('tc-probability').value + '%';
+        }
+
+        function updateAnxiety() {
+            document.getElementById('eh-anxiety-display').textContent = document.getElementById('eh-anxiety').value + '%';
+        }
+
+        function updateERIntensity() {
+            document.getElementById('er-intensity-display').textContent = document.getElementById('er-intensity').value + '%';
+        }
+
+        function updateMRelaxation() {
+            document.getElementById('m-relaxation-display').textContent = document.getElementById('m-relaxation').value + '%';
+        }
+
+        function completeExercise(exerciseName) {
+            const data = JSON.parse(localStorage.getItem('cbt-dbt-exercises'));
+            const today = new Date().toLocaleDateString();
+
+            data.completed.push({
+                exercise: exerciseName,
+                date: today,
+                timestamp: new Date().toLocaleTimeString()
+            });
+
+            data.totalCompleted++;
+            data.lastUpdate = today;
+
+            localStorage.setItem('cbt-dbt-exercises', JSON.stringify(data));
+
+            // Show completion message
+            const message = document.createElement('div');
+            message.className = 'completed-message show';
+            message.innerHTML = `<strong>✓ Great work!</strong> You've completed the ${exerciseName.replace(/-/g, ' ')} exercise. Progress saved!`;
+            document.querySelector('.container').appendChild(message);
+
+            setTimeout(() => {
+                message.remove();
+            }, 3000);
+
+            updateProgress();
+        }
+
+        function clearForm(prefix) {
+            document.querySelectorAll(`[id^="${prefix}-"]`).forEach(el => {
+                if (el.type === 'range') {
+                    el.value = el.getAttribute('value') || 50;
+                    el.dispatchEvent(new Event('input'));
+                } else {
+                    el.value = '';
+                }
+            });
+        }
+
+        function clearAllProgress() {
+            if (confirm('Are you sure? This will erase all completion history.')) {
+                localStorage.setItem('cbt-dbt-exercises', JSON.stringify({
+                    completed: [],
+                    totalCompleted: 0,
+                    lastUpdate: new Date().toLocaleDateString()
+                }));
+                updateProgress();
+            }
+        }
+
+        function updateProgress() {
+            const data = JSON.parse(localStorage.getItem('cbt-dbt-exercises'));
+            const today = new Date().toLocaleDateString();
+
+            // Count this week's exercises
+            const weekCount = data.completed.filter(item => item.date === today).length;
+
+            // Update displays
+            document.getElementById('progress-count').textContent = weekCount;
+            document.getElementById('total-count').textContent = data.totalCompleted;
+
+            // Update progress bar
+            const progressPercent = Math.min((weekCount / 5) * 100, 100);
+            document.getElementById('progress-bar-fill').style.width = progressPercent + '%';
+            document.getElementById('progress-bar-fill').textContent = Math.round(progressPercent) + '%';
+
+            // Update history
+            if (data.completed.length > 0) {
+                let historyHTML = '<ul style="list-style: none; padding: 0;">';
+                data.completed.slice().reverse().slice(0, 10).forEach(item => {
+                    const exerciseLabel = item.exercise.replace(/-/g, ' ').toUpperCase();
+                    historyHTML += `<li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb; color: #555;">✓ ${exerciseLabel} - ${item.date} at ${item.timestamp}</li>`;
+                });
+                historyHTML += '</ul>';
+                document.getElementById('completion-history').innerHTML = historyHTML;
+            }
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', updateProgress);
+    </script>
+</body>
+</html>
