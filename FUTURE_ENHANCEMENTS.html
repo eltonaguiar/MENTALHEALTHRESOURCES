@@ -320,6 +320,8 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="Global_Resources.html">🌍 Global Resources</a></li>
                 <li><a href="Research_Science.html">📊 Research & Science</a></li>
+                <li><a href="Sources_References.html">📚 Sources & References</a></li>
+                <li><a href="index.html#bibliotherapy">📖 Books & Reading</a></li>
                 <li><a href="Global_Resources.html#games">🎮 Games & Tools</a></li>
                 <li><a href="Global_Resources.html#countries">🌐 Local Resources</a></li>
                 <li><a href="index.html#resources">Guides</a></li>
@@ -402,6 +404,85 @@
                     <h4>⚠ Limited Accessibility Features</h4>
                     <p>Could benefit from screen reader enhancements, high contrast mode, and keyboard navigation improvements.</p>
                 </div>
+            </div>
+        </div>
+
+        <div class="enhancement-category">
+            <h2>🤖 ChatGPT Codex Experience</h2>
+            
+            <div class="enhancement-item">
+                <h3>Safety-Aware Conversational Guide <span class="priority-badge priority-high">HIGH PRIORITY</span></h3>
+                <p>Guardrailed assistant that detects crisis language and immediately escalates to on-page crisis CTAs (9-8-8, 911, Kids Help Phone) before offering any non-crisis tips.</p>
+                <ul>
+                    <li>Keyword and intent detection for self-harm, harm-to-others, and medical emergencies</li>
+                    <li>Locks responses to short, directive steps with clear crisis phone/text buttons</li>
+                    <li>Disables non-crisis suggestions when risk is detected</li>
+                    <li>Shows safety disclaimer and privacy notice with every crisis-triggered reply</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Conversational Resource Finder <span class="priority-badge priority-high">HIGH PRIORITY</span></h3>
+                <p>ChatGPT-powered routing that maps user intent to the right guide, hotline, or provincial resource (e.g., “night panic in BC” → 9-8-8 + BC lines + panic guide section).</p>
+                <ul>
+                    <li>Intent classification (symptom, audience, location, modality) with canned, consistent replies</li>
+                    <li>Links to specific anchors in existing guides (panic, depression, multimedia)</li>
+                    <li>Prefills crisis plan builder with chat inputs when safe</li>
+                    <li>Privacy-first: no account required; no PII persisted by default</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Contextual Search & Filters <span class="priority-badge priority-high">HIGH PRIORITY</span></h3>
+                <p>Site-wide search that surfaces resources by topic, modality, language, province, and cost, with evidence/type badges.</p>
+                <ul>
+                    <li>Filters: topic/condition, province/territory, language (EN/FR), cost (free/paid), modality (video/app/pdf)</li>
+                    <li>Badges: evidence type (CBT/DBT/mindfulness), audience (youth/LGBTQ+/Indigenous), free/paid</li>
+                    <li>Search highlights within Markdown/HTML guides</li>
+                    <li>Safe-search defaults that always show crisis options first</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Personalized Plan Builder <span class="priority-badge priority-medium">MEDIUM PRIORITY</span></h3>
+                <p>Step-by-step flow that assembles a printable/shareable plan from existing guides, with optional reminders.</p>
+                <ul>
+                    <li>Plan sections: crisis contacts, grounding steps, daily habits, media picks, local services</li>
+                    <li>Download/print and save-to-device “emergency card” output</li>
+                    <li>Optional email/PWA reminders (opt-in, minimal data)</li>
+                    <li>Offline-ready version for PWA users</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Self-Assessments & Routing <span class="priority-badge priority-high">HIGH PRIORITY</span></h3>
+                <p>On-device PHQ-9 and GAD-7 scoring with plain-language results and immediate routing to appropriate resources.</p>
+                <ul>
+                    <li>Scores never leave the device unless user opts in to save</li>
+                    <li>Result explanations with thresholds and “what to do next” buttons</li>
+                    <li>Auto-link to local services and crisis lines for high scores</li>
+                    <li>Accessibility: keyboard-only and screen reader friendly</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Multilingual & Reading-Level Toggles <span class="priority-badge priority-medium">MEDIUM PRIORITY</span></h3>
+                <p>Immediate English/French toggle plus a “simplified language” view for key pages and AI replies.</p>
+                <ul>
+                    <li>Content parity for EN/FR on landing, guides, and assistant responses</li>
+                    <li>Plain-language toggle that rewrites assistant answers for easier reading</li>
+                    <li>Audio read-aloud option for critical paths (emergency, assessments, plans)</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>PWA Emergency Card <span class="priority-badge priority-medium">MEDIUM PRIORITY</span></h3>
+                <p>Lightweight offline pack that pins crisis numbers, plan builder outputs, and key guides to the device via PWA.</p>
+                <ul>
+                    <li>Offline cache for crisis numbers and “start here” steps</li>
+                    <li>Homescreen shortcut for one-tap access</li>
+                    <li>Small footprint with periodic refresh when online</li>
+                </ul>
             </div>
         </div>
 
@@ -723,45 +804,44 @@
 
         <!-- Implementation Roadmap -->
         <div class="implementation-roadmap">
-            <h2 style="color: #1f2937; font-size: 2rem; margin-bottom: 30px;">🗺️ Implementation Roadmap</h2>
+            <h2 style="color: #1f2937; font-size: 2rem; margin-bottom: 30px;">Implementation Roadmap</h2>
 
             <div class="roadmap-phase">
                 <h3>Phase 1: Critical Enhancements (Q1-Q2 2026)</h3>
                 <ul style="color: #6b7280; line-height: 1.8;">
-                    <li>✅ Add comprehensive real-time chat resources directory (COMPLETED)</li>
-                    <li>🔲 Live chat widget integration with 9-8-8 and Kids Help Phone</li>
-                    <li>🔲 Real-time availability status for chat services</li>
-                    <li>🔲 Personalized crisis plan builder</li>
-                    <li>🔲 Multi-language support (French priority)</li>
-                    <li>🔲 PWA implementation for offline access</li>
+                    <li>Safety-aware conversational guide with crisis escalation</li>
+                    <li>ChatGPT resource finder that routes to the right guide/hotline</li>
+                    <li>Contextual search with topic/province/language/cost filters</li>
+                    <li>On-device PHQ-9 and GAD-7 with routing to care</li>
+                    <li>English/French toggle across landing and assistant replies</li>
+                    <li>PWA emergency card and offline crisis cache</li>
                 </ul>
             </div>
 
             <div class="roadmap-phase">
                 <h3>Phase 2: User Experience Improvements (Q3-Q4 2026)</h3>
                 <ul style="color: #6b7280; line-height: 1.8;">
-                    <li>🔲 User accounts and saved resources</li>
-                    <li>🔲 Mood and symptom tracking</li>
-                    <li>🔲 Self-assessment tools (PHQ-9, GAD-7)</li>
-                    <li>🔲 Enhanced accessibility features</li>
-                    <li>🔲 Interactive CBT exercises expansion</li>
-                    <li>🔲 Provincial resource deep-dive pages</li>
+                    <li>Personalized plan builder with printable/shareable cards</li>
+                    <li>User accounts (opt-in) for saved resources and history</li>
+                    <li>Mood and symptom tracking with check-in reminders</li>
+                    <li>Interactive CBT/DBT exercises and daily habit loops</li>
+                    <li>Accessibility preference panel (contrast, motion, font)</li>
+                    <li>Provincial resource deep-dive pages</li>
                 </ul>
             </div>
 
             <div class="roadmap-phase">
                 <h3>Phase 3: Advanced Features (2027+)</h3>
                 <ul style="color: #6b7280; line-height: 1.8;">
-                    <li>🔲 Native mobile apps (iOS & Android)</li>
-                    <li>🔲 Provider directory</li>
-                    <li>🔲 Virtual support group finder</li>
-                    <li>🔲 Video library expansion with search</li>
-                    <li>🔲 Analytics dashboard</li>
-                    <li>🔲 AI-powered resource recommendations</li>
+                    <li>Native mobile apps (iOS & Android)</li>
+                    <li>Provider directory and coverage filters</li>
+                    <li>Virtual support group finder</li>
+                    <li>Video library expansion with search and ratings</li>
+                    <li>Privacy-first analytics dashboard</li>
+                    <li>AI-powered personalized recommendations</li>
                 </ul>
             </div>
         </div>
-
         <!-- Footer -->
         <footer style="margin-top: 60px;">
             <div class="container">
