@@ -29,17 +29,14 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
-                <li><a href="Global_Resources.html">🌍 Global Resources</a></li>
-                <li><a href="Research_Science.html">🧪 Research & Science</a></li>
-                <li><a href="Sources_References.html">📚 Sources & References</a></li>
-                <li><a href="Bibliotherapy.html">📖 Books & Reading</a></li>
-                <li><a href="Assessments.html">📋 Assessments</a></li>
-                <li><a href="Crisis_Support.html">💬 Crisis Support</a></li>
-                <li><a href="Global_Resources.html#games">🎮 Games & Tools</a></li>
-                <li><a href="Global_Resources.html#countries">🏳️‍🌈 Local Resources</a></li>
-                <li><a href="#resources">Guides</a></li>
-                <li><a href="#multimedia">Videos & Tools</a></li>
-                <li><a href="#emergency">Emergency</a></li>
+                <li><a href="Global_Resources.html">🌍 Resources</a></li>
+                <li><a href="Assessments.html">📋 Assess</a></li>
+                <li><a href="Crisis_Support.html">💬 Crisis</a></li>
+                <li><a href="Plan_Builder.html">📋 Plan</a></li>
+                <li><a href="Mood_Tracker.html">📊 Track</a></li>
+                <li><a href="Accessibility.html">♿ Access</a></li>
+                <li><a href="Research_Science.html">🧪 Science</a></li>
+                <li><a href="Global_Resources.html#games">🎮 Games</a></li>
             </ul>
         </div>
     </nav>
@@ -350,7 +347,131 @@
         </div>
     </section>
 
-    <!-- Emergency Resources Section -->
+    <!-- Plan & Saved Resources -->
+    <section class="plan" id="plan">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <h2>📝 Personalized Plan & Saved Resources</h2>
+                    <p class="section-subtitle">Create a printable plan; optionally save favorites locally (no account required).</p>
+                </div>
+                <button class="pill-button ghost" id="plan-clear">Clear plan</button>
+            </div>
+            <div class="plan-grid">
+                <div class="plan-card">
+                    <h3>Plan Builder</h3>
+                    <div class="plan-field">
+                        <label for="plan-crisis">Crisis contacts</label>
+                        <textarea id="plan-crisis" rows="2" placeholder="9-8-8, 911, trusted person, clinician"></textarea>
+                    </div>
+                    <div class="plan-field">
+                        <label for="plan-grounding">Grounding steps</label>
+                        <textarea id="plan-grounding" rows="2" placeholder="5-4-3-2-1, box breathing, call a friend"></textarea>
+                    </div>
+                    <div class="plan-field">
+                        <label for="plan-habits">Daily habits</label>
+                        <textarea id="plan-habits" rows="2" placeholder="Walk 10 minutes, balanced meals, bedtime routine"></textarea>
+                    </div>
+                    <div class="plan-field">
+                        <label for="plan-notes">Notes</label>
+                        <textarea id="plan-notes" rows="2" placeholder="Add anything else"></textarea>
+                    </div>
+                    <div class="plan-actions">
+                        <button class="pill-button" id="plan-save">Save locally</button>
+                        <button class="pill-button ghost" id="plan-print">Print</button>
+                    </div>
+                </div>
+                <div class="plan-card">
+                    <h3>Saved Resources (opt-in)</h3>
+                    <p class="assistant-tip">Click "Save" on any search result to keep it here. Data stays in your browser.</p>
+                    <div class="saved-list" id="saved-resources"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mood, Tracking & CBT -->
+    <section class="mood" id="mood">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <h2>📈 Mood & Symptom Tracking</h2>
+                    <p class="section-subtitle">Log check-ins and CBT/DBT exercises; nothing leaves your device.</p>
+                </div>
+                <button class="pill-button ghost" id="mood-clear">Clear log</button>
+            </div>
+            <div class="mood-grid">
+                <div class="mood-card">
+                    <h3>Quick Check-in</h3>
+                    <label for="mood-score">Mood (1-5)</label>
+                    <input id="mood-score" type="number" min="1" max="5" value="3">
+                    <label for="mood-notes">Notes/Symptoms</label>
+                    <textarea id="mood-notes" rows="3" placeholder="Sleep, appetite, triggers..."></textarea>
+                    <button class="cta-button secondary" id="mood-save">Save check-in</button>
+                    <div class="mood-log" id="mood-log"></div>
+                </div>
+                <div class="mood-card">
+                    <h3>CBT/DBT Exercises</h3>
+                    <div class="plan-field">
+                        <label for="cbt-situation">Situation</label>
+                        <input id="cbt-situation" type="text" placeholder="What happened?">
+                    </div>
+                    <div class="plan-field">
+                        <label for="cbt-thought">Automatic thought</label>
+                        <input id="cbt-thought" type="text" placeholder="The thought that came up">
+                    </div>
+                    <div class="plan-field">
+                        <label for="cbt-evidence">Evidence for/against</label>
+                        <textarea id="cbt-evidence" rows="2"></textarea>
+                    </div>
+                    <div class="plan-field">
+                        <label for="cbt-reframe">Balanced reframe</label>
+                        <textarea id="cbt-reframe" rows="2"></textarea>
+                    </div>
+                    <button class="pill-button" id="cbt-save">Save exercise</button>
+                    <div class="cbt-log" id="cbt-log"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accessibility Preferences -->
+    <section class="access" id="accessibility">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <h2>♿ Accessibility Preferences</h2>
+                    <p class="section-subtitle">Toggle contrast, font size, and motion reduction. Saved in your browser.</p>
+                </div>
+            </div>
+            <div class="access-grid">
+                <label><input type="checkbox" id="pref-contrast"> High contrast</label>
+                <label><input type="checkbox" id="pref-motion"> Reduce motion</label>
+                <label><input type="checkbox" id="pref-font"> Large font</label>
+            </div>
+        </div>
+    </section>
+
+    <!-- Provincial Deep-Dive (starter) -->
+    <section class="provincial" id="provinces">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <h2>🗺️ Provincial Resources</h2>
+                    <p class="section-subtitle">Quick links to provincial supports; expand with local services over time.</p>
+                </div>
+            </div>
+            <div class="prov-grid">
+                <div class="prov-card"><h4>BC</h4><p>Crisis Centre BC: 1-800-784-2433</p><a href="https://crisiscentre.bc.ca/" target="_blank" class="card-link">Open</a></div>
+                <div class="prov-card"><h4>ON</h4><p>ConnexOntario: 1-866-531-2600</p><a href="https://www.connexontario.ca" target="_blank" class="card-link">Open</a></div>
+                <div class="prov-card"><h4>QC</h4><p>Suicide.ca: 1-866-277-3553</p><a href="https://suicide.ca" target="_blank" class="card-link">Open</a></div>
+                <div class="prov-card"><h4>AB</h4><p>811 Health Link (mental health navigation)</p><a href="https://www.ahs.ca/helpintoughtimes" target="_blank" class="card-link">Open</a></div>
+                <div class="prov-card"><h4>NS/NB/NL/PEI</h4><p>Wellness Together 1-866-585-0445</p><a href="https://www.wellnesstogether.ca" target="_blank" class="card-link">Open</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Resources Section -->    <!-- Emergency Resources Section -->
     <section class="emergency-section" id="emergency">
         <div class="container">
             <h2>🆘 Emergency & Crisis Support</h2>
@@ -453,6 +574,39 @@
                 <li>Reaching out is a sign of strength, not weakness</li>
                 <li>You deserve support and compassion (including from yourself)</li>
             </ul>
+        </div>
+    </section>
+
+    <!-- PWA Emergency Card -->
+    <section class="pwa-card" id="pwa">
+        <div class="container pwa-container">
+            <div>
+                <h2>📱 PWA Emergency Card</h2>
+                <p class="section-subtitle">Save crisis numbers, grounding steps, and your plan for offline access.</p>
+                <ul class="pwa-list">
+                    <li>One-tap add to home screen</li>
+                    <li>Offline cache of 9-8-8, Kids Help Phone, Hope for Wellness, and 911</li>
+                    <li>Stores recent assistant replies and plan notes locally</li>
+                </ul>
+                <div class="pwa-actions">
+                    <button id="pwa-install" class="cta-button primary">Install / Save Card</button>
+                    <button id="pwa-refresh" class="cta-button tertiary">Refresh Offline Cache</button>
+                </div>
+                <p class="assistant-footnote">No personal data leaves your device. Clear cache anytime from browser settings.</p>
+            </div>
+            <div class="pwa-preview">
+                <div class="pwa-preview-card">
+                    <p class="badge crisis-badge">Offline Ready</p>
+                    <h3>Crisis Card</h3>
+                    <ul>
+                        <li><strong>9-8-8</strong> Call/Text 24/7</li>
+                        <li><strong>1-833-456-4566</strong> Talk Suicide Canada</li>
+                        <li><strong>1-800-668-6868</strong> Kids Help Phone</li>
+                        <li><strong>911</strong> For immediate danger</li>
+                    </ul>
+                    <p class="assistant-tip">Grounding: 5 things you see, 4 touch, 3 hear, 2 smell, 1 taste.</p>
+                </div>
+            </div>
         </div>
     </section>
 

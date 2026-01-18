@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Plan Builder - Mental Health Resources</title>
+    <meta name="theme-color" content="#3b82f6">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .builder-header {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .builder-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .builder-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .builder-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .builder-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .builder-section h2 {
+            color: #1f2937;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-subtitle {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px;
+            background: #f9fafb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .checkbox-item:hover {
+            background: #f0f4ff;
+            border-color: #8b5cf6;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin-top: 4px;
+            cursor: pointer;
+            accent-color: #8b5cf6;
+        }
+
+        .checkbox-item label {
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .checkbox-item .item-title {
+            font-weight: 600;
+            color: #1f2937;
+            display: block;
+        }
+
+        .checkbox-item .item-desc {
+            font-size: 0.85rem;
+            color: #6b7280;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .frequency-selector {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .freq-btn {
+            padding: 10px 16px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            color: #6b7280;
+        }
+
+        .freq-btn.active {
+            background: #8b5cf6;
+            color: white;
+            border-color: #8b5cf6;
+        }
+
+        .freq-btn:hover {
+            border-color: #8b5cf6;
+        }
+
+        .time-input-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .time-input {
+            padding: 10px 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .time-input:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .plan-preview {
+            background: #f9fafb;
+            border: 2px dashed #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            min-height: 400px;
+        }
+
+        .plan-preview h3 {
+            color: #1f2937;
+            margin-top: 0;
+        }
+
+        .plan-card {
+            background: white;
+            border-left: 4px solid #8b5cf6;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .plan-card.empty {
+            text-align: center;
+            color: #9ca3af;
+            border-left: none;
+            background: #f3f4f6;
+        }
+
+        .card-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin: 0 0 8px 0;
+        }
+
+        .card-details {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin: 0;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            color: white;
+        }
+
+        .action-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .action-btn.secondary {
+            background: white;
+            color: #8b5cf6;
+            border: 2px solid #8b5cf6;
+        }
+
+        .action-btn.secondary:hover {
+            background: #f3f0ff;
+        }
+
+        .action-btn.tertiary {
+            background: #f3f4f6;
+            color: #1f2937;
+        }
+
+        .action-btn.tertiary:hover {
+            background: #e5e7eb;
+        }
+
+        .goal-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .goal-input:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .goal-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .goal-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            background: #f9fafb;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .goal-item button {
+            background: #f3f4f6;
+            border: none;
+            color: #dc2626;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .goal-item button:hover {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .builder-section:first-child,
+            .action-buttons,
+            .navbar,
+            .emergency-banner {
+                display: none;
+            }
+            .plan-preview {
+                border: 1px solid #e5e7eb;
+                page-break-inside: avoid;
+            }
+            .plan-card {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .builder-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .wellness-practices {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .practice-card {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f0f4ff 100%);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .practice-card:hover {
+            transform: translateY(-3px);
+            border-color: #8b5cf6;
+        }
+
+        .practice-card input[type="checkbox"] {
+            display: none;
+        }
+
+        .practice-card input[type="checkbox"]:checked + label {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .practice-card label {
+            display: block;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .share-section {
+            background: #ede9fe;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .share-section h4 {
+            color: #6d28d9;
+            margin-top: 0;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .share-btn.print {
+            background: #6d28d9;
+            color: white;
+        }
+
+        .share-btn.print:hover {
+            background: #5b21b6;
+        }
+
+        .share-btn.copy {
+            background: white;
+            color: #6d28d9;
+            border: 2px solid #6d28d9;
+        }
+
+        .share-btn.copy:hover {
+            background: #ede9fe;
+        }
+
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .copy-notification.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        <div class="emergency-content">
+            <h2>🚨 In Crisis? Get Help Now</h2>
+            <div class="emergency-links">
+                <a href="tel:18334564566" class="emergency-btn primary">☎️ Call 1-833-456-4566</a>
+                <a href="sms:741741" class="emergency-btn secondary">💬 Text HOME to 741741</a>
+                <a href="tel:911" class="emergency-btn tertiary">🆘 Emergency: 911</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>🌟 Mental Health Resources</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Global_Resources.html">🌍 Global Resources</a></li>
+                <li><a href="Assessments.html">📋 Assessments</a></li>
+                <li><a href="Plan_Builder.html">📋 Plan Builder</a></li>
+                <li><a href="Global_Resources.html#games">🎮 Games & Tools</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="builder-header">
+        <div class="builder-container">
+            <h1>📋 Personalized Recovery Plan Builder</h1>
+            <p>Create a customized wellness plan with printable cards you can share and track</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="builder-container">
+        <div class="builder-grid">
+            <!-- Plan Builder Section -->
+            <div class="builder-section">
+                <h2>🎯 Build Your Plan</h2>
+                <p class="section-subtitle">Answer questions to generate your personalized plan</p>
+
+                <!-- Current Situation -->
+                <div style="margin-bottom: 25px;">
+                    <h3 style="color: #1f2937; font-size: 1.1rem;">1. What brings you here today?</h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="situation" value="depression">
+                            <div>
+                                <span class="item-title">💙 Depression</span>
+                                <span class="item-desc">Persistent sadness, low energy, loss of interest</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="situation" value="anxiety">
+                            <div>
+                                <span class="item-title">😰 Anxiety</span>
+                                <span class="item-desc">Worry, stress, nervousness</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="situation" value="stress">
+                            <div>
+                                <span class="item-title">⚡ Stress</span>
+                                <span class="item-desc">Work, relationships, life pressures</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="situation" value="sleep">
+                            <div>
+                                <span class="item-title">😴 Sleep Issues</span>
+                                <span class="item-desc">Insomnia, restless sleep</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="situation" value="trauma">
+                            <div>
+                                <span class="item-title">🛡️ Trauma</span>
+                                <span class="item-desc">Past or recent difficult experiences</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="situation" value="wellness">
+                            <div>
+                                <span class="item-title">💚 Wellness</span>
+                                <span class="item-desc">Prevention and personal growth</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Preferences -->
+                <div style="margin-bottom: 25px;">
+                    <h3 style="color: #1f2937; font-size: 1.1rem;">2. What works best for you?</h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="preference" value="movement">
+                            <div>
+                                <span class="item-title">🏃 Movement & Exercise</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="preference" value="mindfulness">
+                            <div>
+                                <span class="item-title">🧘 Mindfulness & Meditation</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="preference" value="social">
+                            <div>
+                                <span class="item-title">👥 Social Connection</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="preference" value="creative">
+                            <div>
+                                <span class="item-title">🎨 Creative Expression</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="preference" value="structure">
+                            <div>
+                                <span class="item-title">📅 Structure & Routine</span>
+                            </div>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="preference" value="learning">
+                            <div>
+                                <span class="item-title">📚 Learning & Growth</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Goals -->
+                <div style="margin-bottom: 20px;">
+                    <h3 style="color: #1f2937; font-size: 1.1rem;">3. Your Personal Goals</h3>
+                    <div>
+                        <input type="text" class="goal-input" id="goal-input" placeholder="Add a goal (e.g., Exercise 3 times weekly)">
+                        <button class="action-btn secondary" onclick="addGoal()">+ Add Goal</button>
+                    </div>
+                    <ul class="goal-list" id="goal-list"></ul>
+                </div>
+
+                <!-- Time Commitment -->
+                <div style="margin-bottom: 20px;">
+                    <h3 style="color: #1f2937; font-size: 1.1rem;">4. Time Commitment</h3>
+                    <p class="section-subtitle">How much time can you dedicate daily?</p>
+                    <div class="frequency-selector">
+                        <button class="freq-btn active" onclick="selectTime(this, '15')">15 min</button>
+                        <button class="freq-btn" onclick="selectTime(this, '30')">30 min</button>
+                        <button class="freq-btn" onclick="selectTime(this, '60')">1 hour</button>
+                        <button class="freq-btn" onclick="selectTime(this, 'flexible')">Flexible</button>
+                    </div>
+                    <input type="hidden" id="time-commitment" value="15">
+                </div>
+
+                <button class="action-btn primary" onclick="generatePlan()" style="width: 100%; margin-top: 20px;">Generate My Plan</button>
+            </div>
+
+            <!-- Plan Preview Section -->
+            <div class="plan-preview" id="plan-preview">
+                <h3>📄 Your Personalized Plan</h3>
+                <p id="plan-empty-state">Your plan will appear here once you answer the questions above.</p>
+                <div id="plan-output"></div>
+
+                <!-- Share & Export Section -->
+                <div id="share-section" class="share-section" style="display: none;">
+                    <h4>📤 Share & Print</h4>
+                    <div class="share-buttons">
+                        <button class="share-btn print" onclick="printPlan()">🖨️ Print Plan</button>
+                        <button class="share-btn copy" onclick="copyPlanToClipboard()">📋 Copy Plan</button>
+                        <a href="mailto:?subject=My%20Recovery%20Plan&body=Check%20out%20my%20personalized%20recovery%20plan%20from%20Mental%20Health%20Resources" class="share-btn" style="background: #3b82f6; color: white; text-decoration: none;">📧 Email Plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copy Notification -->
+    <div id="copy-notification" class="copy-notification">✓ Plan copied to clipboard!</div>
+
+    <script>
+        let currentPlan = null;
+        let goals = [];
+
+        function addGoal() {
+            const input = document.getElementById('goal-input');
+            const goal = input.value.trim();
+            if (!goal) {
+                alert('Please enter a goal');
+                return;
+            }
+            goals.push(goal);
+            input.value = '';
+            renderGoals();
+        }
+
+        function removeGoal(index) {
+            goals.splice(index, 1);
+            renderGoals();
+        }
+
+        function renderGoals() {
+            const list = document.getElementById('goal-list');
+            list.innerHTML = goals.map((goal, i) => `
+                <li class="goal-item">
+                    <span>${goal}</span>
+                    <button onclick="removeGoal(${i})">Remove</button>
+                </li>
+            `).join('');
+        }
+
+        function selectTime(btn, time) {
+            document.querySelectorAll('.freq-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('time-commitment').value = time;
+        }
+
+        function generatePlan() {
+            const situations = Array.from(document.querySelectorAll('input[name="situation"]:checked')).map(cb => cb.value);
+            const preferences = Array.from(document.querySelectorAll('input[name="preference"]:checked')).map(cb => cb.value);
+            const time = document.getElementById('time-commitment').value;
+
+            if (situations.length === 0 || preferences.length === 0) {
+                alert('Please select at least one situation and one preference');
+                return;
+            }
+
+            const planTitle = `Recovery Plan: ${situations.map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(', ')}`;
+            
+            let planContent = `<h3 style="color: #1f2937; margin-top: 0;">${planTitle}</h3>`;
+            
+            // Daily Actions
+            planContent += `
+                <div class="plan-card">
+                    <h4 class="card-title">Daily Actions</h4>
+                    <p class="card-details">Time commitment: ${time === 'flexible' ? 'Flexible' : time + ' minutes'} daily</p>
+                    <ul style="margin: 10px 0; padding-left: 20px;">
+            `;
+            
+            if (preferences.includes('movement')) {
+                planContent += `<li>Movement/Exercise session</li>`;
+            }
+            if (preferences.includes('mindfulness')) {
+                planContent += `<li>Mindfulness or breathing exercise</li>`;
+            }
+            if (preferences.includes('creative')) {
+                planContent += `<li>Creative outlet time</li>`;
+            }
+            
+            planContent += `</ul></div>`;
+
+            // Weekly Goals
+            planContent += `
+                <div class="plan-card">
+                    <h4 class="card-title">Weekly Milestones</h4>
+                    <ul style="margin: 10px 0; padding-left: 20px;">
+            `;
+            
+            if (preferences.includes('social')) {
+                planContent += `<li>Connect with 1-2 supportive people</li>`;
+            }
+            if (preferences.includes('learning')) {
+                planContent += `<li>Learn one new wellness technique</li>`;
+            }
+            if (preferences.includes('structure')) {
+                planContent += `<li>Maintain consistent routine</li>`;
+            }
+            if (goals.length > 0) {
+                goals.forEach(goal => {
+                    planContent += `<li>${goal}</li>`;
+                });
+            }
+            
+            planContent += `</ul></div>`;
+
+            // Crisis Resources
+            planContent += `
+                <div class="plan-card" style="border-left-color: #dc2626;">
+                    <h4 class="card-title">🚨 Crisis Resources (Always Available)</h4>
+                    <p class="card-details">Call 9-8-8 or text 741741</p>
+                </div>
+            `;
+
+            document.getElementById('plan-empty-state').style.display = 'none';
+            document.getElementById('plan-output').innerHTML = planContent;
+            document.getElementById('share-section').style.display = 'block';
+            currentPlan = planContent;
+
+            // Scroll to plan
+            document.getElementById('plan-preview').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function printPlan() {
+            window.print();
+        }
+
+        function copyPlanToClipboard() {
+            if (!currentPlan) return;
+            const text = document.getElementById('plan-output').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const notification = document.getElementById('copy-notification');
+                notification.classList.add('show');
+                setTimeout(() => notification.classList.remove('show'), 3000);
+            });
+        }
+    </script>
+</body>
+</html>
