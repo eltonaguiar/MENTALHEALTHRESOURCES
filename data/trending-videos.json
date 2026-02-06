@@ -1,0 +1,101 @@
+{
+  "lastUpdated": "2026-02-05T12:00:00Z",
+  "videos": [
+    {
+      "id": "1",
+      "title": "How to Stop Overthinking Everything",
+      "channel": "HealthyGamerGG",
+      "channelUrl": "https://www.youtube.com/@HealthyGamerGG",
+      "videoUrl": "https://www.youtube.com/watch?v=example1",
+      "thumbnail": "https://i.ytimg.com/vi/example1/mqdefault.jpg",
+      "views": "2.5M",
+      "duration": "18:42",
+      "uploadDate": "2026-01-28",
+      "category": "anxiety"
+    },
+    {
+      "id": "2",
+      "title": "The Science of Making & Breaking Habits",
+      "channel": "Andrew Huberman",
+      "channelUrl": "https://www.youtube.com/@hubaboratoryermanlab",
+      "videoUrl": "https://www.youtube.com/watch?v=example2",
+      "thumbnail": "https://i.ytimg.com/vi/example2/mqdefault.jpg",
+      "views": "4.1M",
+      "duration": "2:14:33",
+      "uploadDate": "2026-01-25",
+      "category": "neuroscience"
+    },
+    {
+      "id": "3",
+      "title": "Why You Feel Empty Inside",
+      "channel": "HealthyGamerGG",
+      "channelUrl": "https://www.youtube.com/@HealthyGamerGG",
+      "videoUrl": "https://www.youtube.com/watch?v=example3",
+      "thumbnail": "https://i.ytimg.com/vi/example3/mqdefault.jpg",
+      "views": "1.8M",
+      "duration": "22:15",
+      "uploadDate": "2026-01-22",
+      "category": "depression"
+    },
+    {
+      "id": "4",
+      "title": "How to Rewire Your Brain for Happiness",
+      "channel": "Therapy in a Nutshell",
+      "channelUrl": "https://www.youtube.com/@TherapyinaNutshell",
+      "videoUrl": "https://www.youtube.com/watch?v=example4",
+      "thumbnail": "https://i.ytimg.com/vi/example4/mqdefault.jpg",
+      "views": "890K",
+      "duration": "12:08",
+      "uploadDate": "2026-01-20",
+      "category": "happiness"
+    },
+    {
+      "id": "5",
+      "title": "Tools for Managing Stress & Anxiety",
+      "channel": "Andrew Huberman",
+      "channelUrl": "https://www.youtube.com/@hubaboratoryermanlab",
+      "videoUrl": "https://www.youtube.com/watch?v=example5",
+      "thumbnail": "https://i.ytimg.com/vi/example5/mqdefault.jpg",
+      "views": "3.2M",
+      "duration": "1:45:22",
+      "uploadDate": "2026-01-18",
+      "category": "anxiety"
+    },
+    {
+      "id": "6",
+      "title": "The Attachment Style That Destroys Relationships",
+      "channel": "HealthyGamerGG",
+      "channelUrl": "https://www.youtube.com/@HealthyGamerGG",
+      "videoUrl": "https://www.youtube.com/watch?v=example6",
+      "thumbnail": "https://i.ytimg.com/vi/example6/mqdefault.jpg",
+      "views": "1.2M",
+      "duration": "25:33",
+      "uploadDate": "2026-01-15",
+      "category": "relationships"
+    },
+    {
+      "id": "7",
+      "title": "5 Ways to Regulate Your Nervous System",
+      "channel": "Therapy in a Nutshell",
+      "channelUrl": "https://www.youtube.com/@TherapyinaNutshell",
+      "videoUrl": "https://www.youtube.com/watch?v=example7",
+      "thumbnail": "https://i.ytimg.com/vi/example7/mqdefault.jpg",
+      "views": "1.5M",
+      "duration": "14:22",
+      "uploadDate": "2026-01-12",
+      "category": "regulation"
+    },
+    {
+      "id": "8",
+      "title": "How Childhood Trauma Affects Your Brain",
+      "channel": "HealthyGamerGG",
+      "channelUrl": "https://www.youtube.com/@HealthyGamerGG",
+      "videoUrl": "https://www.youtube.com/watch?v=example8",
+      "thumbnail": "https://i.ytimg.com/vi/example8/mqdefault.jpg",
+      "views": "2.1M",
+      "duration": "28:45",
+      "uploadDate": "2026-01-10",
+      "category": "trauma"
+    }
+  ]
+}

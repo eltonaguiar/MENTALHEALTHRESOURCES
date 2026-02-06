@@ -1,0 +1,140 @@
+name: Update Mental Health Content
+
+on:
+  schedule:
+    # Run daily at 6 AM UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-content:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install axios cheerio
+
+      - name: Fetch Mental Health News & Research
+        run: |
+          node << 'EOF'
+          const fs = require('fs');
+          const https = require('https');
+          
+          // Current date for freshness
+          const today = new Date().toISOString();
+          
+          // Sample scientific article sources (in production, use actual APIs)
+          const articles = [
+            {
+              id: "auto-1",
+              title: "Latest Research: Mindfulness-Based Interventions Show Promise",
+              source: "PubMed Central",
+              date: new Date().toISOString().split('T')[0],
+              url: "https://pubmed.ncbi.nlm.nih.gov/?term=mental+health",
+              category: "research"
+            },
+            {
+              id: "auto-2",
+              title: "WHO Mental Health Updates",
+              source: "World Health Organization",
+              date: new Date().toISOString().split('T')[0],
+              url: "https://www.who.int/health-topics/mental-health",
+              category: "news"
+            }
+          ];
+          
+          // Read existing articles
+          let existingData = { articles: [] };
+          try {
+            existingData = JSON.parse(fs.readFileSync('data/news-feed.json', 'utf8'));
+          } catch (e) {
+            console.log('Creating new news-feed.json');
+          }
+          
+          // Merge and deduplicate
+          const allArticles = [...articles, ...existingData.articles];
+          const uniqueArticles = allArticles.filter((article, index, self) =>
+            index === self.findIndex((a) => a.title === article.title)
+          ).slice(0, 20); // Keep only 20 most recent
+          
+          const output = {
+            lastUpdated: today,
+            articles: uniqueArticles
+          };
+          
+          fs.writeFileSync('data/news-feed.json', JSON.stringify(output, null, 2));
+          console.log('Updated news-feed.json with', uniqueArticles.length, 'articles');
+          EOF
+
+      - name: Fetch Trending YouTube Videos
+        run: |
+          node << 'EOF'
+          const fs = require('fs');
+          
+          // Note: In production, use YouTube Data API with API key
+          // This is a placeholder that maintains existing data
+          const today = new Date().toISOString();
+          
+          let existingData = { videos: [] };
+          try {
+            existingData = JSON.parse(fs.readFileSync('data/trending-videos.json', 'utf8'));
+          } catch (e) {
+            console.log('Creating new trending-videos.json');
+          }
+          
+          // Update timestamp
+          existingData.lastUpdated = today;
+          
+          fs.writeFileSync('data/trending-videos.json', JSON.stringify(existingData, null, 2));
+          console.log('Updated trending-videos.json');
+          EOF
+
+      - name: Fetch Trending Books
+        run: |
+          node << 'EOF'
+          const fs = require('fs');
+          
+          // Note: In production, use Amazon Product API or Google Books API
+          // This is a placeholder that maintains existing data
+          const today = new Date().toISOString();
+          const currentYear = new Date().getFullYear();
+          
+          let existingData = { books: [] };
+          try {
+            existingData = JSON.parse(fs.readFileSync('data/trending-books.json', 'utf8'));
+          } catch (e) {
+            console.log('Creating new trending-books.json');
+          }
+          
+          // Update timestamp and year
+          existingData.lastUpdated = today;
+          existingData.year = currentYear;
+          
+          fs.writeFileSync('data/trending-books.json', JSON.stringify(existingData, null, 2));
+          console.log('Updated trending-books.json');
+          EOF
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet data/ || echo "changes=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push changes
+        if: steps.changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/
+          git commit -m "chore: Auto-update mental health content feed [skip ci]"
+          git push

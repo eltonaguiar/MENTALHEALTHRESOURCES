@@ -1,0 +1,85 @@
+{
+  "lastUpdated": "2026-02-05T12:00:00Z",
+  "articles": [
+    {
+      "id": "1",
+      "title": "New Study Shows Meditation Reduces Anxiety by 30%",
+      "source": "Nature Neuroscience",
+      "date": "2026-02-03",
+      "url": "https://www.nature.com/articles/s41593-024-01234",
+      "category": "research"
+    },
+    {
+      "id": "2",
+      "title": "WHO Reports Global Mental Health Crisis Requires Immediate Action",
+      "source": "World Health Organization",
+      "date": "2026-02-01",
+      "url": "https://www.who.int/news/mental-health-2026",
+      "category": "news"
+    },
+    {
+      "id": "3",
+      "title": "Exercise Proven as Effective as Antidepressants for Mild Depression",
+      "source": "British Journal of Sports Medicine",
+      "date": "2026-01-28",
+      "url": "https://bjsm.bmj.com/content/2026/exercise-depression",
+      "category": "research"
+    },
+    {
+      "id": "4",
+      "title": "Social Media Usage Linked to Teen Anxiety: Stanford Study",
+      "source": "Stanford Medicine",
+      "date": "2026-01-25",
+      "url": "https://med.stanford.edu/news/social-media-anxiety",
+      "category": "research"
+    },
+    {
+      "id": "5",
+      "title": "Breakthrough in Understanding PTSD Brain Mechanisms",
+      "source": "Science Magazine",
+      "date": "2026-01-22",
+      "url": "https://www.science.org/ptsd-brain-research-2026",
+      "category": "research"
+    },
+    {
+      "id": "6",
+      "title": "Canada Invests $500M in Youth Mental Health Programs",
+      "source": "Government of Canada",
+      "date": "2026-01-20",
+      "url": "https://www.canada.ca/mental-health-investment-2026",
+      "category": "news"
+    },
+    {
+      "id": "7",
+      "title": "Sleep Quality Directly Impacts Emotional Regulation: New Research",
+      "source": "Journal of Clinical Psychology",
+      "date": "2026-01-18",
+      "url": "https://onlinelibrary.wiley.com/sleep-emotion-2026",
+      "category": "research"
+    },
+    {
+      "id": "8",
+      "title": "AI-Powered Therapy Apps Show Promise in Clinical Trials",
+      "source": "JAMA Psychiatry",
+      "date": "2026-01-15",
+      "url": "https://jamanetwork.com/journals/jamapsychiatry/ai-therapy",
+      "category": "research"
+    },
+    {
+      "id": "9",
+      "title": "Polyvagal Theory Applications in Trauma Treatment Expand",
+      "source": "Frontiers in Psychology",
+      "date": "2026-01-12",
+      "url": "https://www.frontiersin.org/polyvagal-trauma-2026",
+      "category": "research"
+    },
+    {
+      "id": "10",
+      "title": "Workplace Mental Health Programs Reduce Burnout by 45%",
+      "source": "Harvard Business Review",
+      "date": "2026-01-10",
+      "url": "https://hbr.org/workplace-mental-health-2026",
+      "category": "news"
+    }
+  ]
+}

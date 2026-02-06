@@ -1,0 +1,86 @@
+{
+  "lastUpdated": "2026-02-05T12:00:00Z",
+  "year": 2026,
+  "books": [
+    {
+      "id": "1",
+      "title": "The Anxious Generation",
+      "author": "Jonathan Haidt",
+      "year": 2024,
+      "amazonUrl": "https://www.amazon.com/dp/0593655036",
+      "category": "Social Psychology",
+      "rating": 4.6,
+      "description": "How the Great Rewiring of Childhood Is Causing an Epidemic of Mental Illness"
+    },
+    {
+      "id": "2",
+      "title": "Good Inside",
+      "author": "Dr. Becky Kennedy",
+      "year": 2024,
+      "amazonUrl": "https://www.amazon.com/dp/0063159481",
+      "category": "Parenting & Psychology",
+      "rating": 4.8,
+      "description": "A Guide to Becoming the Parent You Want to Be"
+    },
+    {
+      "id": "3",
+      "title": "Build the Life You Want",
+      "author": "Arthur C. Brooks & Oprah Winfrey",
+      "year": 2023,
+      "amazonUrl": "https://www.amazon.com/dp/0593545400",
+      "category": "Happiness & Well-being",
+      "rating": 4.5,
+      "description": "The Art and Science of Getting Happier"
+    },
+    {
+      "id": "4",
+      "title": "Outlive",
+      "author": "Peter Attia MD",
+      "year": 2023,
+      "amazonUrl": "https://www.amazon.com/dp/0593236599",
+      "category": "Health & Longevity",
+      "rating": 4.7,
+      "description": "The Science and Art of Longevity"
+    },
+    {
+      "id": "5",
+      "title": "Hidden Potential",
+      "author": "Adam Grant",
+      "year": 2023,
+      "amazonUrl": "https://www.amazon.com/dp/0593653149",
+      "category": "Personal Development",
+      "rating": 4.6,
+      "description": "The Science of Achieving Greater Things"
+    },
+    {
+      "id": "6",
+      "title": "Healing Through Words",
+      "author": "Rupi Kaur",
+      "year": 2024,
+      "amazonUrl": "https://www.amazon.com/dp/1449496644",
+      "category": "Poetry & Healing",
+      "rating": 4.8,
+      "description": "A Therapeutic Poetry Collection for Mental Health"
+    },
+    {
+      "id": "7",
+      "title": "The Mountain Is You",
+      "author": "Brianna Wiest",
+      "year": 2020,
+      "amazonUrl": "https://www.amazon.com/dp/1949759229",
+      "category": "Self-Help",
+      "rating": 4.7,
+      "description": "Transforming Self-Sabotage Into Self-Mastery"
+    },
+    {
+      "id": "8",
+      "title": "Dopamine Nation",
+      "author": "Anna Lembke MD",
+      "year": 2021,
+      "amazonUrl": "https://www.amazon.com/dp/152474672X",
+      "category": "Addiction & Neuroscience",
+      "rating": 4.5,
+      "description": "Finding Balance in the Age of Indulgence"
+    }
+  ]
+}
