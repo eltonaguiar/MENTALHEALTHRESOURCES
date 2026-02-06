@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Settings - Mental Health Resources</title>
+    <meta name="theme-color" content="#3b82f6">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --text-size: 1rem;
+            --line-height: 1.5;
+            --letter-spacing: 0;
+            --reduced-motion: 0;
+        }
+
+        body.text-lg {
+            --text-size: 1.25rem;
+        }
+
+        body.text-xl {
+            --text-size: 1.5rem;
+        }
+
+        body.text-xxl {
+            --text-size: 1.75rem;
+        }
+
+        body.increased-spacing {
+            --letter-spacing: 0.05em;
+            --line-height: 1.8;
+        }
+
+        body.high-contrast {
+            --bg-color: #000;
+            --text-color: #fff;
+            --border-color: #fff;
+        }
+
+        body.dyslexia-font {
+            font-family: 'Comic Sans MS', 'Trebuchet MS', cursive, sans-serif !important;
+        }
+
+        body.reduced-motion * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+
+        * {
+            font-size: var(--text-size);
+            line-height: var(--line-height);
+            letter-spacing: var(--letter-spacing);
+        }
+
+        .access-header {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .access-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .access-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .settings-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .settings-card h2 {
+            color: #1f2937;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+        }
+
+        .setting-group {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .setting-group:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .setting-title {
+            color: #1f2937;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .setting-desc {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .slider-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .slider {
+            flex: 1;
+            height: 8px;
+            border-radius: 5px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #10b981;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #10b981;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .slider::-moz-range-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+
+        .slider-label {
+            color: #6b7280;
+            font-weight: 500;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .toggle-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .toggle-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #f9fafb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .toggle-item:hover {
+            background: #f0fdf4;
+            border-color: #10b981;
+        }
+
+        .toggle-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #10b981;
+        }
+
+        .toggle-item label {
+            cursor: pointer;
+            margin: 0;
+            flex: 1;
+        }
+
+        .color-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 12px;
+        }
+
+        .color-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .color-option input[type="radio"] {
+            display: none;
+        }
+
+        .color-option label {
+            display: block;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.2s ease;
+            margin: 0;
+        }
+
+        .color-option input[type="radio"]:checked + label {
+            border-color: #1f2937;
+            transform: scale(1.05);
+        }
+
+        .color-light label {
+            background: white;
+            color: #1f2937;
+            border: 2px solid #e5e7eb;
+        }
+
+        .color-dark label {
+            background: #1f2937;
+            color: white;
+        }
+
+        .color-high label {
+            background: #000;
+            color: #fff;
+        }
+
+        .color-blue label {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .preview-section {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .preview-section h3 {
+            color: #1f2937;
+            margin-top: 0;
+        }
+
+        .preview-text {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #10b981;
+        }
+
+        .preview-text h4 {
+            color: #1f2937;
+            margin: 0 0 10px 0;
+        }
+
+        .preview-text p {
+            color: #6b7280;
+            margin: 0;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .action-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .action-btn.secondary {
+            background: white;
+            color: #10b981;
+            border: 2px solid #10b981;
+        }
+
+        .action-btn.secondary:hover {
+            background: #f0fdf4;
+        }
+
+        .keyboard-help {
+            background: #efe6ff;
+            border-left: 4px solid #a855f7;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .keyboard-help h3 {
+            color: #7e22ce;
+            margin-top: 0;
+        }
+
+        .keyboard-help ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .keyboard-help li {
+            padding: 8px 0;
+            color: #6b7280;
+        }
+
+        .keyboard-help code {
+            background: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: 600;
+            color: #7e22ce;
+        }
+
+        @media (max-width: 768px) {
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .access-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        <div class="emergency-content">
+            <h2>🚨 In Crisis? Get Help Now</h2>
+            <div class="emergency-links">
+                <a href="tel:18334564566" class="emergency-btn primary">☎️ Call 1-833-456-4566</a>
+                <a href="sms:741741" class="emergency-btn secondary">💬 Text HOME to 741741</a>
+                <a href="tel:911" class="emergency-btn tertiary">🆘 Emergency: 911</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>🌟 Mental Health Resources</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Global_Resources.html">🌍 Global Resources</a></li>
+                <li><a href="Assessments.html">📋 Assessments</a></li>
+                <li><a href="Accessibility.html">♿ Accessibility</a></li>
+                <li><a href="Global_Resources.html#games">🎮 Games & Tools</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="access-header">
+        <div class="access-container">
+            <h1>♿ Accessibility Preferences</h1>
+            <p>Customize your experience to fit your needs</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="access-container">
+        <!-- Text Size Settings -->
+        <div class="settings-grid">
+            <div class="settings-card">
+                <h2>📝 Text Size</h2>
+
+                <div class="setting-group">
+                    <div class="setting-title">Font Size</div>
+                    <div class="setting-desc">Adjust the size of all text on the page</div>
+                    <div class="slider-group">
+                        <span class="slider-label">Aa</span>
+                        <input type="range" id="text-size-slider" class="slider" min="100" max="200" value="100">
+                        <span class="slider-label">Aa+</span>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <div class="setting-title">Line Height</div>
+                    <div class="setting-desc">Increase space between lines</div>
+                    <div class="slider-group">
+                        <span class="slider-label">Normal</span>
+                        <input type="range" id="line-height-slider" class="slider" min="150" max="200" value="150" step="10">
+                        <span class="slider-label">Wide</span>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <div class="setting-title">Letter Spacing</div>
+                    <div class="setting-desc">More space between letters for readability</div>
+                    <label class="toggle-item">
+                        <input type="checkbox" id="letter-spacing-toggle">
+                        <label for="letter-spacing-toggle">Increase letter spacing</label>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Color & Contrast Settings -->
+            <div class="settings-card">
+                <h2>🎨 Colors & Contrast</h2>
+
+                <div class="setting-group">
+                    <div class="setting-title">Color Scheme</div>
+                    <div class="setting-desc">Choose your preferred color scheme</div>
+                    <div class="color-options">
+                        <div class="color-option color-light">
+                            <input type="radio" id="color-light" name="color-scheme" value="light" checked>
+                            <label for="color-light">Light</label>
+                        </div>
+                        <div class="color-option color-dark">
+                            <input type="radio" id="color-dark" name="color-scheme" value="dark">
+                            <label for="color-dark">Dark</label>
+                        </div>
+                        <div class="color-option color-high">
+                            <input type="radio" id="color-high" name="color-scheme" value="high">
+                            <label for="color-high">High Contrast</label>
+                        </div>
+                        <div class="color-option color-blue">
+                            <input type="radio" id="color-blue" name="color-scheme" value="blue">
+                            <label for="color-blue">Blue Light Filter</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Motion & Focus Settings -->
+            <div class="settings-card">
+                <h2>⚡ Motion & Animation</h2>
+
+                <div class="setting-group">
+                    <div class="setting-title">Motion Preferences</div>
+                    <div class="setting-desc">Disable animations for a calmer experience</div>
+                    <label class="toggle-item">
+                        <input type="checkbox" id="reduced-motion-toggle">
+                        <label for="reduced-motion-toggle">Reduce animations & transitions</label>
+                    </label>
+                </div>
+
+                <div class="setting-group">
+                    <div class="setting-title">Focus Visibility</div>
+                    <div class="setting-desc">Make focus indicators more visible</div>
+                    <label class="toggle-item">
+                        <input type="checkbox" id="focus-visibility-toggle">
+                        <label for="focus-visibility-toggle">Enhance focus outlines</label>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Font & Dyslexia -->
+            <div class="settings-card">
+                <h2>🔤 Font & Reading</h2>
+
+                <div class="setting-group">
+                    <div class="setting-title">Dyslexia-Friendly Font</div>
+                    <div class="setting-desc">Use a font designed for easier reading</div>
+                    <label class="toggle-item">
+                        <input type="checkbox" id="dyslexia-font-toggle">
+                        <label for="dyslexia-font-toggle">Enable dyslexia-friendly font</label>
+                    </label>
+                </div>
+
+                <div class="setting-group">
+                    <div class="setting-title">Reading Guide</div>
+                    <div class="setting-desc">Show a highlight guide as you read</div>
+                    <label class="toggle-item">
+                        <input type="checkbox" id="reading-guide-toggle">
+                        <label for="reading-guide-toggle">Enable reading guide</label>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="preview-section">
+            <h3>👁️ Preview Your Settings</h3>
+            <div class="preview-text">
+                <h4>Accessibility Preview</h4>
+                <p>This is how text will appear with your current settings. Adjust the options above to find what works best for you. Our goal is to make mental health resources accessible to everyone.</p>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="action-btn primary" onclick="savePreferences()">💾 Save Preferences</button>
+            <button class="action-btn secondary" onclick="resetPreferences()">↺ Reset to Default</button>
+        </div>
+
+        <!-- Keyboard Navigation Help -->
+        <div class="keyboard-help">
+            <h3>⌨️ Keyboard Navigation</h3>
+            <ul>
+                <li><code>Tab</code> - Move to next control</li>
+                <li><code>Shift + Tab</code> - Move to previous control</li>
+                <li><code>Space</code> - Activate buttons and checkboxes</li>
+                <li><code>Arrow Keys</code> - Adjust sliders</li>
+                <li><code>Enter</code> - Activate links and buttons</li>
+                <li><code>Esc</code> - Close dialogs</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Load saved preferences
+        function loadPreferences() {
+            const saved = localStorage.getItem('a11y-preferences');
+            if (saved) {
+                const prefs = JSON.parse(saved);
+                applyPreferences(prefs);
+                
+                document.getElementById('text-size-slider').value = prefs.textSize || 100;
+                document.getElementById('line-height-slider').value = prefs.lineHeight || 150;
+                document.getElementById('letter-spacing-toggle').checked = prefs.letterSpacing || false;
+                document.getElementById('reduced-motion-toggle').checked = prefs.reducedMotion || false;
+                document.getElementById('focus-visibility-toggle').checked = prefs.focusVisibility || false;
+                document.getElementById('dyslexia-font-toggle').checked = prefs.dyslexiaFont || false;
+                
+                const colorScheme = document.querySelector(`input[name="color-scheme"][value="${prefs.colorScheme || 'light'}"]`);
+                if (colorScheme) colorScheme.checked = true;
+            }
+        }
+
+        function applyPreferences(prefs) {
+            const root = document.documentElement;
+            const textSize = (prefs.textSize || 100) / 100;
+            root.style.setProperty('--text-size', (1 * textSize) + 'rem');
+            root.style.setProperty('--line-height', (prefs.lineHeight || 150) / 100);
+            root.style.setProperty('--letter-spacing', prefs.letterSpacing ? '0.05em' : '0');
+            
+            document.body.classList.toggle('reduced-motion', prefs.reducedMotion);
+            document.body.classList.toggle('dyslexia-font', prefs.dyslexiaFont);
+            
+            if (prefs.colorScheme === 'dark') {
+                document.body.style.background = '#1f2937';
+                document.body.style.color = '#f9fafb';
+            } else if (prefs.colorScheme === 'high') {
+                document.body.style.background = '#000';
+                document.body.style.color = '#fff';
+            } else if (prefs.colorScheme === 'blue') {
+                document.body.style.background = '#f0f9ff';
+                document.body.style.color = '#1f2937';
+            } else {
+                document.body.style.background = '';
+                document.body.style.color = '';
+            }
+
+            if (prefs.focusVisibility) {
+                document.body.style.setProperty('--focus-outline', '3px solid #10b981');
+            }
+        }
+
+        function savePreferences() {
+            const prefs = {
+                textSize: document.getElementById('text-size-slider').value,
+                lineHeight: document.getElementById('line-height-slider').value,
+                letterSpacing: document.getElementById('letter-spacing-toggle').checked,
+                reducedMotion: document.getElementById('reduced-motion-toggle').checked,
+                focusVisibility: document.getElementById('focus-visibility-toggle').checked,
+                dyslexiaFont: document.getElementById('dyslexia-font-toggle').checked,
+                colorScheme: document.querySelector('input[name="color-scheme"]:checked').value
+            };
+            
+            localStorage.setItem('a11y-preferences', JSON.stringify(prefs));
+            alert('✓ Preferences saved! They will persist across your visits.');
+        }
+
+        function resetPreferences() {
+            localStorage.removeItem('a11y-preferences');
+            document.documentElement.style.cssText = '';
+            document.body.classList.remove('reduced-motion', 'dyslexia-font');
+            location.reload();
+        }
+
+        // Event listeners
+        document.getElementById('text-size-slider').addEventListener('change', () => {
+            const value = document.getElementById('text-size-slider').value;
+            document.documentElement.style.setProperty('--text-size', (1 * value / 100) + 'rem');
+        });
+
+        document.getElementById('line-height-slider').addEventListener('change', () => {
+            const value = document.getElementById('line-height-slider').value;
+            document.documentElement.style.setProperty('--line-height', value / 100);
+        });
+
+        document.getElementById('letter-spacing-toggle').addEventListener('change', (e) => {
+            document.documentElement.style.setProperty('--letter-spacing', e.target.checked ? '0.05em' : '0');
+        });
+
+        document.getElementById('reduced-motion-toggle').addEventListener('change', (e) => {
+            document.body.classList.toggle('reduced-motion', e.target.checked);
+        });
+
+        document.getElementById('dyslexia-font-toggle').addEventListener('change', (e) => {
+            document.body.classList.toggle('dyslexia-font', e.target.checked);
+        });
+
+        document.querySelectorAll('input[name="color-scheme"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const scheme = e.target.value;
+                if (scheme === 'dark') {
+                    document.body.style.background = '#1f2937';
+                    document.body.style.color = '#f9fafb';
+                } else if (scheme === 'high') {
+                    document.body.style.background = '#000';
+                    document.body.style.color = '#fff';
+                } else if (scheme === 'blue') {
+                    document.body.style.background = '#f0f9ff';
+                } else {
+                    document.body.style.background = '';
+                    document.body.style.color = '';
+                }
+            });
+        });
+
+        // Load preferences on page load
+        document.addEventListener('DOMContentLoaded', loadPreferences);
+    </script>
+</body>
+</html>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Assessments - PHQ-9 & GAD-7</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .assessment-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .assessment-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .assessment-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 50px;
+        }
+
+        .assessment-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .assessment-info {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .assessment-info p {
+            color: #6b7280;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .question-group {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .question-group:last-child {
+            border-bottom: none;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        .option-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .option-radio {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background: #f9fafb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
+        }
+
+        .option-radio:hover {
+            background: #f0f4ff;
+            border-color: #667eea;
+        }
+
+        .option-radio input[type="radio"]:checked + label {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .option-radio input[type="radio"] {
+            cursor: pointer;
+        }
+
+        .option-radio label {
+            cursor: pointer;
+            margin: 0;
+            color: #6b7280;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .result-container {
+            display: none;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .result-container.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-score {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .result-interpretation {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .severity-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .severity-minimal {
+            background: #10b981;
+            color: white;
+        }
+
+        .severity-mild {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .severity-moderate {
+            background: #f97316;
+            color: white;
+        }
+
+        .severity-moderately-severe {
+            background: #dc2626;
+            color: white;
+        }
+
+        .severity-severe {
+            background: #991b1b;
+            color: white;
+        }
+
+        .next-steps {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .next-steps h4 {
+            color: #1f2937;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .next-steps li {
+            padding: 10px 0;
+            color: #6b7280;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .next-steps li:last-child {
+            border-bottom: none;
+        }
+
+        .next-steps li::before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .crisis-warning {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #dc2626;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .crisis-warning p {
+            color: #991b1b;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .crisis-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .crisis-link {
+            background: white;
+            color: #dc2626;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #dc2626;
+        }
+
+        .crisis-link:hover {
+            background: #dc2626;
+            color: white;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 768px) {
+            .assessment-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .option-group {
+                flex-direction: column;
+            }
+
+            .option-radio {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        <div class="emergency-content">
+            <h2>🚨 In Crisis? Get Help Now</h2>
+            <div class="emergency-links">
+                <a href="tel:18334564566" class="emergency-btn primary">☎️ Call 1-833-456-4566</a>
+                <a href="sms:741741" class="emergency-btn secondary">💬 Text HOME to 741741</a>
+                <a href="tel:911" class="emergency-btn tertiary">🆘 Emergency: 911</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>🌟 Mental Health Resources</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Global_Resources.html">🌍 Global Resources</a></li>
+                <li><a href="Assessments.html">📋 Assessments</a></li>
+                <li><a href="Global_Resources.html#games">🎮 Games & Tools</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="assessment-header">
+        <div class="container">
+            <h1>📋 Mental Health Assessments</h1>
+            <p>Evidence-based self-assessment tools to understand your mental health</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="assessment-container">
+        <!-- Tab Navigation -->
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="switchTab('phq9')">📊 PHQ-9 (Depression)</button>
+            <button class="tab-btn" onclick="switchTab('gad7')">😰 GAD-7 (Anxiety)</button>
+        </div>
+
+        <!-- PHQ-9 Assessment -->
+        <div id="phq9" class="tab-content active">
+            <div class="assessment-card">
+                <div class="assessment-info">
+                    <strong style="color: #667eea; font-size: 1.1rem;">📊 PHQ-9: Patient Health Questionnaire</strong>
+                    <p>
+                        The PHQ-9 is a 9-item depression screening and severity measurement tool. It's one of the most 
+                        widely used and validated depression assessment instruments in medical and mental health settings.
+                    </p>
+                    <p>
+                        <strong>Time to complete:</strong> 3-5 minutes | <strong>Evidence:</strong> Validated across 15,000+ patients
+                    </p>
+                </div>
+
+                <form id="phq9-form">
+                    <p class="question-text">Over the last two weeks, how often have you been bothered by the following problems?</p>
+
+                    <div class="question-group">
+                        <div class="question-text">1. Little interest or pleasure in doing things</div>
+                        <div class="option-group">
+                            <label class="option-radio">
+                                <input type="radio" name="q1" value="0"> <span>Not at all</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q1" value="1"> <span>Several days</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q1" value="2"> <span>More than half</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q1" value="3"> <span>Nearly every day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <div class="question-text">2. Feeling down, depressed, or hopeless</div>
+                        <div class="option-group">
+                            <label class="option-radio">
+                                <input type="radio" name="q2" value="0"> <span>Not at all</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q2" value="1"> <span>Several days</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q2" value="2"> <span>More than half</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q2" value="3"> <span>Nearly every day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <div class="question-text">3. Trouble falling or staying asleep, or sleeping too much</div>
+                        <div class="option-group">
+                            <label class="option-radio">
+                                <input type="radio" name="q3" value="0"> <span>Not at all</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q3" value="1"> <span>Several days</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q3" value="2"> <span>More than half</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q3" value="3"> <span>Nearly every day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <div class="question-text">4. Feeling tired or having little energy</div>
+                        <div class="option-group">
+                            <label class="option-radio">
+                                <input type="radio" name="q4" value="0"> <span>Not at all</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q4" value="1"> <span>Several days</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q4" value="2"> <span>More than half</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q4" value="3"> <span>Nearly every day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <div class="question-text">5. Poor appetite or overeating</div>
+                        <div class="option-group">
+                            <label class="option-radio">
+                                <input type="radio" name="q5" value="0"> <span>Not at all</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q5" value="1"> <span>Several days</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q5" value="2"> <span>More than half</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q5" value="3"> <span>Nearly every day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <div class="question-text">6. Feeling bad about yourself or that you're a failure</div>
+                        <div class="option-group">
+                            <label class="option-radio">
+                                <input type="radio" name="q6" value="0"> <span>Not at all</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q6" value="1"> <span>Several days</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q6" value="2"> <span>More than half</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q6" value="3"> <span>Nearly every day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <div class="question-text">7. Trouble concentrating on things</div>
+                        <div class="option-group">
+                            <label class="option-radio">
+                                <input type="radio" name="q7" value="0"> <span>Not at all</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q7" value="1"> <span>Several days</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q7" value="2"> <span>More than half</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q7" value="3"> <span>Nearly every day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <div class="question-text">8. Moving or speaking so slowly that others noticed, or being fidgety/restless</div>
+                        <div class="option-group">
+                            <label class="option-radio">
+                                <input type="radio" name="q8" value="0"> <span>Not at all</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q8" value="1"> <span>Several days</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q8" value="2"> <span>More than half</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q8" value="3"> <span>Nearly every day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group" style="border-bottom: none;">
+                        <div class="question-text">9. Thoughts that you would be better off dead</div>
+                        <div class="option-group">
+                            <label class="option-radio">
+                                <input type="radio" name="q9" value="0"> <span>Not at all</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q9" value="1"> <span>Several days</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q9" value="2"> <span>More than half</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="q9" value="3"> <span>Nearly every day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="button" class="submit-btn" onclick="calculatePHQ9()">Calculate PHQ-9 Score</button>
+                </form>
+
+                <div id="phq9-result" class="result-container">
+                    <div class="result-score">Score: <span id="phq9-score">0</span>/27</div>
+                    <div id="phq9-interpretation"></div>
+                    <div class="next-steps">
+                        <h4>📌 Recommended Next Steps:</h4>
+                        <div id="phq9-steps"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAD-7 Assessment -->
+        <div id="gad7" class="tab-content">
+            <div class="assessment-card">
+                <div class="assessment-info">
+                    <strong style="color: #667eea; font-size: 1.1rem;">😰 GAD-7: Generalized Anxiety Disorder</strong>
+                    <p>
+                        The GAD-7 is a 7-item anxiety screening and severity measurement tool. It's widely used to assess 
+                        generalized anxiety disorder across clinical and community settings.
+                    </p>
+                    <p>
+                        <strong>Time to complete:</strong> 2-3 minutes | <strong>Evidence:</strong> Validated sensitivity/specificity of 89%
+                    </p>
+                </div>
+
+                <form id="gad7-form">
+                    <p class="question-text">Over the last two weeks, how often have you been bothered by the following problems?</p>
+
+                    <div class="question-group">
+                        <div class="question-text">1. Feeling nervous, anxious, or on edge</div>
+                        <div class="option-group">
+                            <label class="option-radio">
+                                <input type="radio" name="gq1" value="0"> <span>Not at all</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq1" value="1"> <span>Several days</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq1" value="2"> <span>More than half</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq1" value="3"> <span>Nearly every day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <div class="question-text">2. Not being able to stop or control worrying</div>
+                        <div class="option-group">
+                            <label class="option-radio">
+                                <input type="radio" name="gq2" value="0"> <span>Not at all</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq2" value="1"> <span>Several days</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq2" value="2"> <span>More than half</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq2" value="3"> <span>Nearly every day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <div class="question-text">3. Worrying too much about different things</div>
+                        <div class="option-group">
+                            <label class="option-radio">
+                                <input type="radio" name="gq3" value="0"> <span>Not at all</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq3" value="1"> <span>Several days</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq3" value="2"> <span>More than half</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq3" value="3"> <span>Nearly every day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <div class="question-text">4. Trouble relaxing</div>
+                        <div class="option-group">
+                            <label class="option-radio">
+                                <input type="radio" name="gq4" value="0"> <span>Not at all</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq4" value="1"> <span>Several days</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq4" value="2"> <span>More than half</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq4" value="3"> <span>Nearly every day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <div class="question-text">5. Being so restless that it's hard to sit still</div>
+                        <div class="option-group">
+                            <label class="option-radio">
+                                <input type="radio" name="gq5" value="0"> <span>Not at all</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq5" value="1"> <span>Several days</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq5" value="2"> <span>More than half</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq5" value="3"> <span>Nearly every day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group">
+                        <div class="question-text">6. Becoming easily annoyed or irritable</div>
+                        <div class="option-group">
+                            <label class="option-radio">
+                                <input type="radio" name="gq6" value="0"> <span>Not at all</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq6" value="1"> <span>Several days</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq6" value="2"> <span>More than half</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq6" value="3"> <span>Nearly every day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-group" style="border-bottom: none;">
+                        <div class="question-text">7. Feeling afraid as if something awful might happen</div>
+                        <div class="option-group">
+                            <label class="option-radio">
+                                <input type="radio" name="gq7" value="0"> <span>Not at all</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq7" value="1"> <span>Several days</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq7" value="2"> <span>More than half</span>
+                            </label>
+                            <label class="option-radio">
+                                <input type="radio" name="gq7" value="3"> <span>Nearly every day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="button" class="submit-btn" onclick="calculateGAD7()">Calculate GAD-7 Score</button>
+                </form>
+
+                <div id="gad7-result" class="result-container">
+                    <div class="result-score">Score: <span id="gad7-score">0</span>/21</div>
+                    <div id="gad7-interpretation"></div>
+                    <div class="next-steps">
+                        <h4>📌 Recommended Next Steps:</h4>
+                        <div id="gad7-steps"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="assessment-card" style="background: #f9fafb; border: 2px solid #e5e7eb; margin-top: 40px;">
+            <strong style="color: #1f2937; display: block; margin-bottom: 10px;">📋 Important Disclaimer</strong>
+            <p style="color: #6b7280; margin: 0; line-height: 1.6;">
+                These assessments are screening tools and do not replace professional diagnosis. They are designed to help you understand 
+                your symptoms and encourage you to seek professional support. If you're experiencing suicidal thoughts or severe symptoms, 
+                please contact emergency services or a crisis line immediately. Your results are private and not stored anywhere.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function calculatePHQ9() {
+            const answers = [];
+            for (let i = 1; i <= 9; i++) {
+                const value = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!value) {
+                    alert('Please answer all questions');
+                    return;
+                }
+                answers.push(parseInt(value.value));
+            }
+
+            const score = answers.reduce((a, b) => a + b, 0);
+            const resultDiv = document.getElementById('phq9-result');
+            const scoreSpan = document.getElementById('phq9-score');
+            const interpretationDiv = document.getElementById('phq9-interpretation');
+            const stepsDiv = document.getElementById('phq9-steps');
+
+            scoreSpan.textContent = score;
+
+            let severity = '';
+            let interpretation = '';
+            let steps = '';
+
+            if (score <= 4) {
+                severity = 'Minimal Depression';
+                interpretation = '<span class="severity-badge severity-minimal">✓ Minimal</span><p>Your responses indicate minimal depressive symptoms. Continue with self-care practices and maintain your wellness routine.</p>';
+                steps = '<ul><li>Continue regular exercise and social connection</li><li>Maintain healthy sleep habits</li><li>Reach out if symptoms change</li></ul>';
+            } else if (score <= 9) {
+                severity = 'Mild Depression';
+                interpretation = '<span class="severity-badge severity-mild">⚠ Mild</span><p>Your responses suggest mild depressive symptoms. Consider engaging with wellness tools and seeking support if symptoms persist.</p>';
+                steps = '<ul><li>Use our Games & Tools section for guided exercises</li><li>Practice mindfulness and gratitude journaling</li><li>Consider speaking with a mental health professional</li></ul>';
+            } else if (score <= 14) {
+                severity = 'Moderate Depression';
+                interpretation = '<span class="severity-badge severity-moderate">⚠ Moderate</span><p>Your responses indicate moderate depressive symptoms. Professional support is recommended.</p>';
+                steps = '<ul><li>Contact a mental health professional</li><li>Use evidence-based tools from our platform</li><li>Access local mental health resources</li><li>Consider therapy or counseling</li></ul>';
+            } else if (score <= 19) {
+                severity = 'Moderately Severe Depression';
+                interpretation = '<span class="severity-badge severity-moderately-severe">⚠ Moderately Severe</span><p>Your responses suggest moderately severe depression. Professional mental health care is strongly recommended.</p>';
+                steps = '<ul><li>Schedule an appointment with a mental health professional or doctor</li><li>Call a crisis line if you need immediate support</li><li>Reach out to a trusted friend or family member</li><li>Access emergency resources if needed</li></ul>';
+            } else {
+                severity = 'Severe Depression';
+                interpretation = '<span class="severity-badge severity-severe">🚨 Severe</span><p>Your responses indicate severe depression. Please seek immediate professional help.</p>';
+                steps = '<ul><li>Contact a mental health crisis line immediately</li><li>Go to your nearest emergency room</li><li>Call emergency services if in crisis</li><li>Reach out to a trusted person now</li></ul>';
+            }
+
+            const crisisWarning = score >= 15 ? '<div class="crisis-warning"><p><strong>🚨 Important:</strong> If you are having thoughts of self-harm or suicide, please reach out immediately.</p><div class="crisis-links"><a href="tel:18334564566" class="crisis-link">☎️ Call 1-833-456-4566</a><a href="sms:741741" class="crisis-link">💬 Text HOME to 741741</a><a href="tel:911" class="crisis-link">🆘 911 Emergency</a></div></div>' : '';
+
+            const resultInterpretation = `
+                <div class="result-interpretation">
+                    ${interpretation}
+                </div>
+                ${crisisWarning}
+            `;
+
+            interpretationDiv.innerHTML = resultInterpretation;
+            stepsDiv.innerHTML = steps;
+            resultDiv.classList.add('show');
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function calculateGAD7() {
+            const answers = [];
+            for (let i = 1; i <= 7; i++) {
+                const value = document.querySelector(`input[name="gq${i}"]:checked`);
+                if (!value) {
+                    alert('Please answer all questions');
+                    return;
+                }
+                answers.push(parseInt(value.value));
+            }
+
+            const score = answers.reduce((a, b) => a + b, 0);
+            const resultDiv = document.getElementById('gad7-result');
+            const scoreSpan = document.getElementById('gad7-score');
+            const interpretationDiv = document.getElementById('gad7-interpretation');
+            const stepsDiv = document.getElementById('gad7-steps');
+
+            scoreSpan.textContent = score;
+
+            let severity = '';
+            let interpretation = '';
+            let steps = '';
+
+            if (score <= 4) {
+                severity = 'Minimal Anxiety';
+                interpretation = '<span class="severity-badge severity-minimal">✓ Minimal</span><p>Your responses indicate minimal anxiety symptoms. Maintain your current wellness practices.</p>';
+                steps = '<ul><li>Continue relaxation techniques</li><li>Stay physically active</li><li>Monitor for any changes in anxiety levels</li></ul>';
+            } else if (score <= 9) {
+                severity = 'Mild Anxiety';
+                interpretation = '<span class="severity-badge severity-mild">⚠ Mild</span><p>Your responses suggest mild anxiety symptoms. Consider using coping strategies and wellness tools.</p>';
+                steps = '<ul><li>Practice breathing exercises from our Games & Tools</li><li>Use mindfulness and grounding techniques</li><li>Maintain regular exercise and sleep</li></ul>';
+            } else if (score <= 14) {
+                severity = 'Moderate Anxiety';
+                interpretation = '<span class="severity-badge severity-moderate">⚠ Moderate</span><p>Your responses indicate moderate anxiety. Professional support is recommended.</p>';
+                steps = '<ul><li>Schedule an appointment with a mental health professional</li><li>Use anxiety management tools</li><li>Consider cognitive behavioral therapy (CBT)</li></ul>';
+            } else {
+                severity = 'Severe Anxiety';
+                interpretation = '<span class="severity-badge severity-severely-severe">🚨 Severe</span><p>Your responses suggest severe anxiety. Please seek immediate professional help.</p>';
+                steps = '<ul><li>Contact a mental health professional urgently</li><li>Call a crisis line for support</li><li>Reach out to emergency services if needed</li><li>Tell a trusted person about your anxiety</li></ul>';
+            }
+
+            const crisisWarning = score >= 15 ? '<div class="crisis-warning"><p><strong>🚨 Important:</strong> If anxiety is overwhelming, please reach out to someone who can help.</p><div class="crisis-links"><a href="tel:18334564566" class="crisis-link">☎️ Call 1-833-456-4566</a><a href="sms:741741" class="crisis-link">💬 Text HOME to 741741</a></div></div>' : '';
+
+            const resultInterpretation = `
+                <div class="result-interpretation">
+                    ${interpretation}
+                </div>
+                ${crisisWarning}
+            `;
+
+            interpretationDiv.innerHTML = resultInterpretation;
+            stepsDiv.innerHTML = steps;
+            resultDiv.classList.add('show');
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

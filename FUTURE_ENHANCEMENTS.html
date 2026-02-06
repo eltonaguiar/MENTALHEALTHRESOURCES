@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Enhancements - Mental Health Resources</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ===== Enhancements Page Specific Styles ===== */
+        .enhancements-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enhancements-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .enhancements-header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .enhancements-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .enhancements-header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        .priority-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+
+        .priority-high {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .priority-medium {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .priority-low {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+
+        .enhancement-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .enhancement-category {
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #667eea;
+        }
+
+        .enhancement-category h2 {
+            color: #1f2937;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .enhancement-item {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .enhancement-item:hover {
+            background: #f0f4ff;
+            border-left-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .enhancement-item h3 {
+            color: #1f2937;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .enhancement-item p {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .enhancement-item ul {
+            color: #6b7280;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .enhancement-item li {
+            margin-bottom: 5px;
+        }
+
+        .current-analysis {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+            border-radius: 15px;
+            padding: 35px;
+            margin-bottom: 40px;
+            border: 2px solid #667eea;
+        }
+
+        .current-analysis h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .strengths-list, .gaps-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .strength-item, .gap-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .strength-item h4, .gap-item h4 {
+            color: #1f2937;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .strength-item {
+            border-left: 4px solid #10b981;
+        }
+
+        .gap-item {
+            border-left: 4px solid #f59e0b;
+        }
+
+        .chat-resources-section {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border-radius: 15px;
+            padding: 35px;
+            margin-bottom: 40px;
+            border: 2px solid #ef4444;
+        }
+
+        .chat-resources-section h2 {
+            color: #dc2626;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .chat-resource-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #ef4444;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-resource-card h3 {
+            color: #1f2937;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .availability-badge {
+            display: inline-block;
+            background: #dc2626;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+
+        .availability-partial {
+            background: #f59e0b;
+        }
+
+        .chat-resource-card p {
+            color: #6b7280;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .chat-resource-card .contact-info {
+            background: #fee2e2;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #991b1b;
+        }
+
+        .implementation-roadmap {
+            background: #f9fafb;
+            border-radius: 15px;
+            padding: 35px;
+            margin-top: 40px;
+        }
+
+        .roadmap-phase {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .roadmap-phase h3 {
+            color: #667eea;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .back-to-home {
+            display: inline-block;
+            margin: 20px;
+            padding: 12px 24px;
+            background: #f9fafb;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
+        }
+
+        .back-to-home:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .enhancements-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .strengths-list, .gaps-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        <div class="emergency-content">
+            <h2>🚨 In Crisis? Get Help Now</h2>
+            <div class="emergency-links">
+                <a href="tel:18334564566" class="emergency-btn primary">☎️ Call 1-833-456-4566</a>
+                <a href="sms:741741" class="emergency-btn secondary">💬 Text HOME to 741741</a>
+                <a href="tel:911" class="emergency-btn tertiary">🆘 Emergency: 911</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>🌟 Mental Health Canada</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Global_Resources.html">🌍 Global Resources</a></li>
+                <li><a href="Research_Science.html">📊 Research & Science</a></li>
+                <li><a href="Sources_References.html">📚 Sources & References</a></li>
+                <li><a href="Bibliotherapy.html">📖 Books & Reading</a></li>
+                <li><a href="Global_Resources.html#games">🎮 Games & Tools</a></li>
+                <li><a href="Global_Resources.html#countries">🌐 Local Resources</a></li>
+                <li><a href="index.html#resources">Guides</a></li>
+                <li><a href="index.html#multimedia">Videos & Tools</a></li>
+                <li><a href="index.html#emergency">Emergency</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="enhancements-header">
+        <div class="enhancements-header-content">
+            <h1>🚀 Future Enhancements</h1>
+            <p>Planned improvements and new features for Mental Health Resources</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="enhancement-section">
+        <a href="index.html" class="back-to-home">← Back to Home</a>
+
+        <!-- Current Site Analysis -->
+        <div class="current-analysis">
+            <h2>📊 Current Site Analysis</h2>
+            <p style="color: #6b7280; margin-bottom: 20px; font-size: 1.05rem;">
+                Our site currently provides comprehensive mental health resources, but there are opportunities to enhance accessibility, interactivity, and real-time support options.
+            </p>
+
+            <h3 style="color: #10b981; margin-top: 30px; margin-bottom: 15px;">✅ Current Strengths</h3>
+            <div class="strengths-list">
+                <div class="strength-item">
+                    <h4>✓ Comprehensive Resource Directory</h4>
+                    <p>Well-organized guides, videos, and downloadable resources covering multiple mental health topics.</p>
+                </div>
+                <div class="strength-item">
+                    <h4>✓ Emergency Crisis Support</h4>
+                    <p>Prominent crisis hotlines and emergency contact information with clear visual hierarchy.</p>
+                </div>
+                <div class="strength-item">
+                    <h4>✓ Canada-Focused Content</h4>
+                    <p>Specific resources tailored to Canadian mental health services and provincial support systems.</p>
+                </div>
+                <div class="strength-item">
+                    <h4>✓ Multimedia Integration</h4>
+                    <p>Embedded videos, interactive games, and links to external therapeutic tools and apps.</p>
+                </div>
+                <div class="strength-item">
+                    <h4>✓ Responsive Design</h4>
+                    <p>Mobile-friendly layout ensuring accessibility across all devices.</p>
+                </div>
+                <div class="strength-item">
+                    <h4>✓ Inclusive Resources</h4>
+                    <p>Support for diverse demographics including LGBTQ+, Indigenous peoples, youth, and seniors.</p>
+                </div>
+            </div>
+
+            <h3 style="color: #f59e0b; margin-top: 30px; margin-bottom: 15px;">⚠️ Identified Gaps</h3>
+            <div class="gaps-list">
+                <div class="gap-item">
+                    <h4>⚠ Limited Real-Time Chat Support</h4>
+                    <p>While text lines are mentioned, there's no comprehensive directory of 24/7 online chat services.</p>
+                </div>
+                <div class="gap-item">
+                    <h4>⚠ No User Personalization</h4>
+                    <p>Lack of saved preferences, personalized resource recommendations, or user accounts.</p>
+                </div>
+                <div class="gap-item">
+                    <h4>⚠ Limited Interactivity</h4>
+                    <p>While games exist, there's room for more interactive self-assessment tools and progress tracking.</p>
+                </div>
+                <div class="gap-item">
+                    <h4>⚠ No Multi-Language Support</h4>
+                    <p>Content is primarily in English, limiting accessibility for non-English speakers in Canada.</p>
+                </div>
+                <div class="gap-item">
+                    <h4>⚠ No Offline Capabilities</h4>
+                    <p>Resources require internet connection; no downloadable offline access for crisis situations.</p>
+                </div>
+                <div class="gap-item">
+                    <h4>⚠ Limited Accessibility Features</h4>
+                    <p>Could benefit from screen reader enhancements, high contrast mode, and keyboard navigation improvements.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="enhancement-category">
+            <h2>🤖 ChatGPT Codex Experience</h2>
+            
+            <div class="enhancement-item">
+                <h3>Safety-Aware Conversational Guide <span class="priority-badge priority-high">HIGH PRIORITY</span></h3>
+                <p>Guardrailed assistant that detects crisis language and immediately escalates to on-page crisis CTAs (9-8-8, 911, Kids Help Phone) before offering any non-crisis tips.</p>
+                <ul>
+                    <li>Keyword and intent detection for self-harm, harm-to-others, and medical emergencies</li>
+                    <li>Locks responses to short, directive steps with clear crisis phone/text buttons</li>
+                    <li>Disables non-crisis suggestions when risk is detected</li>
+                    <li>Shows safety disclaimer and privacy notice with every crisis-triggered reply</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Conversational Resource Finder <span class="priority-badge priority-high">HIGH PRIORITY</span></h3>
+                <p>ChatGPT-powered routing that maps user intent to the right guide, hotline, or provincial resource (e.g., “night panic in BC” → 9-8-8 + BC lines + panic guide section).</p>
+                <ul>
+                    <li>Intent classification (symptom, audience, location, modality) with canned, consistent replies</li>
+                    <li>Links to specific anchors in existing guides (panic, depression, multimedia)</li>
+                    <li>Prefills crisis plan builder with chat inputs when safe</li>
+                    <li>Privacy-first: no account required; no PII persisted by default</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Contextual Search & Filters <span class="priority-badge priority-high">HIGH PRIORITY</span></h3>
+                <p>Site-wide search that surfaces resources by topic, modality, language, province, and cost, with evidence/type badges.</p>
+                <ul>
+                    <li>Filters: topic/condition, province/territory, language (EN/FR), cost (free/paid), modality (video/app/pdf)</li>
+                    <li>Badges: evidence type (CBT/DBT/mindfulness), audience (youth/LGBTQ+/Indigenous), free/paid</li>
+                    <li>Search highlights within Markdown/HTML guides</li>
+                    <li>Safe-search defaults that always show crisis options first</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Personalized Plan Builder <span class="priority-badge priority-medium">MEDIUM PRIORITY</span></h3>
+                <p>Step-by-step flow that assembles a printable/shareable plan from existing guides, with optional reminders.</p>
+                <ul>
+                    <li>Plan sections: crisis contacts, grounding steps, daily habits, media picks, local services</li>
+                    <li>Download/print and save-to-device “emergency card” output</li>
+                    <li>Optional email/PWA reminders (opt-in, minimal data)</li>
+                    <li>Offline-ready version for PWA users</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Self-Assessments & Routing <span class="priority-badge priority-high">HIGH PRIORITY</span></h3>
+                <p>On-device PHQ-9 and GAD-7 scoring with plain-language results and immediate routing to appropriate resources.</p>
+                <ul>
+                    <li>Scores never leave the device unless user opts in to save</li>
+                    <li>Result explanations with thresholds and “what to do next” buttons</li>
+                    <li>Auto-link to local services and crisis lines for high scores</li>
+                    <li>Accessibility: keyboard-only and screen reader friendly</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Multilingual & Reading-Level Toggles <span class="priority-badge priority-medium">MEDIUM PRIORITY</span></h3>
+                <p>Immediate English/French toggle plus a “simplified language” view for key pages and AI replies.</p>
+                <ul>
+                    <li>Content parity for EN/FR on landing, guides, and assistant responses</li>
+                    <li>Plain-language toggle that rewrites assistant answers for easier reading</li>
+                    <li>Audio read-aloud option for critical paths (emergency, assessments, plans)</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>PWA Emergency Card <span class="priority-badge priority-medium">MEDIUM PRIORITY</span></h3>
+                <p>Lightweight offline pack that pins crisis numbers, plan builder outputs, and key guides to the device via PWA.</p>
+                <ul>
+                    <li>Offline cache for crisis numbers and “start here” steps</li>
+                    <li>Homescreen shortcut for one-tap access</li>
+                    <li>Small footprint with periodic refresh when online</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Real-Time Chat Resources -->
+        <div class="chat-resources-section">
+            <h2>💬 Real-Time 24/7 Text & Online Chat Resources</h2>
+            <p style="color: #6b7280; margin-bottom: 25px; font-size: 1.05rem;">
+                The following services offer real-time text messaging or online chat support for mental health crises. Availability varies by service.
+            </p>
+
+            <div class="chat-resource-card">
+                <h3>9-8-8: Suicide Crisis Helpline <span class="availability-badge">24/7</span></h3>
+                <p><strong>Service:</strong> National suicide prevention and crisis support</p>
+                <p><strong>Access:</strong> Call <strong>9-8-8</strong> or <strong>text 9-8-8</strong></p>
+                <p><strong>Features:</strong> Bilingual (English/French), trauma-informed, culturally appropriate support</p>
+                <p><strong>Coverage:</strong> All of Canada</p>
+                <div class="contact-info">📞 Call: 9-8-8 | 💬 Text: 9-8-8</div>
+            </div>
+
+            <div class="chat-resource-card">
+                <h3>Talk Suicide Canada <span class="availability-badge availability-partial">Limited Hours</span></h3>
+                <p><strong>Service:</strong> Part of the 9-8-8 network, provides suicide prevention support</p>
+                <p><strong>Access:</strong> Phone: <strong>1-833-456-4566</strong> | Text: <strong>45645</strong></p>
+                <p><strong>Text Availability:</strong> 4 PM - Midnight ET (Phone available 24/7)</p>
+                <p><strong>Coverage:</strong> All of Canada</p>
+                <div class="contact-info">📞 Call: 1-833-456-4566 (24/7) | 💬 Text: 45645 (4 PM - Midnight ET)</div>
+            </div>
+
+            <div class="chat-resource-card">
+                <h3>Kids Help Phone <span class="availability-badge">24/7 Text</span></h3>
+                <p><strong>Service:</strong> Mental health support for youth and young adults</p>
+                <p><strong>Access:</strong> Text <strong>CONNECT</strong> to <strong>686868</strong> | Phone: <strong>1-800-668-6868</strong></p>
+                <p><strong>Text/Chat:</strong> Text messaging 24/7 | Live Chat: 7 PM - Midnight ET daily</p>
+                <p><strong>Languages:</strong> English and French</p>
+                <p><strong>Coverage:</strong> All of Canada, ages 5-29 (open to all)</p>
+                <div class="contact-info">💬 Text: CONNECT to 686868 (24/7) | 💻 Live Chat: 7 PM - Midnight ET | 📞 Phone: 1-800-668-6868 (24/7)</div>
+            </div>
+
+            <div class="chat-resource-card">
+                <h3>Hope for Wellness Help Line <span class="availability-badge">24/7</span></h3>
+                <p><strong>Service:</strong> Culturally appropriate support for First Nations, Inuit, and Métis individuals</p>
+                <p><strong>Access:</strong> Call <strong>1-855-242-3310</strong> | Online chat available</p>
+                <p><strong>Languages:</strong> English, French, Cree, Ojibway, Inuktitut (on request)</p>
+                <p><strong>Coverage:</strong> All of Canada</p>
+                <div class="contact-info">📞 Call: 1-855-242-3310 (24/7) | 💻 Online Chat: Available 24/7</div>
+            </div>
+
+            <div class="chat-resource-card">
+                <h3>Crisis Text Line (US-based, available in Canada) <span class="availability-badge">24/7</span></h3>
+                <p><strong>Service:</strong> Free, confidential crisis support via text</p>
+                <p><strong>Access:</strong> Text <strong>HOME</strong> to <strong>741741</strong></p>
+                <p><strong>Features:</strong> Trained crisis counselors, available 24/7</p>
+                <p><strong>Coverage:</strong> Canada and United States</p>
+                <div class="contact-info">💬 Text: HOME to 741741 (24/7)</div>
+            </div>
+
+            <div class="chat-resource-card">
+                <h3>7 Cups <span class="availability-badge">24/7</span></h3>
+                <p><strong>Service:</strong> Free emotional support chat with trained listeners</p>
+                <p><strong>Access:</strong> Online chat at <a href="https://www.7cups.com" target="_blank" style="color: #667eea; font-weight: 600;">7cups.com</a></p>
+                <p><strong>Features:</strong> Anonymous chat, peer support, professional therapy options (paid)</p>
+                <p><strong>Coverage:</strong> Global, available in multiple languages</p>
+                <div class="contact-info">💻 Online Chat: <a href="https://www.7cups.com" target="_blank" style="color: #dc2626;">www.7cups.com</a> (24/7)</div>
+            </div>
+
+            <p style="color: #6b7280; margin-top: 25px; font-size: 0.95rem; font-style: italic;">
+                <strong>Note:</strong> Some text services have limited hours. Phone support is typically available 24/7. Always verify current availability as services may change.
+            </p>
+        </div>
+
+        <!-- Enhancement Categories -->
+        <div class="enhancement-category">
+            <h2>🌐 Enhanced Real-Time Support Integration</h2>
+            
+            <div class="enhancement-item">
+                <h3>Live Chat Widget Integration <span class="priority-badge priority-high">HIGH PRIORITY</span></h3>
+                <p>Embed a live chat widget that connects users directly to available 24/7 crisis chat services, with automatic routing based on user needs (youth, Indigenous, general crisis).</p>
+                <ul>
+                    <li>Direct integration with Kids Help Phone, 9-8-8, and Hope for Wellness chat services</li>
+                    <li>Queue management showing wait times</li>
+                    <li>Multi-language chat support</li>
+                    <li>Anonymous chat option with privacy protection</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Real-Time Availability Status <span class="priority-badge priority-high">HIGH PRIORITY</span></h3>
+                <p>Display real-time status indicators showing which chat/text services are currently available, including wait times and service hours.</p>
+                <ul>
+                    <li>Green/yellow/red status indicators for each service</li>
+                    <li>Live wait time estimates</li>
+                    <li>Service hours clearly displayed</li>
+                    <li>Notifications when preferred services become available</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Chat Service Comparison Tool <span class="priority-badge priority-medium">MEDIUM PRIORITY</span></h3>
+                <p>Interactive tool helping users choose the best chat service based on their specific needs, demographics, and preferences.</p>
+                <ul>
+                    <li>Filter by age group, language, issue type, availability</li>
+                    <li>Side-by-side comparison of services</li>
+                    <li>User reviews and ratings (anonymized)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="enhancement-category">
+            <h2>🎯 Personalization & User Experience</h2>
+            
+            <div class="enhancement-item">
+                <h3>User Accounts & Saved Resources <span class="priority-badge priority-medium">MEDIUM PRIORITY</span></h3>
+                <p>Allow users to create accounts to save favorite resources, track progress, and receive personalized recommendations.</p>
+                <ul>
+                    <li>Save favorite videos, articles, and tools</li>
+                    <li>Personalized resource recommendations based on interests</li>
+                    <li>Progress tracking for self-help programs</li>
+                    <li>Customizable dashboard with quick access to frequently used resources</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Personalized Crisis Plan Builder <span class="priority-badge priority-high">HIGH PRIORITY</span></h3>
+                <p>Interactive tool to help users create personalized crisis safety plans that can be saved and accessed offline.</p>
+                <ul>
+                    <li>Step-by-step crisis plan creation wizard</li>
+                    <li>Customizable triggers, coping strategies, and emergency contacts</li>
+                    <li>Printable PDF and mobile-accessible versions</li>
+                    <li>Reminders and check-ins</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Mood & Symptom Tracking <span class="priority-badge priority-medium">MEDIUM PRIORITY</span></h3>
+                <p>Integrated mood tracking and symptom monitoring tools with visualizations and insights.</p>
+                <ul>
+                    <li>Daily mood logging with calendar view</li>
+                    <li>Symptom tracking for anxiety, depression, panic attacks</li>
+                    <li>Trend analysis and pattern recognition</li>
+                    <li>Exportable reports for healthcare providers</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="enhancement-category">
+            <h2>♿ Accessibility & Inclusion</h2>
+            
+            <div class="enhancement-item">
+                <h3>Multi-Language Support <span class="priority-badge priority-high">HIGH PRIORITY</span></h3>
+                <p>Translate key content into French, Spanish, Mandarin, Punjabi, and other languages commonly spoken in Canada.</p>
+                <ul>
+                    <li>Language selector in navigation</li>
+                    <li>Full translation of crisis resources and emergency information</li>
+                    <li>Bilingual chat service integration</li>
+                    <li>Cultural adaptation of content where appropriate</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Enhanced Screen Reader Support <span class="priority-badge priority-medium">MEDIUM PRIORITY</span></h3>
+                <p>Improve compatibility with screen readers and assistive technologies.</p>
+                <ul>
+                    <li>ARIA labels and semantic HTML improvements</li>
+                    <li>Screen reader announcements for dynamic content</li>
+                    <li>Keyboard navigation enhancements</li>
+                    <li>Testing with real screen reader users</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Accessibility Preferences Panel <span class="priority-badge priority-medium">MEDIUM PRIORITY</span></h3>
+                <p>User-customizable accessibility options including font size, contrast, and animation preferences.</p>
+                <ul>
+                    <li>High contrast mode toggle</li>
+                    <li>Font size adjustment (small, medium, large, extra large)</li>
+                    <li>Reduce motion/animation option</li>
+                    <li>Dyslexia-friendly font option</li>
+                    <li>Saved preferences in local storage</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="enhancement-category">
+            <h2>📱 Mobile & Offline Features</h2>
+            
+            <div class="enhancement-item">
+                <h3>Progressive Web App (PWA) <span class="priority-badge priority-high">HIGH PRIORITY</span></h3>
+                <p>Convert the site into a Progressive Web App for offline access and app-like experience on mobile devices.</p>
+                <ul>
+                    <li>Offline access to crisis hotlines and key resources</li>
+                    <li>Install to home screen functionality</li>
+                    <li>Push notifications for check-ins and reminders</li>
+                    <li>Faster loading times with service worker caching</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Offline Resource Downloads <span class="priority-badge priority-medium">MEDIUM PRIORITY</span></h3>
+                <p>Allow users to download essential resources for offline access, especially useful in areas with poor connectivity.</p>
+                <ul>
+                    <li>Downloadable PDFs of all guides</li>
+                    <li>Offline crisis plan access</li>
+                    <li>Downloadable audio meditations</li>
+                    <li>Emergency contact card (printable)</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Native Mobile Apps <span class="priority-badge priority-low">LOW PRIORITY</span></h3>
+                <p>Develop native iOS and Android apps with enhanced features like offline mode, push notifications, and device integration.</p>
+                <ul>
+                    <li>iOS and Android native apps</li>
+                    <li>Integration with device health apps</li>
+                    <li>Emergency contact quick dial</li>
+                    <li>Location-based resource finder</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="enhancement-category">
+            <h2>🔧 Interactive Tools & Assessments</h2>
+            
+            <div class="enhancement-item">
+                <h3>Self-Assessment Tools <span class="priority-badge priority-medium">MEDIUM PRIORITY</span></h3>
+                <p>Evidence-based screening tools for anxiety, depression, PTSD, and other mental health conditions.</p>
+                <ul>
+                    <li>PHQ-9 (Depression), GAD-7 (Anxiety), PCL-5 (PTSD) screening</li>
+                    <li>Results with interpretation and next steps</li>
+                    <li>Option to save results and track over time</li>
+                    <li>Links to appropriate resources based on results</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Interactive CBT Exercises <span class="priority-badge priority-medium">MEDIUM PRIORITY</span></h3>
+                <p>Expand interactive therapeutic exercises beyond current games, including thought records, behavioral activation, and exposure therapy tools.</p>
+                <ul>
+                    <li>Interactive thought record worksheets</li>
+                    <li>Behavioral activation scheduler</li>
+                    <li>Exposure therapy hierarchy builder</li>
+                    <li>Progress tracking and reminders</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Virtual Support Group Finder <span class="priority-badge priority-low">LOW PRIORITY</span></h3>
+                <p>Directory and matching tool to help users find virtual support groups based on their location, condition, and preferences.</p>
+                <ul>
+                    <li>Searchable database of virtual support groups</li>
+                    <li>Filter by condition, age group, language, schedule</li>
+                    <li>Integration with Zoom/Google Meet links</li>
+                    <li>User reviews and ratings</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="enhancement-category">
+            <h2>🌍 Expanded Content & Resources</h2>
+            
+            <div class="enhancement-item">
+                <h3>Provincial Resource Deep-Dive <span class="priority-badge priority-medium">MEDIUM PRIORITY</span></h3>
+                <p>Expand provincial resources with detailed information about local services, wait times, and how to access care in each province/territory.</p>
+                <ul>
+                    <li>Province-specific landing pages</li>
+                    <li>Local crisis lines and services</li>
+                    <li>Provincial health insurance coverage information</li>
+                    <li>Wait time estimates for public mental health services</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Video Library Expansion <span class="priority-badge priority-low">LOW PRIORITY</span></h3>
+                <p>Curate and organize a comprehensive video library with playlists, categories, and search functionality.</p>
+                <ul>
+                    <li>Organized playlists by topic and condition</li>
+                    <li>Video search and filtering</li>
+                    <li>User ratings and reviews</li>
+                    <li>Recommended videos based on viewing history</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Provider Directory <span class="priority-badge priority-low">LOW PRIORITY</span></h3>
+                <p>Searchable directory of mental health providers across Canada with filters for specialization, insurance, and availability.</p>
+                <ul>
+                    <li>Search by location, specialization, insurance accepted</li>
+                    <li>Provider profiles with credentials and specialties</li>
+                    <li>Virtual vs. in-person options</li>
+                    <li>User reviews (with moderation)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="enhancement-category">
+            <h2>📊 Analytics & Continuous Improvement</h2>
+            
+            <div class="enhancement-item">
+                <h3>Usage Analytics Dashboard <span class="priority-badge priority-low">LOW PRIORITY</span></h3>
+                <p>Track which resources are most helpful and identify gaps in content based on user behavior (anonymized).</p>
+                <ul>
+                    <li>Most accessed resources tracking</li>
+                    <li>User journey analysis</li>
+                    <li>Content effectiveness metrics</li>
+                    <li>Feedback collection system</li>
+                </ul>
+            </div>
+
+            <div class="enhancement-item">
+                <h3>Regular Content Updates <span class="priority-badge priority-medium">MEDIUM PRIORITY</span></h3>
+                <p>Establish a process for regular content review and updates to ensure accuracy and relevance.</p>
+                <ul>
+                    <li>Quarterly review of all crisis line numbers</li>
+                    <li>Annual content audit</li>
+                    <li>User feedback integration</li>
+                    <li>Newsletter with new resources and updates</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Implementation Roadmap -->
+        <div class="implementation-roadmap">
+            <h2 style="color: #1f2937; font-size: 2rem; margin-bottom: 30px;">Implementation Roadmap</h2>
+
+            <div class="roadmap-phase">
+                <h3>Phase 1: Critical Enhancements (Q1-Q2 2026)</h3>
+                <ul style="color: #6b7280; line-height: 1.8;">
+                    <li>Safety-aware conversational guide with crisis escalation</li>
+                    <li>ChatGPT resource finder that routes to the right guide/hotline</li>
+                    <li>Contextual search with topic/province/language/cost filters</li>
+                    <li>On-device PHQ-9 and GAD-7 with routing to care</li>
+                    <li>English/French toggle across landing and assistant replies</li>
+                    <li>PWA emergency card and offline crisis cache</li>
+                </ul>
+            </div>
+
+            <div class="roadmap-phase">
+                <h3>Phase 2: User Experience Improvements (Q3-Q4 2026)</h3>
+                <ul style="color: #6b7280; line-height: 1.8;">
+                    <li>Personalized plan builder with printable/shareable cards</li>
+                    <li>User accounts (opt-in) for saved resources and history</li>
+                    <li>Mood and symptom tracking with check-in reminders</li>
+                    <li>Interactive CBT/DBT exercises and daily habit loops</li>
+                    <li>Accessibility preference panel (contrast, motion, font)</li>
+                    <li>Provincial resource deep-dive pages</li>
+                </ul>
+            </div>
+
+            <div class="roadmap-phase">
+                <h3>Phase 3: Advanced Features (2027+)</h3>
+                <ul style="color: #6b7280; line-height: 1.8;">
+                    <li>Native mobile apps (iOS & Android)</li>
+                    <li>Provider directory and coverage filters</li>
+                    <li>Virtual support group finder</li>
+                    <li>Video library expansion with search and ratings</li>
+                    <li>Privacy-first analytics dashboard</li>
+                    <li>AI-powered personalized recommendations</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer style="margin-top: 60px;">
+            <div class="container">
+                <p>&copy; 2026 Mental Health Resources Canada. All information is provided for educational and support purposes.</p>
+                <p>If you are in crisis, please contact emergency services or a crisis helpline immediately.</p>
+                <p class="last-updated">Last updated: January 18, 2026</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Mental Health Resources</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ===== Global Resources Specific Styles ===== */
+        .global-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .global-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .global-header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .global-header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .global-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .global-header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        /* Tabs Navigation */
+        .tabs-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .tab-button {
+            padding: 12px 28px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-button:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Games Section */
+        .games-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .games-section.active {
+            display: block;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+
+        .game-thumbnail {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .game-info {
+            padding: 25px;
+        }
+
+        .game-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #1f2937;
+        }
+
+        .game-description {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .game-benefits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .benefit-tag {
+            background: #f0f4ff;
+            color: #667eea;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .play-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+
+        .play-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Demographics Filter */
+        .filter-section {
+            background: #f9fafb;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        .filter-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1f2937;
+            display: block;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .filter-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        /* Country/Resource Selection */
+        .resource-selection-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: start;
+        }
+
+        .country-selector {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .selector-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-bottom: 2px solid #e5e7eb;
+            font-size: 1rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-bottom-color: #667eea;
+        }
+
+        .country-list {
+            max-height: 500px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #ccc #f5f5f5;
+        }
+
+        .country-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .country-list::-webkit-scrollbar-track {
+            background: #f5f5f5;
+        }
+
+        .country-list::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
+
+        .country-item {
+            padding: 12px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .country-item:hover {
+            background: #f9fafb;
+            padding-left: 20px;
+        }
+
+        .country-item.active {
+            background: #f0f4ff;
+            color: #667eea;
+            font-weight: 600;
+            border-left: 4px solid #667eea;
+            padding-left: 12px;
+        }
+
+        /* Resources Display */
+        .resources-display {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .resource-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .resource-list {
+            padding: 25px;
+        }
+
+        .resource-item {
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .resource-item:hover {
+            background: #f0f4ff;
+            transform: translateX(5px);
+        }
+
+        .resource-item h4 {
+            color: #1f2937;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .resource-item p {
+            color: #6b7280;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .resource-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .resource-link:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        /* Online Resources Tab */
+        .online-resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .online-resource-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .online-resource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .online-resource-card h3 {
+            color: #1f2937;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .online-resource-card .category {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #667eea;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .online-resource-card p {
+            color: #6b7280;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .visit-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .visit-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Demographics Section */
+        .demographics-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .demographic-group {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .demographic-group:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .demographic-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .demographic-group h3 {
+            color: #1f2937;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .demographic-group ul {
+            list-style: none;
+        }
+
+        .demographic-group li {
+            padding: 10px 0;
+            color: #6b7280;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .demographic-group li:last-child {
+            border-bottom: none;
+        }
+
+        .demographic-group a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .demographic-group a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .global-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .resource-selection-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .country-selector {
+                position: static;
+            }
+
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .online-resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tabs-wrapper {
+            background: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .back-to-home {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background: #f9fafb;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
+        }
+
+        .back-to-home:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        <div class="emergency-content">
+            <h2>🚨 In Crisis? Get Help Now</h2>
+            <div class="emergency-links">
+                <a href="tel:18334564566" class="emergency-btn primary">☎️ Call 1-833-456-4566</a>
+                <a href="sms:741741" class="emergency-btn secondary">💬 Text HOME to 741741</a>
+                <a href="tel:911" class="emergency-btn tertiary">🆘 Emergency: 911</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>🌟 Mental Health Resources</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Global_Resources.html">🌍 Global Resources</a></li>
+                <li><a href="Research_Science.html">📊 Research & Science</a></li>
+                <li><a href="Sources_References.html">📚 Sources & References</a></li>
+                <li><a href="Bibliotherapy.html">📖 Books & Reading</a></li>
+                <li><a href="#games">🎮 Games & Tools</a></li>
+                <li><a href="#countries">🌐 Local Resources</a></li>
+                <li><a href="#online">💻 Online Resources</a></li>
+                <li><a href="#demographics">👥 Demographics</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="global-header">
+        <div class="global-header-content">
+            <h1>🌍 Global Mental Health Resources</h1>
+            <p>Find support, play therapeutic games, and access resources from around the world</p>
+        </div>
+    </div>
+
+    <!-- Tabs Navigation -->
+    <div class="tabs-wrapper">
+        <div class="section-content">
+            <div class="tabs-container">
+                <button class="tab-button active" onclick="showTab('games')">🎮 Wellness Games</button>
+                <button class="tab-button" onclick="showTab('countries')">🌐 Local Resources</button>
+                <button class="tab-button" onclick="showTab('online')">💻 Online Resources</button>
+                <button class="tab-button" onclick="showTab('demographics')">👥 By Demographics</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="section-content" style="padding-top: 30px;">
+        <!-- Games Section -->
+        <div id="games" class="games-section active">
+            <h2 style="margin-bottom: 30px; font-size: 2rem; color: #1f2937;">
+                🎮 Wellness Games & Interactive Tools
+            </h2>
+            <p style="color: #6b7280; margin-bottom: 30px; font-size: 1.05rem;">
+                Take a mental break with these professionally designed games and interactive tools designed to help reduce stress and anxiety.
+            </p>
+            
+            <div class="games-grid">
+                <!-- Game 1: Breathing Exercise -->
+                <div class="game-card">
+                    <div class="game-thumbnail">🫁</div>
+                    <div class="game-info">
+                        <h3>Breathing Exercise</h3>
+                        <p class="game-description">A guided 4-7-8 breathing exercise to calm your nervous system instantly.</p>
+                        <div class="game-benefits">
+                            <span class="benefit-tag">Anxiety Relief</span>
+                            <span class="benefit-tag">Relaxation</span>
+                            <span class="benefit-tag">2 mins</span>
+                        </div>
+                        <button class="play-button" onclick="startBreathingExercise()">Start Exercise</button>
+                    </div>
+                </div>
+
+                <!-- Game 2: Mindfulness -->
+                <div class="game-card">
+                    <div class="game-thumbnail">🧘</div>
+                    <div class="game-info">
+                        <h3>Mindfulness Meditation</h3>
+                        <p class="game-description">A 5-minute guided mindfulness session to center yourself and find peace.</p>
+                        <div class="game-benefits">
+                            <span class="benefit-tag">Stress Relief</span>
+                            <span class="benefit-tag">Focus</span>
+                            <span class="benefit-tag">5 mins</span>
+                        </div>
+                        <button class="play-button" onclick="startMindfulness()">Start Meditation</button>
+                    </div>
+                </div>
+
+                <!-- Game 3: Color Therapy Game -->
+                <div class="game-card">
+                    <div class="game-thumbnail">🎨</div>
+                    <div class="game-info">
+                        <h3>Color Therapy Game</h3>
+                        <p class="game-description">Interactive color matching game that calms the mind through simple gameplay.</p>
+                        <div class="game-benefits">
+                            <span class="benefit-tag">Relaxation</span>
+                            <span class="benefit-tag">Focus</span>
+                            <span class="benefit-tag">Engaging</span>
+                        </div>
+                        <button class="play-button" onclick="startColorGame()">Play Now</button>
+                    </div>
+                </div>
+
+                <!-- Game 4: Progressive Muscle Relaxation -->
+                <div class="game-card">
+                    <div class="game-thumbnail">💪</div>
+                    <div class="game-info">
+                        <h3>Progressive Muscle Relaxation</h3>
+                        <p class="game-description">Guided PMR technique to release physical tension and anxiety.</p>
+                        <div class="game-benefits">
+                            <span class="benefit-tag">Tension Relief</span>
+                            <span class="benefit-tag">Relaxation</span>
+                            <span class="benefit-tag">10 mins</span>
+                        </div>
+                        <button class="play-button" onclick="startPMR()">Begin Relaxation</button>
+                    </div>
+                </div>
+
+                <!-- Game 5: Gratitude Journal -->
+                <div class="game-card">
+                    <div class="game-thumbnail">📔</div>
+                    <div class="game-info">
+                        <h3>Gratitude Journal</h3>
+                        <p class="game-description">Interactive journal to reflect on positive moments and boost mood.</p>
+                        <div class="game-benefits">
+                            <span class="benefit-tag">Mood Boost</span>
+                            <span class="benefit-tag">Reflection</span>
+                            <span class="benefit-tag">Personal</span>
+                        </div>
+                        <button class="play-button" onclick="startGratitudeJournal()">Open Journal</button>
+                    </div>
+                </div>
+
+                <!-- Game 6: Grounding Technique -->
+                <div class="game-card">
+                    <div class="game-thumbnail">🌱</div>
+                    <div class="game-info">
+                        <h3>5-4-3-2-1 Grounding</h3>
+                        <p class="game-description">Interactive 5-4-3-2-1 grounding technique for panic and anxiety attacks.</p>
+                        <div class="game-benefits">
+                            <span class="benefit-tag">Panic Relief</span>
+                            <span class="benefit-tag">Grounding</span>
+                            <span class="benefit-tag">Quick</span>
+                        </div>
+                        <button class="play-button" onclick="startGrounding()">Begin Technique</button>
+                    </div>
+                </div>
+
+                <!-- Game 7: Quick Coherence Technique (Research-Based) -->
+                <div class="game-card">
+                    <div class="game-thumbnail">❤️</div>
+                    <div class="game-info">
+                        <h3>Quick Coherence (QCT)</h3>
+                        <p class="game-description">Heart-focused breathing technique backed by neuroscience research to improve Heart Rate Variability.</p>
+                        <div class="game-benefits">
+                            <span class="benefit-tag">HRV Improvement</span>
+                            <span class="benefit-tag">Stress Relief</span>
+                            <span class="benefit-tag">3 mins</span>
+                        </div>
+                        <button class="play-button" onclick="startQCT()">Start QCT</button>
+                    </div>
+                </div>
+
+                <!-- Game 8: Cyclical Sighing (Research-Based) -->
+                <div class="game-card">
+                    <div class="game-thumbnail">💨</div>
+                    <div class="game-info">
+                        <h3>Cyclical Sighing</h3>
+                        <p class="game-description">Double inhale + extended exhale pattern clinically proven for rapid stress reduction.</p>
+                        <div class="game-benefits">
+                            <span class="benefit-tag">Rapid Relief</span>
+                            <span class="benefit-tag">Physiological Reset</span>
+                            <span class="benefit-tag">2 mins</span>
+                        </div>
+                        <button class="play-button" onclick="startCyclicalSighing()">Begin Sighing</button>
+                    </div>
+                </div>
+
+                <!-- Game 9: Vagus Nerve Reset (Research-Based) -->
+                <div class="game-card">
+                    <div class="game-thumbnail">🧬</div>
+                    <div class="game-info">
+                        <h3>Vagus Nerve Reset</h3>
+                        <p class="game-description">Polyvagal theory-based exercises to activate your parasympathetic nervous system.</p>
+                        <div class="game-benefits">
+                            <span class="benefit-tag">Nervous System</span>
+                            <span class="benefit-tag">Safety State</span>
+                            <span class="benefit-tag">5 mins</span>
+                        </div>
+                        <button class="play-button" onclick="startVagusNerveReset()">Begin Reset</button>
+                    </div>
+                </div>
+
+                <!-- Game 10: Identity Builder (Research-Based) -->
+                <div class="game-card">
+                    <div class="game-thumbnail">👤</div>
+                    <div class="game-info">
+                        <h3>Identity Builder</h3>
+                        <p class="game-description">Atomic Habits-based tool to rewire your identity and create resilient neural pathways.</p>
+                        <div class="game-benefits">
+                            <span class="benefit-tag">Long-term</span>
+                            <span class="benefit-tag">Neural Change</span>
+                            <span class="benefit-tag">Personal</span>
+                        </div>
+                        <button class="play-button" onclick="startIdentityBuilder()">Build Identity</button>
+                    </div>
+                </div>
+
+                <!-- Game 11: Social Connection Tracker (Research-Based) -->
+                <div class="game-card">
+                    <div class="game-thumbnail">🤝</div>
+                    <div class="game-info">
+                        <h3>5-3-1 Social Fitness</h3>
+                        <p class="game-description">Track your social health using the research-backed 5-3-1 framework for meaningful connections.</p>
+                        <div class="game-benefits">
+                            <span class="benefit-tag">Community</span>
+                            <span class="benefit-tag">Longevity</span>
+                            <span class="benefit-tag">Weekly</span>
+                        </div>
+                        <button class="play-button" onclick="startSocialFitness()">Track Connections</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Countries/Local Resources Section -->
+        <div id="countries" class="games-section" style="display: none;">
+            <h2 style="margin-bottom: 30px; font-size: 2rem; color: #1f2937;">
+                🌐 Mental Health Resources by Country
+            </h2>
+            <p style="color: #6b7280; margin-bottom: 30px; font-size: 1.05rem;">
+                Find local mental health services, crisis lines, and organizations in your country.
+            </p>
+
+            <div class="resource-selection-grid">
+                <!-- Country Selector -->
+                <div class="country-selector">
+                    <div class="selector-header">Select Your Country</div>
+                    <input type="text" class="search-input" id="countrySearch" placeholder="Search countries...">
+                    <div class="country-list" id="countryList">
+                        <!-- Countries will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Resources Display -->
+                <div class="resources-display">
+                    <div class="resource-header" id="resourceHeader">Select a country to view resources</div>
+                    <div class="resource-list" id="resourceList">
+                        <p style="color: #6b7280; text-align: center; padding: 30px;">Select a country from the list to see available mental health resources and crisis lines.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Online Resources Section -->
+        <div id="online" class="games-section" style="display: none;">
+            <h2 style="margin-bottom: 30px; font-size: 2rem; color: #1f2937;">
+                💻 Online Resources Available Worldwide
+            </h2>
+            <p style="color: #6b7280; margin-bottom: 30px; font-size: 1.05rem;">
+                Access these platforms and resources from anywhere in the world.
+            </p>
+
+            <div class="online-resources-grid" id="onlineResourcesGrid">
+                <!-- Online Resources will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Demographics Section -->
+        <div id="demographics" class="games-section" style="display: none;">
+            <h2 style="margin-bottom: 30px; font-size: 2rem; color: #1f2937;">
+                👥 Resources by Demographics
+            </h2>
+            <p style="color: #6b7280; margin-bottom: 30px; font-size: 1.05rem;">
+                Find specialized mental health support tailored to your specific needs and demographic.
+            </p>
+
+            <div class="demographics-content" id="demographicsContent">
+                <!-- Demographics will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals for Games -->
+    <div id="gameModal" style="display:none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; overflow-y: auto;">
+        <div style="background: white; margin: 50px auto; border-radius: 20px; padding: 40px; max-width: 800px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+            <button onclick="closeGameModal()" style="float: right; background: none; border: none; font-size: 2rem; cursor: pointer; color: #999;">&times;</button>
+            <div id="gameContent"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // ===== Country & Resources Data =====
+        const countryResources = {
+            'Canada': {
+                name: 'Canada',
+                flag: '🇨🇦',
+                crisis: ['Talk Suicide Canada: 1-833-456-4566', 'Crisis Text Line: Text HOME to 741741'],
+                organizations: [
+                    { name: 'Bell Let\'s Talk', url: 'https://www.belletstalk.com' },
+                    { name: 'CMHA (Canadian Mental Health Association)', url: 'https://cmha.ca' },
+                    { name: 'Kids Help Phone', url: 'https://kidshelpphone.ca' },
+                    { name: 'Here 24/7', url: 'https://here247.ca' }
+                ]
+            },
+            'United States': {
+                name: 'United States',
+                flag: '🇺🇸',
+                crisis: ['National Suicide Hotline: 988', 'Crisis Text Line: Text HELLO to 741741', 'NAMI Helpline: 1-800-950-NAMI'],
+                organizations: [
+                    { name: 'NAMI (National Alliance on Mental Illness)', url: 'https://www.nami.org' },
+                    { name: 'SAMHSA National Helpline', url: 'https://www.samhsa.gov' },
+                    { name: 'The Trevor Project (LGBTQ+)', url: 'https://www.thetrevorproject.org' },
+                    { name: 'Crisis Text Line', url: 'https://www.crisistextline.org' }
+                ]
+            },
+            'United Kingdom': {
+                name: 'United Kingdom',
+                flag: '🇬🇧',
+                crisis: ['Samaritans: 116 123', 'Crisis Text Line: Text HELLO to 50808', 'Mind Infoline: 0300 123 3393'],
+                organizations: [
+                    { name: 'Mind', url: 'https://www.mind.org.uk' },
+                    { name: 'Samaritans', url: 'https://www.samaritans.org' },
+                    { name: 'Rethink Mental Illness', url: 'https://www.rethink.org' },
+                    { name: 'Young Minds', url: 'https://youngminds.org.uk' }
+                ]
+            },
+            'Australia': {
+                name: 'Australia',
+                flag: '🇦🇺',
+                crisis: ['Lifeline: 13 11 14', 'beyondblue: 1300 224 636', 'Kids Helpline: 1800 55 1800'],
+                organizations: [
+                    { name: 'Lifeline Australia', url: 'https://www.lifeline.org.au' },
+                    { name: 'beyondblue', url: 'https://www.beyondblue.org.au' },
+                    { name: 'SANE Australia', url: 'https://www.sane.org' },
+                    { name: 'Headspace', url: 'https://headspace.com.au' }
+                ]
+            },
+            'Germany': {
+                name: 'Germany',
+                flag: '🇩🇪',
+                crisis: ['Telefonseelsorge: 0800 111 0 111 or 0800 111 0 222'],
+                organizations: [
+                    { name: 'Telefonseelsorge', url: 'https://www.telefonseelsorge.de' },
+                    { name: 'Deutsche Depressivenhilfe', url: 'https://www.depressivenhilfe.de' },
+                    { name: 'Psychosozialen Verbände', url: 'https://www.psychosoziale-verbände.de' }
+                ]
+            },
+            'France': {
+                name: 'France',
+                flag: '🇫🇷',
+                crisis: ['SOS Amitié: 09 72 39 40 50', '3114: National Suicide Prevention Number'],
+                organizations: [
+                    { name: 'SOS Amitié', url: 'https://www.sosemitie.org' },
+                    { name: 'France Dépression', url: 'https://www.france-depression.org' },
+                    { name: 'Suicide Écoute', url: 'https://www.suicide-ecoute.fr' }
+                ]
+            },
+            'Japan': {
+                name: 'Japan',
+                flag: '🇯🇵',
+                crisis: ['TELL Lifeline: 03-5774-0992', 'Inochi no Denwa: 0570-783-556'],
+                organizations: [
+                    { name: 'TELL', url: 'https://telljp.com' },
+                    { name: 'Inochi no Denwa', url: 'https://www.inochinodenwa.org' }
+                ]
+            },
+            'India': {
+                name: 'India',
+                flag: '🇮🇳',
+                crisis: ['AASRA: 9820466726', 'iCall: 9152987821', 'Vandrevala Foundation: 9999 77 6555'],
+                organizations: [
+                    { name: 'iCall', url: 'https://www.icallhelpline.org' },
+                    { name: 'AASRA', url: 'https://www.aasra.info' },
+                    { name: 'Vandrevala Foundation', url: 'https://www.vandrevalafoundation.org' }
+                ]
+            },
+            'Brazil': {
+                name: 'Brazil',
+                flag: '🇧🇷',
+                crisis: ['CVV: 188 (national)', '141 or 0800 525 0000'],
+                organizations: [
+                    { name: 'CVV - Centro de Valorização da Vida', url: 'https://www.cvv.org.br' }
+                ]
+            },
+            'South Africa': {
+                name: 'South Africa',
+                flag: '🇿🇦',
+                crisis: ['Befrienders South Africa: 0861 322 322', 'Suicide Crisis Line: 0800 567 567'],
+                organizations: [
+                    { name: 'Befrienders South Africa', url: 'https://www.befrienders.co.za' },
+                    { name: 'SADAG - South African Depression', url: 'https://www.sadag.org' }
+                ]
+            }
+        };
+
+        const onlineResources = [
+            {
+                name: '7 Cups',
+                category: 'Emotional Support',
+                description: 'Free emotional support chat with trained listeners available 24/7.',
+                url: 'https://www.7cups.com'
+            },
+            {
+                name: 'Headspace',
+                category: 'Meditation & Mindfulness',
+                description: 'Meditation and mindfulness app with thousands of guided sessions.',
+                url: 'https://www.headspace.com'
+            },
+            {
+                name: 'Calm',
+                category: 'Sleep & Relaxation',
+                description: 'Sleep stories, meditations, and relaxation music to improve mental wellness.',
+                url: 'https://www.calm.com'
+            },
+            {
+                name: 'Insight Timer',
+                category: 'Meditation',
+                description: 'World\'s largest free meditation app with 100,000+ sessions.',
+                url: 'https://insighttimer.com'
+            },
+            {
+                name: 'BetterHelp',
+                category: 'Therapy',
+                description: 'Online therapy with licensed counselors and therapists.',
+                url: 'https://www.betterhelp.com'
+            },
+            {
+                name: 'AARP Connect',
+                category: 'Senior Support',
+                description: 'Community support and mental health resources for seniors.',
+                url: 'https://www.aarp.org'
+            },
+            {
+                name: 'MindShift CBT',
+                category: 'Anxiety & Depression',
+                description: 'CBT-based app helping manage anxiety with tools and strategies.',
+                url: 'https://www.mindshift.online'
+            },
+            {
+                name: 'Talkspace',
+                category: 'Online Therapy',
+                description: 'Text, audio, and video therapy with licensed therapists.',
+                url: 'https://www.talkspace.com'
+            },
+            {
+                name: 'Mental Health America',
+                category: 'Resources & Information',
+                description: 'Mental health information, screening tools, and resources.',
+                url: 'https://www.mhanational.org'
+            },
+            {
+                name: 'ADAA - Anxiety & Depression',
+                category: 'Information',
+                description: 'Evidence-based resources for anxiety and depression.',
+                url: 'https://adaa.org'
+            }
+        ];
+
+        const demographicResources = {
+            'Women': {
+                icon: '👩‍🦰',
+                description: 'Resources specifically for women\'s mental health',
+                resources: [
+                    { name: 'Women\'s Mental Health (BC)', url: 'https://www.womensmentalhealth.ca' },
+                    { name: 'Postpartum Support International', url: 'https://www.postpartum.net' },
+                    { name: 'SHE RECOVERS Foundation Canada', url: 'https://sherecovers.org/canada' }
+                ]
+            },
+            'Men': {
+                icon: '👨',
+                description: 'Resources addressing men\'s mental health challenges',
+                resources: [
+                    { name: 'Men & (Forge) - 24/7 Resource Line', url: 'https://www.menand.ca' },
+                    { name: 'HeadsUpGuys (UBC)', url: 'https://headsupguys.org' },
+                    { name: 'Men\'s Sheds Canada', url: 'https://mensshedscanada.ca' },
+                    { name: 'Square 1 Men\'s Mental Health', url: 'https://www.square1mmh.com' }
+                ]
+            },
+            'LGBTQ+': {
+                icon: '🏳️‍🌈',
+                description: 'Inclusive resources for LGBTQ+ mental health',
+                resources: [
+                    { name: 'The Trevor Project', url: 'https://www.thetrevorproject.org' },
+                    { name: 'LGBTQ+ National Youth Talkline', url: 'https://www.lgbtq.unc.edu' },
+                    { name: 'The 519 (Toronto)', url: 'https://www.the519.org' },
+                    { name: 'Rainbow Health Ontario', url: 'https://www.rainbowhealthontario.ca' }
+                ]
+            },
+            'Youth & Teens': {
+                icon: '🧑‍🎓',
+                description: 'Mental health support for young people',
+                resources: [
+                    { name: 'Kids Help Phone (Canada)', url: 'https://kidshelpphone.ca' },
+                    { name: 'Crisis Text Line', url: 'https://www.crisistextline.org' },
+                    { name: 'TeenLine', url: 'https://teenline.org' },
+                    { name: 'Jack.org (Canada)', url: 'https://jack.org' }
+                ]
+            },
+            'Parents': {
+                icon: '👨‍👩‍👧‍👦',
+                description: 'Support for parental mental health and parenting stress',
+                resources: [
+                    { name: 'Postpartum Support International', url: 'https://www.postpartum.net' },
+                    { name: 'National Parent Helpline', url: 'https://www.parenthelp.org' },
+                    { name: 'Canadian Mental Health Association - Family Support', url: 'https://cmha.ca' }
+                ]
+            },
+            'Veterans': {
+                icon: '🎖️',
+                description: 'Mental health resources for military veterans',
+                resources: [
+                    { name: 'Veterans Affairs Canada', url: 'https://www.veterans.gc.ca/eng/health-support/mental-health-and-wellness' },
+                    { name: 'Veterans Crisis Line', url: 'https://www.veteranscrisisline.net' },
+                    { name: 'True Patriot Love Foundation', url: 'https://www.truepatriotlove.com' },
+                    { name: 'Wounded Warrior Project', url: 'https://www.woundedwarriorproject.org' }
+                ]
+            },
+            'First Responders': {
+                icon: '🚨',
+                description: 'Mental health support for police, firefighters, and EMTs',
+                resources: [
+                    { name: 'Badge of Life Canada', url: 'https://www.badgeoflifecanada.org' },
+                    { name: 'Badge of Life (US)', url: 'https://www.badgeoflife.org' },
+                    { name: 'Safe Call Now', url: 'https://www.safecallnow.org' },
+                    { name: 'Tema Conter Memorial Trust', url: 'https://www.tema.ca' }
+                ]
+            },
+            'Minority Communities': {
+                icon: '🌍',
+                description: 'Culturally sensitive mental health resources',
+                resources: [
+                    { name: 'Asian Mental Health Collective', url: 'https://www.asianmhc.org' },
+                    { name: 'Black Mental Health Canada', url: 'https://www.blackmentalhealth.ca' },
+                    { name: 'National Council for Behavioral Health', url: 'https://www.thenationalcouncil.org' },
+                    { name: '211.ca - Community Resources', url: 'https://211.ca' }
+                ]
+            }
+        };
+
+        // Initialize country list
+        function initCountryList() {
+            const countryList = document.getElementById('countryList');
+            Object.keys(countryResources).sort().forEach(country => {
+                const item = document.createElement('div');
+                item.className = 'country-item';
+                item.textContent = countryResources[country].flag + ' ' + country;
+                item.onclick = () => selectCountry(country, item);
+                countryList.appendChild(item);
+            });
+        }
+
+        function selectCountry(country, element) {
+            // Update active state
+            document.querySelectorAll('.country-item').forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
+
+            // Display resources
+            const resources = countryResources[country];
+            document.getElementById('resourceHeader').textContent = `${resources.flag} ${country} - Mental Health Resources`;
+            
+            let html = '<div>';
+            
+            // Crisis Lines
+            if (resources.crisis.length > 0) {
+                html += '<div style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 2px solid #e5e7eb;">';
+                html += '<h4 style="color: #ef4444; margin-bottom: 12px; font-weight: 700;">🚨 Crisis Lines</h4>';
+                resources.crisis.forEach(crisis => {
+                    html += `<div class="resource-item" style="background: #fee2e2; border-left-color: #ef4444; margin-bottom: 10px;">
+                        <p style="color: #1f2937; font-weight: 600;">${crisis}</p>
+                    </div>`;
+                });
+                html += '</div>';
+            }
+
+            // Organizations
+            if (resources.organizations.length > 0) {
+                html += '<h4 style="color: #1f2937; margin-bottom: 12px; font-weight: 700;">🏥 Mental Health Organizations</h4>';
+                resources.organizations.forEach(org => {
+                    html += `<div class="resource-item">
+                        <h4 style="color: #667eea; margin-bottom: 5px;">${org.name}</h4>
+                        <a href="${org.url}" target="_blank" class="resource-link">Visit Website →</a>
+                    </div>`;
+                });
+            }
+
+            html += '</div>';
+            document.getElementById('resourceList').innerHTML = html;
+        }
+
+        // Search functionality
+        document.getElementById('countrySearch').addEventListener('keyup', function() {
+            const searchTerm = this.value.toLowerCase();
+            document.querySelectorAll('.country-item').forEach(item => {
+                if (item.textContent.toLowerCase().includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Initialize online resources
+        function initOnlineResources() {
+            const grid = document.getElementById('onlineResourcesGrid');
+            onlineResources.forEach(resource => {
+                const card = document.createElement('div');
+                card.className = 'online-resource-card';
+                card.innerHTML = `
+                    <div class="category">${resource.category}</div>
+                    <h3>${resource.name}</h3>
+                    <p>${resource.description}</p>
+                    <a href="${resource.url}" target="_blank" class="visit-button">Visit →</a>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Initialize demographics
+        function initDemographics() {
+            const content = document.getElementById('demographicsContent');
+            Object.entries(demographicResources).forEach(([key, data]) => {
+                const card = document.createElement('div');
+                card.className = 'demographic-group';
+                card.innerHTML = `
+                    <div class="demographic-icon">${data.icon}</div>
+                    <h3>${key}</h3>
+                    <p style="color: #6b7280; margin-bottom: 15px; font-size: 0.95rem;">${data.description}</p>
+                    <ul>
+                        ${data.resources.map(res => `
+                            <li>
+                                <a href="${res.url}" target="_blank">${res.name}</a>
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+                content.appendChild(card);
+            });
+        }
+
+        // Tab switching
+        function showTab(tabName) {
+            // Hide all sections
+            document.querySelectorAll('.games-section').forEach(section => {
+                section.classList.remove('active');
+                section.style.display = 'none';
+            });
+
+            // Remove active state from all buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected section
+            const section = document.getElementById(tabName);
+            if (section) {
+                section.classList.add('active');
+                section.style.display = 'block';
+            }
+
+            // Add active state to clicked button
+            event.target.classList.add('active');
+        }
+
+        // Game Functions
+        function openGameModal(title, content) {
+            document.getElementById('gameContent').innerHTML = `
+                <h2 style="color: #1f2937; margin-bottom: 20px;">${title}</h2>
+                ${content}
+            `;
+            document.getElementById('gameModal').style.display = 'flex';
+            document.getElementById('gameModal').style.alignItems = 'center';
+            document.getElementById('gameModal').style.justifyContent = 'center';
+        }
+
+        function closeGameModal() {
+            document.getElementById('gameModal').style.display = 'none';
+        }
+
+        function startBreathingExercise() {
+            const content = `
+                <div style="text-align: center;">
+                    <p style="color: #6b7280; margin-bottom: 30px; font-size: 1.05rem;">
+                        Follow the circle. Breathe in for 4 counts, hold for 7, breathe out for 8.
+                    </p>
+                    <div id="breathingCircle" style="
+                        width: 200px;
+                        height: 200px;
+                        border-radius: 50%;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        margin: 30px auto;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-size: 1.5rem;
+                        animation: breathe 19s infinite;
+                        box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+                    ">
+                        <span id="breathText">Breathe In...</span>
+                    </div>
+                    <button onclick="closeGameModal()" style="
+                        padding: 12px 30px;
+                        background: #667eea;
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    ">Done</button>
+                </div>
+                <style>
+                    @keyframes breathe {
+                        0% { transform: scale(1); }
+                        25% { transform: scale(1.3); }
+                        50% { transform: scale(1.3); }
+                        75% { transform: scale(1); }
+                        100% { transform: scale(1); }
+                    }
+                </style>
+            `;
+            openGameModal('🫁 Breathing Exercise', content);
+
+            // Update text
+            let phase = ['Breathe In (4s)', 'Hold (7s)', 'Breathe Out (8s)'];
+            let phaseIndex = 0;
+            setInterval(() => {
+                phaseIndex = (phaseIndex + 1) % 3;
+                document.getElementById('breathText').textContent = phase[phaseIndex];
+            }, 6333);
+        }
+
+        function startMindfulness() {
+            const content = `
+                <div style="text-align: center;">
+                    <p style="color: #6b7280; margin-bottom: 20px; font-size: 1.05rem;">
+                        Find a comfortable position. Let's begin a 5-minute mindfulness session.
+                    </p>
+                    <div style="background: #f0f4ff; padding: 30px; border-radius: 15px; margin: 30px 0; min-height: 200px; display: flex; align-items: center; justify-content: center;">
+                        <div style="animation: pulse 2s infinite;">
+                            <div style="font-size: 4rem; margin-bottom: 20px;">🧘</div>
+                            <div id="mindfulnessTimer" style="font-size: 2rem; color: #667eea; font-weight: bold;">5:00</div>
+                        </div>
+                    </div>
+                    <p style="color: #6b7280; font-style: italic; margin: 20px 0;">
+                        "Focus on your breath. Notice the present moment. Let thoughts pass without judgment."
+                    </p>
+                    <button onclick="closeGameModal()" style="
+                        padding: 12px 30px;
+                        background: #667eea;
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    ">End Session</button>
+                </div>
+                <style>
+                    @keyframes pulse {
+                        0%, 100% { transform: scale(1); }
+                        50% { transform: scale(1.05); }
+                    }
+                </style>
+            `;
+            openGameModal('🧘 Mindfulness Meditation', content);
+
+            // Timer
+            let timeLeft = 300;
+            setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    let mins = Math.floor(timeLeft / 60);
+                    let secs = timeLeft % 60;
+                    document.getElementById('mindfulnessTimer').textContent = 
+                        mins + ':' + (secs < 10 ? '0' : '') + secs;
+                }
+            }, 1000);
+        }
+
+        function startColorGame() {
+            const colors = ['#667eea', '#764ba2', '#f59e0b', '#10b981', '#ef4444', '#3b82f6'];
+            let score = 0;
+            let currentColor = colors[Math.floor(Math.random() * colors.length)];
+            let targetColor = colors[Math.floor(Math.random() * colors.length)];
+
+            const content = `
+                <div style="text-align: center;">
+                    <p style="color: #6b7280; margin-bottom: 20px;">Match the color to the target!</p>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 30px 0;">
+                        ${colors.map(color => `
+                            <button onclick="checkColor('${color}')" style="
+                                width: 80px;
+                                height: 80px;
+                                background: ${color};
+                                border: 3px solid transparent;
+                                border-radius: 12px;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                            " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                            </button>
+                        `).join('')}
+                    </div>
+                    <p style="color: #1f2937; font-weight: bold; margin-bottom: 10px;">Score: <span id="gameScore">${score}</span></p>
+                </div>
+            `;
+            openGameModal('🎨 Color Therapy Game', content);
+        }
+
+        function startPMR() {
+            const content = `
+                <div style="text-align: center;">
+                    <p style="color: #6b7280; margin-bottom: 20px;">Progressive Muscle Relaxation - Tense and Release</p>
+                    <div style="text-align: left; background: #f9fafb; padding: 25px; border-radius: 12px; margin: 30px 0;">
+                        <div id="pmrSteps"></div>
+                    </div>
+                    <button onclick="closeGameModal()" style="
+                        padding: 12px 30px;
+                        background: #667eea;
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    ">Finish</button>
+                </div>
+            `;
+            openGameModal('💪 Progressive Muscle Relaxation', content);
+
+            const steps = [
+                '1. Tense your toes for 5 seconds, then release (10 seconds)',
+                '2. Tense your calves for 5 seconds, then release (10 seconds)',
+                '3. Tense your thighs for 5 seconds, then release (10 seconds)',
+                '4. Tense your abdomen for 5 seconds, then release (10 seconds)',
+                '5. Tense your chest for 5 seconds, then release (10 seconds)',
+                '6. Tense your hands for 5 seconds, then release (10 seconds)',
+                '7. Tense your arms for 5 seconds, then release (10 seconds)',
+                '8. Tense your shoulders for 5 seconds, then release (10 seconds)',
+                '9. Tense your face for 5 seconds, then release (10 seconds)',
+                '✨ You are now fully relaxed'
+            ];
+
+            let stepIndex = 0;
+            const stepsDiv = document.getElementById('pmrSteps');
+            
+            steps.forEach((step, index) => {
+                const stepEl = document.createElement('div');
+                stepEl.style.cssText = 'padding: 10px; margin-bottom: 10px; border-left: 4px solid #667eea; background: white;';
+                stepEl.textContent = step;
+                stepsDiv.appendChild(stepEl);
+            });
+        }
+
+        function startGratitudeJournal() {
+            const content = `
+                <div>
+                    <p style="color: #6b7280; margin-bottom: 15px;">What are 3 things you're grateful for today?</p>
+                    <input type="text" placeholder="First thing you're grateful for..." style="
+                        width: 100%;
+                        padding: 12px;
+                        margin-bottom: 10px;
+                        border: 2px solid #e5e7eb;
+                        border-radius: 8px;
+                        font-size: 1rem;
+                    ">
+                    <input type="text" placeholder="Second thing you're grateful for..." style="
+                        width: 100%;
+                        padding: 12px;
+                        margin-bottom: 10px;
+                        border: 2px solid #e5e7eb;
+                        border-radius: 8px;
+                        font-size: 1rem;
+                    ">
+                    <input type="text" placeholder="Third thing you're grateful for..." style="
+                        width: 100%;
+                        padding: 12px;
+                        margin-bottom: 20px;
+                        border: 2px solid #e5e7eb;
+                        border-radius: 8px;
+                        font-size: 1rem;
+                    ">
+                    <button onclick="alert('✨ Gratitude entry saved!'); closeGameModal();" style="
+                        width: 100%;
+                        padding: 12px;
+                        background: #10b981;
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    ">Save Gratitude Entry</button>
+                </div>
+            `;
+            openGameModal('📔 Gratitude Journal', content);
+        }
+
+        function startGrounding() {
+            const content = `
+                <div style="text-align: center;">
+                    <p style="color: #6b7280; margin-bottom: 25px; font-size: 1.05rem;">
+                        Use this 5-4-3-2-1 technique when feeling anxious or panicked.
+                    </p>
+                    <div style="text-align: left; background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%); padding: 25px; border-radius: 15px; margin: 30px 0;">
+                        <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 2px solid #667eea;">
+                            <strong style="color: #667eea; font-size: 1.1rem;">5 Things you SEE 👀</strong>
+                            <p style="color: #6b7280; margin-top: 8px;">Look around and name 5 things you can see.</p>
+                        </div>
+                        <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 2px solid #667eea;">
+                            <strong style="color: #667eea; font-size: 1.1rem;">4 Things you FEEL 👋</strong>
+                            <p style="color: #6b7280; margin-top: 8px;">Name 4 things you can touch and feel.</p>
+                        </div>
+                        <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 2px solid #667eea;">
+                            <strong style="color: #667eea; font-size: 1.1rem;">3 Things you HEAR 👂</strong>
+                            <p style="color: #6b7280; margin-top: 8px;">Name 3 sounds you can hear.</p>
+                        </div>
+                        <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 2px solid #667eea;">
+                            <strong style="color: #667eea; font-size: 1.1rem;">2 Things you SMELL 👃</strong>
+                            <p style="color: #6b7280; margin-top: 8px;">Name 2 smells around you.</p>
+                        </div>
+                        <div>
+                            <strong style="color: #667eea; font-size: 1.1rem;">1 Thing you TASTE 👅</strong>
+                            <p style="color: #6b7280; margin-top: 8px;">Name 1 taste in your mouth.</p>
+                        </div>
+                    </div>
+                    <button onclick="alert('✨ You\'ve grounded yourself! The anxiety will pass.'); closeGameModal();" style="
+                        width: 100%;
+                        padding: 12px;
+                        background: #667eea;
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    ">I've Completed the Grounding</button>
+                </div>
+            `;
+            openGameModal('🌱 5-4-3-2-1 Grounding Technique', content);
+        }
+
+        function startQCT() {
+            const content = `
+                <div style="text-align: center;">
+                    <p style="color: #6b7280; margin-bottom: 20px;">Quick Coherence Technique - Heart-Focused Breathing</p>
+                    <p style="color: #6b7280; margin-bottom: 30px; font-size: 0.95rem;">
+                        This research-backed technique improves Heart Rate Variability (HRV) and restores cognitive clarity.
+                    </p>
+                    <div style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); padding: 30px; border-radius: 15px; margin: 30px 0;">
+                        <div style="font-size: 3rem; margin-bottom: 20px;">❤️</div>
+                        <div style="font-size: 1.3rem; color: #dc2626; font-weight: bold; margin-bottom: 10px;">Focus on your heart</div>
+                        <div id="qctTimer" style="font-size: 2rem; color: #dc2626; font-weight: bold; margin-bottom: 20px;">3:00</div>
+                        <p style="color: #991b1b; font-style: italic; margin: 15px 0;">Breathe slowly: 5 seconds in, 5 seconds out</p>
+                        <p style="color: #991b1b; font-weight: 600;">Recall a positive emotion: gratitude, appreciation, care</p>
+                    </div>
+                    <button onclick="closeGameModal()" style="
+                        padding: 12px 30px;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    ">Complete QCT</button>
+                </div>
+            `;
+            openGameModal('❤️ Quick Coherence Technique', content);
+
+            let timeLeft = 180;
+            setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    let mins = Math.floor(timeLeft / 60);
+                    let secs = timeLeft % 60;
+                    const timer = document.getElementById('qctTimer');
+                    if (timer) {
+                        timer.textContent = mins + ':' + (secs < 10 ? '0' : '') + secs;
+                    }
+                }
+            }, 1000);
+        }
+
+        function startCyclicalSighing() {
+            const content = `
+                <div style="text-align: center;">
+                    <p style="color: #6b7280; margin-bottom: 20px;">Cyclical Sighing - Clinical Stress Reduction</p>
+                    <p style="color: #6b7280; margin-bottom: 30px; font-size: 0.95rem;">
+                        Double inhale + extended exhale pattern clinically proven for rapid physiological arousal reduction.
+                    </p>
+                    <div style="background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); padding: 30px; border-radius: 15px; margin: 30px 0;">
+                        <div style="font-size: 3rem; margin-bottom: 20px;">💨</div>
+                        <div id="sighing-instruction" style="font-size: 1.5rem; color: #15803d; font-weight: bold; margin-bottom: 20px;">INHALE (first)</div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                            <div style="background: white; padding: 15px; border-radius: 10px;">
+                                <div style="font-size: 0.9rem; color: #6b7280;">Pattern</div>
+                                <div style="font-size: 1.3rem; font-weight: bold; color: #667eea;">2x Inhale</div>
+                            </div>
+                            <div style="background: white; padding: 15px; border-radius: 10px;">
+                                <div style="font-size: 0.9rem; color: #6b7280;">Then Hold</div>
+                                <div style="font-size: 1.3rem; font-weight: bold; color: #667eea;">Brief</div>
+                            </div>
+                            <div style="background: white; padding: 15px; border-radius: 10px;">
+                                <div style="font-size: 0.9rem; color: #6b7280;">Long Exhale</div>
+                                <div style="font-size: 1.3rem; font-weight: bold; color: #667eea;">Slowly</div>
+                            </div>
+                        </div>
+                        <p style="color: #15803d; font-weight: 600;">Repeat 5 cycles for rapid relief</p>
+                    </div>
+                    <button onclick="closeGameModal()" style="
+                        padding: 12px 30px;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    ">Done</button>
+                </div>
+            `;
+            openGameModal('💨 Cyclical Sighing', content);
+        }
+
+        function startVagusNerveReset() {
+            const content = `
+                <div style="text-align: center;">
+                    <p style="color: #6b7280; margin-bottom: 20px;">Vagus Nerve Reset - Polyvagal Theory</p>
+                    <p style="color: #6b7280; margin-bottom: 30px; font-size: 0.95rem;">
+                        Activate your parasympathetic nervous system for the "Safe & Social" ventral vagal state.
+                    </p>
+                    <div style="background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); padding: 30px; border-radius: 15px; margin: 30px 0; text-align: left;">
+                        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #7c3aed;">
+                            <strong style="color: #7c3aed; font-size: 1.05rem;">✓ Humming/Singing</strong>
+                            <p style="color: #6b7280; margin-top: 8px; font-size: 0.95rem;">Vibrates vagus nerve. Hum for 30 seconds.</p>
+                        </div>
+                        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #7c3aed;">
+                            <strong style="color: #7c3aed; font-size: 1.05rem;">✓ Cold Water Immersion</strong>
+                            <p style="color: #6b7280; margin-top: 8px; font-size: 0.95rem;">Splash cold water on face or drink ice water to activate dive reflex.</p>
+                        </div>
+                        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #7c3aed;">
+                            <strong style="color: #7c3aed; font-size: 1.05rem;">✓ Deep Laughing</strong>
+                            <p style="color: #6b7280; margin-top: 8px; font-size: 0.95rem;">Genuine laughter stimulates the vagus nerve and shifts nervous system state.</p>
+                        </div>
+                        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #7c3aed;">
+                            <strong style="color: #7c3aed; font-size: 1.05rem;">✓ Gargling</strong>
+                            <p style="color: #6b7280; margin-top: 8px; font-size: 0.95rem;">Gargle for 30 seconds to tone the vagus nerve.</p>
+                        </div>
+                        <div style="padding-bottom: 0; border-bottom: none;">
+                            <strong style="color: #7c3aed; font-size: 1.05rem;">✓ Slow Extended Exhale</strong>
+                            <p style="color: #6b7280; margin-top: 8px; font-size: 0.95rem;">Extended exhalation activates parasympathetic response.</p>
+                        </div>
+                    </div>
+                    <p style="color: #6b7280; font-style: italic; margin: 20px 0;">Result: Shift from Fight/Flight to Calm & Connected</p>
+                    <button onclick="closeGameModal()" style="
+                        padding: 12px 30px;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    ">Begin Reset</button>
+                </div>
+            `;
+            openGameModal('🧬 Vagus Nerve Reset', content);
+        }
+
+        function startIdentityBuilder() {
+            const content = `
+                <div>
+                    <p style="color: #6b7280; margin-bottom: 20px; text-align: center;">
+                        <strong>Identity-Based Habit Builder</strong><br>
+                        <span style="font-size: 0.95rem;">Rewire your neural pathways through identity statements</span>
+                    </p>
+                    <div style="background: #f0f4ff; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                        <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 10px;">What identity do you want to embody?</p>
+                        <input type="text" placeholder="e.g., 'I am someone who manages stress well'" style="
+                            width: 100%;
+                            padding: 12px;
+                            border: 2px solid #667eea;
+                            border-radius: 8px;
+                            font-size: 1rem;
+                            margin-bottom: 15px;
+                        " id="identityInput">
+                        <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 10px;">What 1% improvement will reinforce this identity today?</p>
+                        <input type="text" placeholder="e.g., 'Take 3 deep breaths before meetings'" style="
+                            width: 100%;
+                            padding: 12px;
+                            border: 2px solid #667eea;
+                            border-radius: 8px;
+                            font-size: 1rem;
+                            margin-bottom: 15px;
+                        " id="habitInput">
+                    </div>
+                    <div style="background: #f9fafb; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                        <p style="color: #1f2937; font-weight: 600; margin-bottom: 10px;">💡 Identity Architecture Tip:</p>
+                        <p style="color: #6b7280; font-size: 0.95rem;">
+                            Behavior follows identity. By focusing on 1% improvements that align with your desired identity, 
+                            you reprogram your neural pathways without triggering threat response.
+                        </p>
+                    </div>
+                    <button onclick="saveIdentity()" style="
+                        width: 100%;
+                        padding: 12px;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    ">Save Identity & Habit</button>
+                </div>
+            `;
+            openGameModal('👤 Identity Builder', content);
+        }
+
+        function saveIdentity() {
+            const identity = document.getElementById('identityInput')?.value;
+            const habit = document.getElementById('habitInput')?.value;
+            if (identity && habit) {
+                alert(`✨ Identity Saved!\n\nYour Identity: "${identity}"\nDaily Habit: "${habit}"\n\nRepeat this daily to reprogram your neural pathways.`);
+                closeGameModal();
+            } else {
+                alert('Please fill in both fields');
+            }
+        }
+
+        function startSocialFitness() {
+            const content = `
+                <div style="text-align: center;">
+                    <p style="color: #6b7280; margin-bottom: 25px;">
+                        <strong>5-3-1 Social Fitness Tracker</strong><br>
+                        <span style="font-size: 0.95rem;">Research shows social connection is as vital to health as exercise and sleep</span>
+                    </p>
+                    <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); padding: 25px; border-radius: 15px; margin: 30px 0; text-align: left;">
+                        <div style="margin-bottom: 20px; padding: 15px; background: white; border-radius: 10px;">
+                            <input type="checkbox" id="socialCheck5" style="margin-right: 10px;"> 
+                            <label for="socialCheck5" style="cursor: pointer; color: #1f2937; font-weight: 600;">
+                                ✓ 5 Different People This Week
+                            </label>
+                            <p style="color: #6b7280; margin-top: 8px; font-size: 0.9rem; margin-left: 24px;">
+                                Diverse social networks predict higher well-being
+                            </p>
+                        </div>
+                        <div style="margin-bottom: 20px; padding: 15px; background: white; border-radius: 10px;">
+                            <input type="checkbox" id="socialCheck3" style="margin-right: 10px;"> 
+                            <label for="socialCheck3" style="cursor: pointer; color: #1f2937; font-weight: 600;">
+                                ✓ 3 Close Relationships (Daily/Monthly Depth)
+                            </label>
+                            <p style="color: #6b7280; margin-top: 8px; font-size: 0.9rem; margin-left: 24px;">
+                                Texts, calls, or deep conversations with close friends
+                            </p>
+                        </div>
+                        <div style="padding: 15px; background: white; border-radius: 10px;">
+                            <input type="checkbox" id="socialCheck1" style="margin-right: 10px;"> 
+                            <label for="socialCheck1" style="cursor: pointer; color: #1f2937; font-weight: 600;">
+                                ✓ 1 Hour Quality Interaction Daily
+                            </label>
+                            <p style="color: #6b7280; margin-top: 8px; font-size: 0.9rem; margin-left: 24px;">
+                                Can be micro-connections (10 min each) throughout the day
+                            </p>
+                        </div>
+                    </div>
+                    <p style="color: #6b7280; font-style: italic; margin: 20px 0; font-size: 0.95rem;">
+                        🎯 Social isolation increases mortality risk more than smoking. Cultivate your social fitness!
+                    </p>
+                    <button onclick="alert('✨ Social Fitness Goals Logged!\\n\\nTrack your progress weekly. Remember: connection is medicine.'); closeGameModal();" style="
+                        width: 100%;
+                        padding: 12px;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    ">Log My Goals</button>
+                </div>
+            `;
+            openGameModal('🤝 5-3-1 Social Fitness', content);
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            initCountryList();
+            initOnlineResources();
+            initDemographics();
+        });
+    </script>
+</body>
+</html>
