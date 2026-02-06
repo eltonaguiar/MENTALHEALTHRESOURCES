@@ -1,6 +1,22 @@
 {
-  "lastUpdated": "2026-02-05T12:00:00Z",
+  "lastUpdated": "2026-02-06T06:49:35.047Z",
   "articles": [
+    {
+      "id": "auto-1",
+      "title": "Latest Research: Mindfulness-Based Interventions Show Promise",
+      "source": "PubMed Central",
+      "date": "2026-02-06",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=mental+health",
+      "category": "research"
+    },
+    {
+      "id": "auto-2",
+      "title": "WHO Mental Health Updates",
+      "source": "World Health Organization",
+      "date": "2026-02-06",
+      "url": "https://www.who.int/health-topics/mental-health",
+      "category": "news"
+    },
     {
       "id": "1",
       "title": "New Study Shows Meditation Reduces Anxiety by 30%",
