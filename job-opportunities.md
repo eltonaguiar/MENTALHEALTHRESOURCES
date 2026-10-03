@@ -10,9 +10,11 @@
 - **Location:** Downtown Toronto
 - **On-site:** 4 days/week
 - **Rate:** Unknown — to be determined
-- **Status:** In progress
+- **Status:** In progress — company will get back
+- **Probability of hearing back:** Higher (of the two active)
 
 ## Salesforce Developer
 - **Location:** Burlington
 - **Rate:** Unknown
-- **Status:** In progress
+- **Status:** In progress — company will get back
+- **Probability of hearing back:** Lower (of the two active)
