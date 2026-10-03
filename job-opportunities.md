@@ -3,7 +3,7 @@
 ## Chorus
 - **Status:** Rejected — selected another candidate due to lower salary
 - **Rate:** ~$80/hour, incorporated
-- **Notes:** Interview completed; lost on compensation
+- **Notes:** Interview completed; lost on compensation. Technically still open if the other candidate declines their offer, but most likely gone.
 
 ## CGI
 - **Role:** Software Developer
